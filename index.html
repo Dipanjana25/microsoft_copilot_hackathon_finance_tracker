@@ -1,54 +1,40 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="images/fin.jpg">
     <link rel="stylesheet" href="index.css">
-    <link rel="shortcut icon" href="#">
-    <title>Finance Tracker</title>
+    <title>FinTrack</title>
 </head>
-
 <body>
-    <div class="navbar">
-        <header>
-            <nav>
-                <ul>
-                    <ul class="center">
-                        <li class="left2" style="background-color: #CA4246;
-              background-image: linear-gradient(45deg,
-                  #ce4f54 16.666%,
-                  #ee6641 16.666%,
-                  #e66744 33.333%,
-                  #f1944c 33.333%,
-                  #ec914b 50%,
-                  #bed868 50%,
-                  #96aa53 66.666%,
-                  #4c6baf 66.666%,
-                  #54658b 83.333%,
-                  #ff67eb 83.333%);
-              background-size: 100%;
-              background-repeat: repeat;
-              background-clip: border-box;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              animation: rainbow-text-simple-animation-rev 0.75s ease forwards; ">
-                            <p>FINANCE_TRACKER
-                            <p>
-                        </li>
-                    </ul>
-                    <label>
-                        <input class="checkbox" type="checkbox">
-                        <span class="menu"> <span class="hamburger"></span> </span>
-                        <ul class="right">
-                            <li><a href="income.html">Income</a></li>
-                            <li><a href="expense.html">Expenses</a></li>
-                            <li><a href="view.html">View Details</a></li>
-                        </ul>
-                    </label>
-                </ul>
-            </nav>
-        </header>
-    </div>
+    <!-- HTML !-->
+    <nav class="navbar">
+        <a href="#" class="nav-logo"><img src="images/fin.jpg" height="80px" style="border-radius: 50%; padding-top: 10px;"></a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="details.html" class="nav-link">Details</a>
+            </li>
+            <li class="nav-item">
+                <a href="settings.html" class="nav-link">Settings</a>
+            </li>
+        </ul>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </nav>
+      <div class="btn-container">
+        <form action="income.html">
+        <button class="button-66" role="button" style="background-color: rgb(81, 195, 79);">INCOME</button>
+        </form>
+        <br><br>
+        <form action="expense.html">
+        <button class="button-66" role="button" style="background-color: rgb(222, 108, 108);">EXPENSE</button>
+        </form>
+        </div>
+    <script src="index.js"></script>
 </body>
-
 </html>
