@@ -115,6 +115,7 @@ addBtnIncome.addEventListener('click', function() {
     incomes.push({category_in, amount_in, date_in});
 
     totalAmountIncome += amount_in;
+    totalAmountIncome -= totalAmount;
     totalAmountCellIncome.textContent = totalAmountIncome;
 
     const newRow_in = IncomesTableBody.insertRow();
