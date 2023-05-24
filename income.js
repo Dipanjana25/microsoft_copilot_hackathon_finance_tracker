@@ -5,7 +5,7 @@ let bal = parseInt(localStorage.getItem("bal"));
 
 if(!bal)
 bal=0;
-
+console.log(1)
 balEl.innerText=`balance: ${bal}`;
 
 formEl.addEventListener("submit",() => {
