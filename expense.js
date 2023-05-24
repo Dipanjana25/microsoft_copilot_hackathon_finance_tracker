@@ -15,6 +15,10 @@ formEl.addEventListener("submit",() => {
     updateLocalStorage();
     console.log(val);
     console.log(bal);
+    var expensearr = JSON.parse(localStorage.getItem("expensearr") || "[]");
+    expensearr.push(parseInt(val));
+    // Saving
+    localStorage.setItem("expensearr", JSON.stringify(expensearr));
 })
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))//local storage only stores string for security purpose
