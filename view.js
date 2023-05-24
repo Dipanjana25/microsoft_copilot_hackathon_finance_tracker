@@ -173,11 +173,19 @@ for (const income of incomes) {
 
 //pie-chart-code
 anychart.onDocumentReady(function() {
-
+    var incomearr = JSON.parse(localStorage.getItem("incomearr"))
+    var expensearr = JSON.parse(localStorage.getItem("expensearr"))
+    var ins=0;var exs=0;
+    incomearr.forEach((element) => {
+        ins+=element;
+    });
+    expensearr.forEach((element) => {
+        exs+=element
+    });
     // set the data
     var data = [
-        {x: "Income", value: 100},
-        {x: "Expense", value: 75}
+        {x: "Income", value: ins},
+        {x: "Expense", value: exs}
     ];
   
     // create the chart
