@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+body{
+    background-color: rgb(222, 248, 239);
+    color:black;
+}
+nav{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background-color: skyblue;
+    z-index:100;
+}
+nav .navbar{
+    height: 100%;
+    max-width: 1250px;
+    margin:auto;
+    display:flex;
+    border-color:rgb(18, 18, 62);
+    justify-content: space-between;
+    /* padding: 0 50px; */
+}
+nav .navbar .logo {
+    color:rgb(18, 18, 62);
+    font-size: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 30px 20px 20px 20px;
+    font-family:'Roboto', sans-serif;
+}
+nav .navbar .navlinks{
+    height:100%;
+    /* line-height: 20 px; */
+}
+nav .navbar .navlinks .links{
+    display: flex;
+}
+nav .navbar .navlinks .links li {
+    list-style: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px 0 0;
+    height:100%;
+    color:rgb(18, 18, 62);
+    text-decoration: none;
+    /* white-space: nowrap; */
+    font-size: 25px;
+    font-weight: 500;
+    font-family:'Roboto', sans-serif;
+}
+.navbar .bx-menu,
+.navlinks .respo .name,
+.navlinks .respo .bx-x{
+    display:none;
+}
+@media(max-width:800px){
+    nav .navbar .navlinks{
+        display: block;
+        position: fixed;
+        overflow-y:auto;
+        left:-100%;
+        width:100%;
+        max-width: 240px;
+        background:skyblue;
+        padding: 20px;
+        line-height: 40px;
+        transition: all 0.5s ease;
+        z-index: 100;
+    }
+    nav .navbar .logo {
+        display: block;
+        font-size: 20px;
+        justify-content: center;
+        padding: 30px 20px 20px 20px;
+    }
+    nav .navbar .navlinks .respo{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav .navbar .bx-menu{
+        padding: 30px 20px 20px 20px;
+        font-size:30px;
+        display:block;
+    }
+    /* .navbar .bx-menu, */
+    .navlinks .respo .name,
+    .navlinks .respo .bx-x
+    {
+        display:block;
+        color:black;
+        font-size: 30px;
+        font-weight: 500;
+        /* background-color: skyblue; */
+    }
+    nav .navbar .navlinks .links{
+        display: block;
+        margin-top: 20px;
+    }
+    nav .navbar .navlinks .links li{
+        display: block;
+        border-bottom: none;
+    }
+}
+.heading{
+    margin-top:120px;
+    position: relative;
+}
