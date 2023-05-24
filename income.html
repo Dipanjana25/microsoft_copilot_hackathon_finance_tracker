@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="shortcut icon" href="#">
     <title>Finance Tracker</title>
 </head>
@@ -31,8 +31,7 @@
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
               animation: rainbow-text-simple-animation-rev 0.75s ease forwards; ">
-                            <p>FINANCE_TRACKER--bhai yeh hai income page
-                            <p>
+                            <p>INCOME PAGE</p> 
                         </li>
                     </ul>
                     <label>
@@ -41,7 +40,10 @@
                         <ul class="right">
                             <li><a href="income.html">Income</a></li>
                             <li><a href="expense.html">Expenses</a></li>
-                            <li><a href="view.html">View Details</a></li>
+                            <li><a href="exp_history.html">Expense History</a></li>
+                            <li><a href="inc_history.html">Income History</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li><a href="settings.html">Settings</a></li>
                         </ul>
                     </label>
                 </ul>
@@ -49,12 +51,27 @@
         </header>
     </div>
 </body>
-<form class="form" id="form">
+<!-- <form class="form" id="form"> -->
     <h3 id="amount">Enter amount</h3>
-    <input type="text" class="input" id="input" placeholder="Enter amount" autocomplete="off" autofocus>
-    <button type="submit" class="btn">Submit</button>
+    <!-- <input type="text" class="input" id="input" placeholder="Enter amount" autocomplete="off" autofocus> -->
+    
+    <div class="input-section">
+        <label for="category-select">Category:</label>
+        <select id="category-select-income">
+            <option value="Salary">Salary</option>
+            <option value="Income tax return">Income tax return</option>
+            <option value="Rent">Rent</option>
+            <option value="Subsidy">Subsidy</option>
+        </select>
+        <label for="amount-input">Amount:</label>
+        <input type="number" id="amount-input-income">
+        <label for="date-input">Date:</label>
+        <input type="date" id="date-input-income">
+        <button id="add-btn-income">Add</button>
+    </div>
+    <!-- <button type="submit" class="btn">Submit</button> -->
     <h4 class="balance" id="balance">Balance: 0</h4>
-</form>
+<!-- </form> -->
 <script src="income.js"></script>
 
 </html>
