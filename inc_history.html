@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="exp_history.css">
+    <link rel="shortcut icon" href="#">
+    <title>Finance Tracker</title>
+</head>
+
+<body>
+    <div class="navbar">
+        <header>
+            <nav>
+                    <ul class="center">
+                        <li class="left2" style="background-color: #CA4246;
+              background-image: linear-gradient(45deg,
+                  #ce4f54 16.666%,
+                  #ee6641 16.666%,
+                  #e66744 33.333%,
+                  #f1944c 33.333%,
+                  #ec914b 50%,
+                  #bed868 50%,
+                  #96aa53 66.666%,
+                  #4c6baf 66.666%,
+                  #54658b 83.333%,
+                  #ff67eb 83.333%);
+              background-size: 100%;
+              background-repeat: repeat;
+              background-clip: border-box;
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              animation: rainbow-text-simple-animation-rev 0.75s ease forwards; ">
+                           
+                        </li>
+                    </ul>
+                    <label>
+                        <span class="menu"> <span class="hamburger"></span> </span>
+                        <ul class="right">
+                            <li><a href="income.html">Income</a></li>
+                            <li><a href="expense.html">Expenses</a></li>
+                            <li><a href="exp_history.html">Expense History</a></li>
+                            <li><a href="inc_history.html">Income History</a></li>
+                            <li><a href="index.html">Index</a></li>
+                            <li><a href="settings.html">Settings</a></li>
+                        </ul>
+                    </label>
+            </nav>
+        </header>
+    </div>
+
+    <div style="display: flex; flex-direction: horizontal; align-items: right">
+        <!-- pie-chart-code -->
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/js/8.0.1/anychart-pie.min.js" ></script>
+    
+    <div id="container" ></div>
+    <!--end  -->
+    </div>
+    <h1>INCOME HISTORY</h1>
+    <h4 class="balance" id="balance">Balance: 0</h4>
+    <!-- </div>
+    <div> -->
+    <h2>Income Source</h2>
+    <div class="income-list">
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="income-table-body">
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td>Total_Balance:</td>
+                    <td id="total-amount-income"></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div>
+    </div>
+    <script src="exp_history.js"></script>
+</body>
+
+</html>
+
