@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="expense.css">
     <link rel="shortcut icon" href="#">
     <title>Finance Tracker</title>
 </head>
@@ -11,42 +11,29 @@
 <body>
     <div class="navbar">
         <header>
-            <nav>
-                    <ul class="center">
-                        <li class="left2" style="background-color: #CA4246;
-              background-image: linear-gradient(45deg,
-                  #ce4f54 16.666%,
-                  #ee6641 16.666%,
-                  #e66744 33.333%,
-                  #f1944c 33.333%,
-                  #ec914b 50%,
-                  #bed868 50%,
-                  #96aa53 66.666%,
-                  #4c6baf 66.666%,
-                  #54658b 83.333%,
-                  #ff67eb 83.333%);
-              background-size: 100%;
-              background-repeat: repeat;
-              background-clip: border-box;
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              animation: rainbow-text-simple-animation-rev 0.75s ease forwards; ">
-                            <p>EXPENSE PAGE</p> 
-                        </li>
-                    </ul>
-                    <label>
-                        <input class="checkbox" type="checkbox">
-                        <span class="menu"> <span class="hamburger"></span> </span>
-                        <ul class="right">
-                            <li><a href="income.html">Income</a></li>
-                            <li><a href="expense.html">Expenses</a></li>
-                            <li><a href="exp_history.html">Expense History</a></li>
-                            <li><a href="inc_history.html">Income History</a></li>
-                            <li><a href="index.html">Index</a></li>
-                            <li><a href="settings.html">Settings</a></li>
-                        </ul>
-                    </label>
+            <!-- HTML !-->
+            <nav class="navbar">
+                <a href="#" class="nav-logo"><img src="images/fin.jpg" height="60px" style="border-radius: 50%; padding-top: 10px;"></a>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="income.html" class="nav-link">Add Income</a>
+                    </li>
+                   
+                    <li class="nav-item">
+                        <a href="exp_history.html" class="nav-link">Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">Settings</a>
+                    </li>
                 </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </nav>
         </header>
     </div>
@@ -63,7 +50,7 @@
             <option value="Relaxing">Relaxing</option>
         </select>
         <label for="amount-input">Amount:</label>
-        <input type="number" id="amount-input">
+        <input type="number" id="amount-input" autofocus>
         <label for="date-input">Date:</label>
         <input type="date" id="date-input">
         <button id="sub-btn" type="submit">Submit</button>

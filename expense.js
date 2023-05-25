@@ -35,7 +35,7 @@ subBtn.addEventListener('click', () => {
 
 
     // const val = inputEl.value //here val is the string form of the amount
-    bal-=amount;// converting string to integer
+    bal-=amount;
     updateLocalStorage();
     console.log(amount);
     console.log(categoryEl.value);
@@ -55,6 +55,24 @@ subBtn.addEventListener('click', () => {
     console.log(expenses);
 })
 function updateLocalStorage(){
-    localStorage.setItem("bal", JSON.stringify(bal))//local storage only stores string for security purpose
+    localStorage.setItem("bal", JSON.stringify(bal))//local storage only stores strings for security purpose
     balEl.innerText=`balance: ${bal}`;
+}
+
+//hamburger
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+const navLink = document.querySelectorAll(".nav-link");
+
+hamburger.addEventListener("click", mobileMenu);
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
 }
