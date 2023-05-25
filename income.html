@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="income.css">
+   <link rel="stylesheet" href="income&expense.css">
     <link rel="shortcut icon" href="#">
     <title>Finance Tracker</title>
 </head>
@@ -37,28 +37,27 @@
             </nav>
         </header>
     </div>
-</body>
-<!-- <form class="form" id="form"> -->
-    <h3 id="amount">Enter amount</h3>
-    <!-- <input type="text" class="input" id="input" placeholder="Enter amount" autocomplete="off" autofocus> -->
-    
+
     <div class="input-section">
-        <label for="category-select">Category:</label>
+        <h3 id="view-bal">View balance</h3>
+        <h4 class="balance" id="balance">Balance: 0</h4>
+        <!-- <label for="category-select">Category:</label> -->
         <select id="category-select-income">
+            <option value="" disabled selected hidden>Select source</option>
             <option value="Salary">Salary</option>
             <option value="Income tax return">Income tax return</option>
             <option value="Rent">Rent</option>
             <option value="Subsidy">Subsidy</option>
         </select>
-        <label for="amount-input">Amount:</label>
-        <input type="number" id="amount-input-income" autofocus>
-        <label for="date-input">Date:</label>
+        <!-- <label for="amount-input">Amount:</label> -->
+        <input type="number" id="amount-input-income" autofocus placeholder="Amount">
+        <!-- <label for="date-input">Date:</label> -->
         <input type="date" id="date-input-income">
         <button id="sub-btn"type="submit">Submit</button>
     </div>
-    <!-- <button type="submit" class="btn">Submit</button> -->
-    <h4 class="balance" id="balance">Balance: 0</h4>
-<!-- </form> -->
+
+</body>
+    
 <script src="income.js"></script>
 
 </html>

@@ -2,7 +2,7 @@ var exp_detail = JSON.parse(localStorage.getItem("expenses") || "[]");
 console.log(exp_detail);
 
 function delete_from_LocalStorage(){
-    exp_detail.pop(exp_detail.indexOf(expense), 1);
+    exp_detail.slice(exp_detail.indexOf(expense), 1);
     balEl.innerText=`balance: ${bal}`;
 }
 
@@ -49,26 +49,29 @@ for (expense of exp_detail) {
 
 //pie-chart-code
 anychart.onDocumentReady(function() {
-    var incomearr = JSON.parse(localStorage.getItem("incomearr"))
-    var expensearr = JSON.parse(localStorage.getItem("expensearr"))
-    var ins=0;var exs=0;
-    incomearr.forEach((element) => {
-        ins+=element;
-    });
-    expensearr.forEach((element) => {
-        exs+=element
-    });
+    var exp = JSON.parse(localStorage.getItem("expenses"))
+    var food=0, travel=0, investment=0, relax=0;
+
+    exp.forEach(item => {
+        if(item.category === "Food") food = food + 1;
+        if(item.category === "Travel") travel = travel + 1;
+        if(item.category === "Investment")  investment = investment + 1;
+        if(item.category === "Relax")  relax = relax + 1;
+    })
+
     // set the data
     var data = [
-        {x: "Income", value: ins},
-        {x: "Expense", value: exs}
+        {x: "Travel", value: travel},
+        {x: "Food", value: food},
+        {x: "Investment", value: investment},
+        {x: "Relax", value: relax},
     ];
   
     // create the chart
     var chart = anychart.pie();
   
     // set the chart title
-    chart.title("Income vs Expense");
+    chart.title("Expenses chart");
   
     // add the data
     chart.data(data);

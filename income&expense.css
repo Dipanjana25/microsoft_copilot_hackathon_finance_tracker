@@ -1,7 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 body{
-    background-color: rgb(222, 248, 239);
+    background-color: rgb(246, 249, 248);
 }
 * {
     margin: 0;
@@ -131,4 +131,105 @@ a {
         transform: translateY(-8px) rotate(-45deg);
         
     }
+}
+
+.input-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+    flex-direction: column;
+}
+
+#amount-input{
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    outline: none;
+    align-content: center;
+}
+
+#category-select{
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    outline: none;
+    margin-top: 2rem;
+    margin-bottom: 17px;
+}
+
+#date-input{
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    outline: none;
+    margin-top: 2rem;
+}
+
+#amount-input-income{
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    outline: none;
+    align-content: center;
+}
+
+#category-select-income{
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    outline: none;
+    margin-top: 2rem;
+    margin-bottom: 17px;
+}
+
+#date-input-income{
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    outline: none;
+    margin-top: 2rem;
+}
+
+#sub-btn{
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    outline: none;
+    margin-top: 2rem;
+    background-color: #586391;
+    color: #fff;
+    cursor: pointer;
+}
+
+#view-bal{
+    cursor: pointer;
 }

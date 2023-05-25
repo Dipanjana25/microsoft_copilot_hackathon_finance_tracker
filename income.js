@@ -1,4 +1,4 @@
-let income=[];
+let incomes=[];
 const categoryEl = document.getElementById("category-select-income");
 const inputEl = document.getElementById("amount-input-income");
 const dateEl = document.getElementById("date-input-income");
@@ -7,10 +7,22 @@ const subBtn = document.getElementById("sub-btn");
 const balEl = document.getElementById("balance");
 let bal = parseInt(localStorage.getItem("bal"));
 
-
 if(!bal)
 bal=0;
-balEl.innerText=`balance: ${bal}`;
+balEl.innerText=`Balance: ${bal}`;
+
+const viewBtn = document.getElementById("view-bal");
+
+viewBtn.addEventListener('click', () => {
+if(viewBtn.innerText === "View balance"){
+        viewBtn.innerText = `₹${bal}`;
+        // alert(`Your balance is ${bal}`);
+}
+else if(viewBtn.innerText === `₹${bal}`){
+        viewBtn.innerText = "View balance";
+        // alert(`Your balance is ${bal}`);
+}
+})
 
 subBtn.addEventListener('click', () => {
 
@@ -40,15 +52,16 @@ subBtn.addEventListener('click', () => {
     console.log(dateEl.value);
     console.log(bal);    
     //to store all the incomes in the income array(not balance)
-    var incomearr = JSON.parse(localStorage.getItem("incomearr") || "[]");
-    incomearr.push(parseInt(amount));
+    
+    var incomes = JSON.parse(localStorage.getItem("incomes") || "[]");
+    incomes.push({category, amount, date, bal});
     // Saving
-    localStorage.setItem("incomearr", JSON.stringify(incomearr));
-    var income = JSON.parse(localStorage.getItem("income") || "[]");
-    income.push({category, amount, date, bal});
-    // Saving
-    localStorage.setItem("incomearr", JSON.stringify(incomearr));
-    console.log(income);
+    localStorage.setItem("incomes", JSON.stringify(incomes));
+    console.log(incomes);
+
+    categoryEl.value = '';
+    inputEl.value = '';
+    dateEl.value = '';
 })
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))
