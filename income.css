@@ -1,59 +1,8 @@
-/* CSS */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 body{
     background-color: rgb(222, 248, 239);
 }
-.button-66 {
-    background-color: #0a6bff;
-    border-radius: 4px;
-    border: 0;
-    box-shadow: rgba(1,60,136,.5) 0 -1px 3px 0 inset,rgba(0,44,97,.1) 0 3px 6px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inherit;
-    font-family: "Space Grotesk",-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
-    margin: 0;
-    min-height: 56px;
-    min-width: 120px;
-    padding: 16px 20px;
-    position: relative;
-    text-align: center;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    transition: all .2s cubic-bezier(.22, .61, .36, 1);
-    
-  }
-  
-  .button-66:hover {
-    /* background-color: #065dd8; */
-    transform: translateY(-2px);
-  }
-  
-  @media (min-width: 768px) {
-    .button-66 {
-      padding: 16px 44px;
-      min-width: 150px;
-    }
-  }
-
-  .btn-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-  }
-
-
-
-
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -81,11 +30,12 @@ a {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content:end;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 1.5rem ;
     background-color: #94d2bd;
 }
+
 
 .hamburger {
     display: none;
@@ -108,7 +58,7 @@ a {
     justify-content: space-between;
     align-items: center;
     z-index: 1;
-    margin-right: 7rem;
+    
 }
 
 .nav-item {
@@ -131,7 +81,10 @@ a {
     font-size: 2.1rem;
     font-weight: 500;
     color: #482ff7;
+    position:fixed;
+    left: 20px;
 }
+
 
 
 @media only screen and (max-width: 768px) {
