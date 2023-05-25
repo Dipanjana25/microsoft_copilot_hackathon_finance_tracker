@@ -11,7 +11,20 @@ let bal = parseInt(localStorage.getItem("bal"));
 if(!bal)
 bal=0;
 
-balEl.innerText=`balance: ${bal}`;
+balEl.innerText=`Balance: ${bal}`;
+
+const viewBtn = document.getElementById("view-bal");
+
+viewBtn.addEventListener('click', () => {
+if(viewBtn.innerText === "View balance"){
+        viewBtn.innerText = `₹${bal}`;
+        // alert(`Your balance is ${bal}`);
+}
+else if(viewBtn.innerText === `₹${bal}`){
+        viewBtn.innerText = "View balance";
+        // alert(`Your balance is ${bal}`);
+}
+})
 
 subBtn.addEventListener('click', () => {
 
@@ -42,17 +55,15 @@ subBtn.addEventListener('click', () => {
     console.log(dateEl.value);
     console.log(bal);    
 
-    var expensearr = JSON.parse(localStorage.getItem("expensearr") || "[]");
-    expensearr.push(amount);
-    // Saving
-    localStorage.setItem("expensearr", JSON.stringify(expensearr));
-    console.log(expensearr);
-
     var expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
     expenses.push({category, amount, date, bal});
     // Saving
     localStorage.setItem("expenses", JSON.stringify(expenses));
     console.log(expenses);
+
+    categoryEl.value = '';
+    inputEl.value = '';
+    dateEl.value = '';
 })
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))//local storage only stores strings for security purpose
