@@ -1,64 +1,179 @@
-let menuOpenBtn=document.querySelector(".navbar .bx-menu");
-let closeOpenBtn=document.querySelector(".navlinks .bx-x");
-let navLinks=document.querySelector(".navlinks");
- 
-menuOpenBtn.addEventListener("click",()=>{
-    navLinks.style.left="0";
-});
-closeOpenBtn.addEventListener("click",()=>{
-    navLinks.style.left="-100%";
-});
-//expense table
-function GenerateTable() {
-    //Build an array containing Customer records.
-    var customers = new Array();
-    customers.push(["Serial No.", "Amount"]);
-    // customers.push([1, "John Hammond", "United States"]);
-    // customers.push([2, "Mudassar Khan", "India"]);
-    // customers.push([3, "Suzanne Mathews", "France"]);
-    // customers.push([4, "Robert Schidner", "Russia"]);
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+const navLink = document.querySelectorAll(".nav-link");
 
-    //Create a HTML Table element.
-    var table = document.createElement("TABLE");
-    table.border = "1";
+hamburger.addEventListener("click", mobileMenu);
+navLink.forEach(n => n.addEventListener("click", closeMenu));
 
-    //Get the count of columns.
-    var columnCount = customers[0].length;
-
-    //Add the header row.
-    var row = table.insertRow(-1);
-    for (var i = 0; i < columnCount; i++) {
-        var headerCell = document.createElement("TH");
-        headerCell.innerHTML = customers[0][i];
-        row.appendChild(headerCell);
-    }
-
-    //Add the data rows.
-    var incomearr = JSON.parse(localStorage.getItem("incomearr"))
-    var expensearr = JSON.parse(localStorage.getItem("expensearr"))
-    var k=0;
-    for (var i = 1; i <=incomearr.length; i++) {
-        row = table.insertRow(-1);
-        for (var j = 0; j < columnCount; j++) {
-            var cell = row.insertCell(-1);
-            if(j===0)
-            cell.innerHTML=k++;
-            else
-            cell.innerHTML = incomearr[i-1];
-        }
-    }
-    for (var i = 1; i <=expensearr.length; i++) {
-        row = table.insertRow(-1);
-        for (var j = 0; j < columnCount; j++) {
-            var cell = row.insertCell(-1);
-            if(j===0)
-            cell.innerHTML=k++;
-            else
-            cell.innerHTML = expensearr[i-1];
-        }
-    }
-
-    var dvTable = document.getElementById("dvTable");
-    dvTable.innerHTML = "";
-    dvTable.appendChild(table);
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
 }
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+//expense table
+const isLeapYear = (year) => {
+    return (
+      (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) ||
+      (year % 100 === 0 && year % 400 === 0)
+    );
+  };
+  const getFebDays = (year) => {
+    return isLeapYear(year) ? 29 : 28;
+  };
+  let calendar = document.querySelector('.calendar');
+  const month_names = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  let month_picker = document.querySelector('#month-picker');
+  const dayTextFormate = document.querySelector('.day-text-formate');
+  const timeFormate = document.querySelector('.time-formate');
+  const dateFormate = document.querySelector('.date-formate');
+  
+  month_picker.onclick = () => {
+    month_list.classList.remove('hideonce');
+    month_list.classList.remove('hide');
+    month_list.classList.add('show');
+    dayTextFormate.classList.remove('showtime');
+    dayTextFormate.classList.add('hidetime');
+    timeFormate.classList.remove('showtime');
+    timeFormate.classList.add('hideTime');
+    dateFormate.classList.remove('showtime');
+    dateFormate.classList.add('hideTime');
+  };
+  
+  const generateCalendar = (month, year) => {
+    let calendar_days = document.querySelector('.calendar-days');
+    calendar_days.innerHTML = '';
+    let calendar_header_year = document.querySelector('#year');
+    let days_of_month = [
+      31,
+      getFebDays(year),
+      31,
+      30,
+      31,
+      30,
+      31,
+      31,
+      30,
+      31,
+      30,
+      31,
+    ];
+    
+    let currentDate = new Date();
+    
+    month_picker.innerHTML = month_names[month];
+    
+    calendar_header_year.innerHTML = year;
+    
+    let first_day = new Date(year, month);
+  
+  
+  for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
+  
+      let day = document.createElement('div');
+  
+      if (i >= first_day.getDay()) {
+        day.innerHTML = i - first_day.getDay() + 1;
+
+        if (i - first_day.getDay() + 1 === currentDate.getDate() &&
+          year === currentDate.getFullYear() &&
+          month === currentDate.getMonth()
+        ) {
+          day.classList.add('current-date');
+        }
+      }
+      calendar_days.appendChild(day);
+    }
+  };
+  
+  let month_list = calendar.querySelector('.month-list');
+  month_names.forEach((e, index) => {
+    let month = document.createElement('div');
+    month.innerHTML = `<div>${e}</div>`;
+    month_list.append(month);
+    month.onclick = () => {
+      currentMonth.value = index;
+      generateCalendar(currentMonth.value, currentYear.value);
+      month_list.classList.replace('show', 'hide');
+      dayTextFormate.classList.remove('hideTime');
+      dayTextFormate.classList.add('showtime');
+      timeFormate.classList.remove('hideTime');
+      timeFormate.classList.add('showtime');
+      dateFormate.classList.remove('hideTime');
+      dateFormate.classList.add('showtime');
+    };
+  });
+  
+  (function () {
+    month_list.classList.add('hideonce');
+  })();
+  document.querySelector('#pre-year').onclick = () => {
+    --currentYear.value;
+    generateCalendar(currentMonth.value, currentYear.value);
+  };
+  document.querySelector('#next-year').onclick = () => {
+    ++currentYear.value;
+    generateCalendar(currentMonth.value, currentYear.value);
+  };
+  
+  let currentDate = new Date();
+  let currentMonth = { value: currentDate.getMonth() };
+  let currentYear = { value: currentDate.getFullYear() };
+  generateCalendar(currentMonth.value, currentYear.value);
+
+  const todayShowTime = document.querySelector('.time-formate');
+  const todayShowDate = document.querySelector('.date-formate');
+  
+  const currshowDate = new Date();
+  const showCurrentDateOption = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    weekday: 'long',
+  };
+  const currentDateFormate = new Intl.DateTimeFormat(
+    'en-US',
+    showCurrentDateOption
+  ).format(currshowDate);
+  todayShowDate.textContent = currentDateFormate;
+  setInterval(() => {
+    const timer = new Date();
+    const option = {
+      hour: 'numeric',
+      minute: 'numeric',
+      second: 'numeric',
+    };
+    const formateTimer = new Intl.DateTimeFormat('en-us', option).format(timer);
+    let time = `${`${timer.getHours()}`.padStart(
+      2,
+      '0'
+    )}:${`${timer.getMinutes()}`.padStart(
+      2,
+      '0'
+    )}: ${`${timer.getSeconds()}`.padStart(2, '0')}`;
+    todayShowTime.textContent = formateTimer;
+  }, 1000);
+
+//   function setlimit(){
+//     let day=document.querySelector()
+//     if(day>=currentDate)
+//     {
+//         location.replace("http://www.w3schools.com")
+//     }
+// }
