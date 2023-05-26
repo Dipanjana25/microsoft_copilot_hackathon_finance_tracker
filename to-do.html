@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <link rel="stylesheet" href="to-do.css">
+</head>
+<body>
+
+    <header>
+        <!-- HTML !-->
+        <nav class="navbar">
+            <a href="#" class="nav-logo"><img src="images/fin.jpg" height="60px" style="border-radius: 50%; padding-top: 10px;"></a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="exp_history.html" class="nav-link">Expense History</a>
+                </li>
+                <li class="nav-item">
+                    <a href="inc_history.html" class="nav-link">Income History</a>
+                </li>
+                <li class="nav-item">
+                    <a href="details.html" class="nav-link">Data Visualization</a>
+                </li>
+                <li class="nav-item">
+                    <a href="to-do.html" class="nav-link">Action Items</a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">Settings</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+        <h1 style="display:flex;  justify-content: center; padding-top: 50px; padding-bottom: 50px;">My Action Items</h1> 
+    <div class="overlay">
+        <form id="add-form">
+            <input type="text" id="add-text" placeholder="What's on your mind?">
+            <input type="submit" id="add-btn" value="Add Task">
+        </form>
+    <br><br>
+    <!-- <main> -->
+
+    <div class="task-list">
+        <div id = "tasks">
+            <div class="task">
+                <div id="checkboxes">
+                    <input type="checkbox" class="check">
+                </div>
+            <div class="content">
+                <input type="text" class="task-text" value="some text" readonly>
+            </div>
+
+            <div class="actions">
+                <button class="edit">Edit</button> 
+                <!-- remember don't pass value attribute for button text, it will show empty buttons -->
+                <button class="delete">Delete</button>
+            </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- </main> -->
+</div>
+
+    <script src="to-do.js"></script>
+</body>
+</html>

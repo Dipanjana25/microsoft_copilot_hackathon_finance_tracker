@@ -161,7 +161,7 @@ const isLeapYear = (year) => {
     const option = {
       hour: 'numeric',
       minute: 'numeric',
-      second: 'numeric',
+      // second: 'numeric',
     };
     const formateTimer = new Intl.DateTimeFormat('en-us', option).format(timer);
     let time = `${`${timer.getHours()}`.padStart(
