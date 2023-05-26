@@ -33,14 +33,20 @@ for (expense of exp_detail) {
     deleteBtn.textContent = 'Delete';
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function() {
-        exp_detail.splice(exp_detail.indexOf(expense), 1);
+        var txt; //useless variable for now
+        if (confirm("Confirm Delete?")) {
+            exp_detail.splice(exp_detail.indexOf(expense), 1);
+            totalAmount -= expense.amount;
+            totalAmountCell.textContent = totalAmount;
 
-        totalAmount -= expense.amount;
-        totalAmountCell.textContent = totalAmount;
+            exp_detailTableBody.removeChild(newRow);
+            localStorage.setItem("expenses", JSON.stringify(exp_detail));
 
-        exp_detailTableBody.removeChild(newRow);
-        localStorage.setItem("expenses", JSON.stringify(exp_detail));
-    });
+            txt = "You pressed OK!";
+        } else {
+            txt = "You pressed Cancel!";
+        }
+    })
     categoryCell.textContent = expense.category;
     amountCell.textContent = expense.amount;
     dateCell.textContent = expense.date;

@@ -33,13 +33,20 @@ for (income of inc_detail) {
     deleteBtn.textContent = 'Delete';
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function() {
-        inc_detail.splice(inc_detail.indexOf(income), 1);
-        totalAmount -= income.amount;
-        totalAmountCell.textContent = totalAmount;
+        var txt; //useless variable for now
+        if (confirm("Confirm Delete?")) {
+            inc_detail.splice(inc_detail.indexOf(income), 1);
+            totalAmount -= income.amount;
+            totalAmountCell.textContent = totalAmount;
 
-        inc_detailTableBody.removeChild(newRow);
-        localStorage.setItem("incomes", JSON.stringify(inc_detail));
-    });
+            inc_detailTableBody.removeChild(newRow);
+            localStorage.setItem("incomes", JSON.stringify(inc_detail));
+
+            txt = "You pressed OK!";
+        } else {
+            txt = "You pressed Cancel!";
+        }
+    })
     categoryCell.textContent = income.category;
     amountCell.textContent = income.amount;
     dateCell.textContent = income.date;
