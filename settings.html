@@ -12,83 +12,80 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 </head>
 <body>
-    <nav>
-        <div class="navbar">
-            <i class="bx bx-menu"></i>
-            <div class="logo">FinTrack</div>
-            <div class="navlinks">
-                <div class="respo">
-                    <span class="name">FT</span>
-                    <i class="bx bx-x"></i>
-                </div>
-                <ul class="links">
-                    <li><a href="index.html" style="text-decoration:none;">Home</a></li>
-                    <li><a href="exp_history.html" style="text-decoration:none;">Details</a></li>
-                </ul>
+    <header>
+        <!-- HTML !-->
+        <nav class="navbar">
+            <a href="#" class="nav-logo"><img src="images/fin.jpg" height="60px" style="border-radius: 50%; padding-top: 10px;"></a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="exp_history.html" class="nav-link">Expense History</a>
+                </li>
+                <li class="nav-item">
+                    <a href="inc_history.html" class="nav-link">Income History</a>
+                </li>
+                <li class="nav-item">
+                    <a href="details.html" class="nav-link">Data Visulaization</a>
+                </li>
+                <li class="nav-item">
+                    <a href="todo.html" class="nav-link">To-Do List</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
     <br>
-    <!-- <table>
-        <caption><strong>Varities of Pasta</strong></caption>
-        <thead>
-            <tr>
-                <th>Pastas</th>
-                <th scope="col"><abbr title="Quantity">QTY</abbr></th>
-                <th scope="col">PRICE</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row" rowspan="3">Trophie el Pesto</th>
-                <td>1</td>
-                <td>150</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>280</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>390</td>
-            </tr>
-            <tr>
-                <th scope="row" rowspan="3">Spaghetti Agio Olio e Peperoncino</th>
-                <td>1</td>
-                <td>120</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>235</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>335</td>
-            </tr>
-            <tr>
-                <th scope="row" rowspan="3">Pasta al Tonno</th>
-                <td>1</td>
-                <td>160</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>300</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>425</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3">Extra Cheese will be charged</td>
-            </tr>
-        </tfoot>
-    </table> -->
-    <div class="heading">
-        <input type="button" value="See your expense Chart" onclick="GenerateTable()" />
+    <p >Set your daily expense limit</p>
+    <!-- <div class="heading">
+        <input type="button" value="Set your daily expense limit" onclick="GenerateTable()" />
         <div id="dvTable"></div>
-    </div>
+    </div> -->
+    <div class="container">
+        <div class="calendar">
+          <div class="calendar-header">
+            <span class="month-picker" id="month-picker"> May </span>
+            <div class="year-picker" id="year-picker">
+              <span class="year-change" id="pre-year">
+                <pre><</pre>
+              </span>
+              <span id="year">2023 </span>
+              <span class="year-change" id="next-year">
+                <pre>></pre>
+              </span>
+            </div>
+          </div>
+   
+          <div class="calendar-body">
+            <div class="calendar-week-days">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+            <div class="calendar-days" >
+            </div>
+          </div>
+          <div class="calendar-footer">
+          </div>
+          <div class="date-time-formate">
+            <div class="day-text-formate">TODAY</div>
+            <div class="date-time-value">
+              <div class="time-formate">02:51:20</div>
+              <div class="date-formate">23 - july - 2022</div>
+            </div>
+          </div>
+          <div class="month-list"></div>
+        </div>
+      </div>
     <script src="settings.js"></script>
 </body>
 </html>
