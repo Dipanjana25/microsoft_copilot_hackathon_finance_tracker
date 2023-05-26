@@ -3,7 +3,7 @@ console.log(inc_detail);
 
 function delete_from_LocalStorage(){
     inc_detail.pop(inc_detail.indexOf(income), 1);
-    balEl.innerText=`balance: ${bal}`;
+    balEl.innerText=`Current Balance: ${bal}`;
 }
 
 let totalAmount = 0;
@@ -16,7 +16,7 @@ let bal = parseInt(localStorage.getItem("bal"));
 if(!bal)
 bal=0;
 
-balEl.innerText=`balance: ${bal}`;
+balEl.innerText=`Current Balance: ${bal}`;
 
 inc_detail.reverse();
 var income = inc_detail[0];
@@ -51,10 +51,10 @@ for (income of inc_detail) {
 anychart.onDocumentReady(function() {
     var inc_detail = JSON.parse(localStorage.getItem("incomes"))
     var ins=0;var exs=0;
-    incomearr.forEach((element) => {
+    inc_detail.forEach((element) => {
         ins+=element;
     });
-    expensearr.forEach((element) => {
+    expenses.forEach((element) => {
         exs+=element
     });
     
