@@ -52,7 +52,7 @@ subBtn.addEventListener('click', () => {
     console.log(dateEl.value);
     console.log(bal);    
     //to store all the incomes in the income array(not balance)
-    
+
     var incomes = JSON.parse(localStorage.getItem("incomes") || "[]");
     incomes.push({category, amount, date, bal});
     // Saving
@@ -62,6 +62,10 @@ subBtn.addEventListener('click', () => {
     categoryEl.value = '';
     inputEl.value = '';
     dateEl.value = '';
+
+    const msg = document.getElementById("msg");
+    msg.innerText = "Income added successfully";
+    setTimeout(() => msg.innerText = "", 1500);
 })
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))
