@@ -64,6 +64,10 @@ subBtn.addEventListener('click', () => {
     categoryEl.value = '';
     inputEl.value = '';
     dateEl.value = '';
+
+    const msg = document.getElementById("msg");
+    msg.innerText = "Expense added successfully";
+    setTimeout(() => msg.innerText = "", 1500);
 })
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))//local storage only stores strings for security purpose

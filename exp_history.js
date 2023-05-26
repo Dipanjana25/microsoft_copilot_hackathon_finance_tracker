@@ -39,7 +39,7 @@ for (expense of exp_detail) {
         totalAmountCell.textContent = totalAmount;
 
         exp_detailTableBody.removeChild(newRow);
-        delete_from_LocalStorage();
+        localStorage.setItem("expenses", JSON.stringify(exp_detail));
     });
     categoryCell.textContent = expense.category;
     amountCell.textContent = expense.amount;

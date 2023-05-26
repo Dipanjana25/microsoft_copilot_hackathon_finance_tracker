@@ -34,12 +34,11 @@ for (income of inc_detail) {
     deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function() {
         inc_detail.splice(inc_detail.indexOf(income), 1);
-
         totalAmount -= income.amount;
         totalAmountCell.textContent = totalAmount;
 
         inc_detailTableBody.removeChild(newRow);
-        delete_from_LocalStorage();
+        localStorage.setItem("incomes", JSON.stringify(inc_detail));
     });
     categoryCell.textContent = income.category;
     amountCell.textContent = income.amount;
@@ -54,9 +53,9 @@ anychart.onDocumentReady(function() {
     inc_detail.forEach((element) => {
         ins+=element;
     });
-    expenses.forEach((element) => {
-        exs+=element
-    });
+    // expenses.forEach((element) => {
+    //     exs+=element
+    // });
     
     // set the data
     var data = [
