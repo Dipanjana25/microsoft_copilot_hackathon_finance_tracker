@@ -16,7 +16,7 @@ let bal = parseInt(localStorage.getItem("bal"));
 if(!bal)
 bal=0;
 
-balEl.innerText=`balance: ${bal}`;
+balEl.innerText=`Current balance: ${bal}`;
 
 exp_detail.reverse();
 var expense = exp_detail[0];
@@ -31,17 +31,18 @@ for (expense of exp_detail) {
     const deleteCell = newRow.insertCell();
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
-    deleteBtn.classList.add('delete-btn');
+    // deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function() {
         var txt; //useless variable for now
         if (confirm("Confirm Delete?")) {
             exp_detail.splice(exp_detail.indexOf(expense), 1);
             totalAmount -= expense.amount;
             totalAmountCell.textContent = totalAmount;
-
+            bal+=expense.amount;
             exp_detailTableBody.removeChild(newRow);
             localStorage.setItem("expenses", JSON.stringify(exp_detail));
-
+            localStorage.setItem("bal", JSON.stringify(bal));
+            balEl.innerText=`Current Balance: ${bal}`;
             txt = "You pressed OK!";
         } else {
             txt = "You pressed Cancel!";

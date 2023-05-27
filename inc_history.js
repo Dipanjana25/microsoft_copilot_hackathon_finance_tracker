@@ -31,17 +31,18 @@ for (income of inc_detail) {
     const deleteCell = newRow.insertCell();
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
-    deleteBtn.classList.add('delete-btn');
+    // deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function() {
         var txt; //useless variable for now
         if (confirm("Confirm Delete?")) {
             inc_detail.splice(inc_detail.indexOf(income), 1);
             totalAmount -= income.amount;
             totalAmountCell.textContent = totalAmount;
-
+            bal-=income.amount;
             inc_detailTableBody.removeChild(newRow);
             localStorage.setItem("incomes", JSON.stringify(inc_detail));
-
+            localStorage.setItem("bal", JSON.stringify(bal));
+            balEl.innerText=`Current Balance: ${bal}`;
             txt = "You pressed OK!";
         } else {
             txt = "You pressed Cancel!";
