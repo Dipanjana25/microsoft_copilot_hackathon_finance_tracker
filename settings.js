@@ -88,10 +88,9 @@ const isLeapYear = (year) => {
   
       let day = document.createElement('button');
       day.style.border="none";
-      day.classList.add('todo-btn');
-      // todo-btn.addEventListener('click', function() {
-      //   location.replace("http://www.w3schools.com")
-      // });
+      day.addEventListener("click", function(){
+        location.replace("http://www.w3schools.com")
+      });
       if (i >= first_day.getDay()) {
         day.innerHTML = i - first_day.getDay() + 1;
 
