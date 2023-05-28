@@ -70,7 +70,7 @@ subBtn.addEventListener('click', () => {
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))
     //local storage only stores string for security purpose
-    balEl.innerText=`balance: ${bal}`;
+    balEl.innerText=`Balance: ${bal}`;
 }
 
 //hamburger

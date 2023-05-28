@@ -15,6 +15,9 @@
             <a href="#" class="nav-logo"><img src="images/fin.jpg" height="60px" style="border-radius: 50%; padding-top: 10px;"></a>
             <ul class="nav-menu">
                 <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
                     <a href="exp_history.html" class="nav-link">Expense History</a>
                 </li>
                 <li class="nav-item">
@@ -23,9 +26,7 @@
                 <li class="nav-item">
                     <a href="details.html" class="nav-link">Data Visualization</a>
                 </li>
-                <li class="nav-item">
-                    <a href="to-do.html" class="nav-link">Action Items</a>
-                </li>
+               
                 <li class="nav-item">
                     <a href="settings.html" class="nav-link">Settings</a>
                 </li>
@@ -37,37 +38,41 @@
             </div>
         </nav>
     </header>
-
-        <h1 style="display:flex;  justify-content: center; padding-top: 50px; padding-bottom: 50px;">My Action Items</h1> 
+    
+    <!-- class row -->
     <div class="overlay">
+        <h1 style="display:flex;  justify-content: center; padding-top: 50px; padding-bottom: 50px;">Add Task</h1> 
         <form id="add-form">
             <input type="text" id="add-text" placeholder="What's on your mind?">
             <input type="submit" id="add-btn" value="Add Task">
         </form>
-    <br><br>
-    <!-- <main> -->
-
-    <div class="task-list">
-        <div id = "tasks">
-            <div class="task">
-                <div id="checkboxes">
-                    <input type="checkbox" class="check">
-                </div>
-            <div class="content">
-                <input type="text" class="task-text" value="some text" readonly>
-            </div>
-
-            <div class="actions">
-                <button class="edit">Edit</button> 
-                <!-- remember don't pass value attribute for button text, it will show empty buttons -->
-                <button class="delete">Delete</button>
-            </div>
-            </div>
-        </div>
-
     </div>
-    <!-- </main> -->
-</div>
+    <br><br>
+
+      <!-- <main> -->
+        <!-- class container -->
+        <div class="task-list"> 
+            <!-- class todo-app -->
+            <div id = "tasks">
+                <div class="task">
+                    <div id="checkboxes">
+                        <input type="checkbox" class="check">
+                    </div>
+                <div class="content">
+                    <input type="text" class="task-text" value="some text" readonly>
+                </div>
+    
+                <div class="actions">
+                    <button class="edit">Edit</button> 
+                    <!-- remember don't pass value attribute for button text, it will show empty buttons -->
+                    <button class="delete">Delete</button>
+                </div>
+                </div>
+            </div>
+    
+        </div>
+        <!-- </main> -->
+    
 
     <script src="to-do.js"></script>
 </body>
