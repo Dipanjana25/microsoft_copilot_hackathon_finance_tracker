@@ -43,7 +43,7 @@ const isLeapYear = (year) => {
   const dayTextFormate = document.querySelector('.day-text-formate');
   const timeFormate = document.querySelector('.time-formate');
   const dateFormate = document.querySelector('.date-formate');
-  
+  let calendar_limit = document.querySelector('.calendar-limit');
   month_picker.onclick = () => {
     month_list.classList.remove('hideonce');
     month_list.classList.remove('hide');
@@ -88,9 +88,7 @@ const isLeapYear = (year) => {
   
       let day = document.createElement('button');
       day.style.border="none";
-      day.addEventListener("click", function(){
-        location.replace("http://www.w3schools.com")
-      });
+      
       if (i >= first_day.getDay()) {
         day.innerHTML = i - first_day.getDay() + 1;
 
@@ -101,6 +99,33 @@ const isLeapYear = (year) => {
           day.classList.add('current-date');
         }
       }
+      day.addEventListener("click", function(){
+        if(day.textContent>=currentDate.getDate())
+        {
+          let f=document.createElement('form');
+          f.setAttribute("method", "post");
+          f.setAttribute("action", "submit");
+          var fn = document.createElement("input");
+          fn.setAttribute("type", "text");
+          // fn.setAttribute("name", "FullName");
+          fn.setAttribute("placeholder", "Amount");
+          var s = document.createElement("input");
+          s.setAttribute("type", "submit");
+          s.setAttribute("value", "Submit");
+          f.appendChild(fn);
+          f.appendChild(s);
+          calendar_limit.appendChild(f);
+          calendar_limit.classList.remove('hideonce');
+          calendar_limit.classList.remove('hide');
+          calendar_limit.classList.add('show');
+          dayTextFormate.classList.remove('showtime');
+          dayTextFormate.classList.add('hidetime');
+          timeFormate.classList.remove('showtime');
+          timeFormate.classList.add('hideTime');
+          dateFormate.classList.remove('showtime');
+          dateFormate.classList.add('hideTime');
+        }
+      });
       calendar_days.appendChild(day);
     }
   };
