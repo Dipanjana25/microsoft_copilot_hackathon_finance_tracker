@@ -82,13 +82,12 @@ const isLeapYear = (year) => {
     calendar_header_year.innerHTML = year;
     
     let first_day = new Date(year, month);
-  
-  
+    const m=new Map();
   for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
   
       let day = document.createElement('button');
       day.style.border="none";
-      
+
       if (i >= first_day.getDay()) {
         day.innerHTML = i - first_day.getDay() + 1;
 
@@ -100,30 +99,74 @@ const isLeapYear = (year) => {
         }
       }
       day.addEventListener("click", function(){
-        if(day.textContent>=currentDate.getDate())
-        {
-          let f=document.createElement('form');
-          f.setAttribute("method", "post");
-          f.setAttribute("action", "submit");
-          var fn = document.createElement("input");
-          fn.setAttribute("type", "text");
-          // fn.setAttribute("name", "FullName");
-          fn.setAttribute("placeholder", "Amount");
-          var s = document.createElement("input");
-          s.setAttribute("type", "submit");
-          s.setAttribute("value", "Submit");
-          f.appendChild(fn);
-          f.appendChild(s);
-          calendar_limit.appendChild(f);
-          calendar_limit.classList.remove('hideonce');
-          calendar_limit.classList.remove('hide');
-          calendar_limit.classList.add('show');
-          dayTextFormate.classList.remove('showtime');
-          dayTextFormate.classList.add('hidetime');
-          timeFormate.classList.remove('showtime');
-          timeFormate.classList.add('hideTime');
-          dateFormate.classList.remove('showtime');
-          dateFormate.classList.add('hideTime');
+        if(day.textContent>=currentDate.getDate() ){
+//           var m = JSON.stringify(map, (key, value) =>
+//   value instanceof Map ? Array.from(value.entries()) : value,
+// );
+          let s1=String(day.textContent);
+          let s2=String(month+1);
+          let s3=String(year);
+          let str=s1.concat(s2);
+          let fstr=str.concat(s3);
+          // m.set(fstr,12);
+          if(!m.has(fstr)){
+            let head = document.getElementById("heading");
+            head.innerText=`Set Your Expense Limit`;
+            let f=document.createElement('form');
+            // f.setAttribute("method","action");
+            // f.setAttribute("post","");
+            var fn = document.createElement("input");
+            fn.setAttribute("input", "value");
+            fn.setAttribute("placeholder", "Amount");
+            let s = document.createElement('button');
+            s.textContent="Submit";
+            var br = document.createElement("br");
+            f.appendChild(head);
+            f.appendChild(br.cloneNode());
+            f.appendChild(fn);
+            f.appendChild(br.cloneNode());
+            f.appendChild(s);
+            f.appendChild(br.cloneNode());
+            calendar_limit.appendChild(f);
+            calendar_limit.classList.remove('hideonce');
+            calendar_limit.classList.remove('hide');
+            calendar_limit.classList.add('show');
+            dayTextFormate.classList.remove('showtime');
+            dayTextFormate.classList.add('hidetime');
+            timeFormate.classList.remove('showtime');
+            timeFormate.classList.add('hideTime');
+            dateFormate.classList.remove('showtime');
+            dateFormate.classList.add('hideTime');
+            s.addEventListener('click', function() {
+            if (confirm("Confirm Save?")) 
+            {
+                // day.style.boder="blue";
+                
+                m.set(fstr,fn.value);
+                // day.innerHTML=m.has(fstr);
+                calendar_limit.classList.replace('show', 'hide');
+                dayTextFormate.classList.remove('hideTime');
+                dayTextFormate.classList.add('showtime');
+                timeFormate.classList.remove('hideTime');
+                timeFormate.classList.add('showtime');
+                dateFormate.classList.remove('hideTime');
+                dateFormate.classList.add('showtime');
+                calendar_limit.classList.add('hideonce');
+                // (function () {
+                  
+                // })();
+                day.classList.add('event');
+                localStorage.setItem("m", JSON.stringify(m));
+            } 
+            else {
+                txt = "You pressed Cancel!";
+            }
+            });
+          }
+          else{
+            let head = document.getElementById("heading");
+            head.innerText=`Your Expense Limit is ${m.get(fstr)}`;
+          }
         }
       });
       calendar_days.appendChild(day);
@@ -197,11 +240,3 @@ const isLeapYear = (year) => {
     )}: ${`${timer.getSeconds()}`.padStart(2, '0')}`;
     todayShowTime.textContent = formateTimer;
   }, 1000);
-
-//   function setlimit(){
-//     let day=document.querySelector()
-//     if(day>=currentDate)
-//     {
-//         location.replace("http://www.w3schools.com")
-//     }
-// }
