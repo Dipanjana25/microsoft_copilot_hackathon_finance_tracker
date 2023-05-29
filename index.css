@@ -1,4 +1,5 @@
 /* CSS */
+
 body{
     background-color: rgb(246, 249, 248);
 }
@@ -39,6 +40,16 @@ body{
       padding: 16px 44px;
       min-width: 150px;
     }
+    .grid-container {
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+        column-gap: 50px;
+      }
+      .welcome{
+        font-size: 40px;
+        font-weight: 800;
+        margin: 15px;
+      }
   }
 
   .btn-container{
@@ -48,9 +59,11 @@ body{
     align-items: center;
     margin-top: 50px;
   }
+  .image_home{
+    height: 95%;
+    width: 95%;  }
 
-
-
+   
 
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
@@ -135,6 +148,15 @@ a {
 
 
 @media only screen and (max-width: 768px) {
+    .grid-container {
+        display: grid;
+        grid-template-rows: auto auto auto auto;
+      }
+      .welcome{
+        font-size: 25px;
+        font-weight: 800;
+        margin: 10px;
+      }
     .nav-menu {
         position: fixed;
         left: -100%;
