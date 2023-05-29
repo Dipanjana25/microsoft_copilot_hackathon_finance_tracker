@@ -86,8 +86,8 @@ const isLeapYear = (year) => {
 
       let day = document.createElement('button');
       day.style.border="none";
-      let s1=String(day.textContent);
-      let s2=String(month+1);
+      let s1=String(i).concat(".");
+      let s2=String(month+1).concat(".");
       let s3=String(year);
       let str=s1.concat(s2);
       let fstr=str.concat(s3);
@@ -100,27 +100,20 @@ const isLeapYear = (year) => {
         ) {
           day.classList.add('current-date');
         }
-        // if(m.length===5)
-        // day.classList.add('event');
-        // if(m.length>0 ){
           m.forEach(j => {
             if(j.datee === fstr){
-              // console.log(j.amount);
             day.classList.add('event');
-            // day.style.backgroundColor="red";
             }
           });
-        // }
     }
       day.addEventListener("click", function(){
         if(year >= currentDate.getFullYear()){
           if(month>currentDate.getMonth()||(month===currentDate.getMonth() && day.textContent>=currentDate.getDate())){
-            let s1=String(day.textContent);
-            let s2=String(month+1);
+            let s1=String(day.textContent).concat(".");
+            let s2=String(month+1).concat(".");
             let s3=String(year);
             let str=s1.concat(s2);
             let fstr=str.concat(s3);
-            // if(m.length>0 ){
               var f=0;
               var j;
               m.some(j => {
@@ -136,7 +129,6 @@ const isLeapYear = (year) => {
                   dateFormate.classList.add('hideTime');
                 }
               })
-            //}
             if(f===0){
               let head = document.getElementById("heading");
               head.innerText=`Set Your Expense Limit`;
@@ -182,7 +174,6 @@ const isLeapYear = (year) => {
                 dateFormate.classList.remove('hideTime');
                 dateFormate.classList.add('showtime');
                 calendar_limit.classList.add('hideonce');
-                // day.classList.add('event');
                 localStorage.setItem("m", JSON.stringify(m));
               } 
               else {
