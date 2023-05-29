@@ -247,12 +247,12 @@ a {
   .year-change:hover pre {
     color: var(--bg-body);
   }
-  .calendar-footer {
-    padding: 10px;
+  /* .calendar-footer {
+    padding: 2px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  }
+  } */
   #year:hover{
     cursor: pointer;
     transform: scale(1.2);
@@ -278,14 +278,6 @@ a {
     background-color: #2522f1;
     border-radius: 50%;
   }
- 
-  /* .calendar-limit{
-    position:relative;
-    padding: 10px 0 0 0;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  } */
   #heading{
     position:relative;
     text-align:center;
@@ -296,19 +288,33 @@ a {
     position: relative;
     left: 0;
     top: -50px;
-    /* background-color: #ebebeb;
-    color: var(--light-text); */
+    background-color: #f7f0f0;
     display: grid;
     /* grid-template-columns: repeat(2, auto); */
     gap: 5px;
-    /* border-radius: 20px; */
+    border-radius: 20px;
   }
   .calendar-limit > form {
     display: grid;
     place-content: center;
-    margin: 5px 10px;
+    margin: 5px 5px;
     transition: all 1s ease-in-out;
     animation: to-left .71s forwards;
+  }
+  .calendar-limit > form> input {
+    border-radius: 10px;
+    height:25px;
+    text-align: center;
+    border-color: gray;
+  }
+  .calendar-limit > form> button {
+    height:25px;
+    width:250px;
+    border-radius: 10px;
+    text-align: center;
+    border:none;
+    background-color:black;
+    color:white;
   }
   /* .calendar-limit  > div > div {
     border-radius: 15px;
