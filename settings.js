@@ -102,7 +102,12 @@ const isLeapYear = (year) => {
         }
           m.forEach(j => {
             if(j.datee === fstr){
-            day.classList.add('event');
+              if(year >= currentDate.getFullYear()){
+                if(month>currentDate.getMonth()||(month===currentDate.getMonth() && day.textContent>=currentDate.getDate())){
+                  var circle = document.createElement('div');
+                  circle.classList.add('notif');
+                  day.appendChild(circle);
+                }}
             }
           });
       }
@@ -146,7 +151,7 @@ const isLeapYear = (year) => {
                 return;
               }
               let head = document.getElementById("heading");
-              head.innerHTML=`Set Your Expense Limit`;
+              head.innerHTML=`Set Your Expense Limit for ${day.textContent}/${month+1}/${year} `;
               let f=document.createElement('form');
               var fn = document.createElement("input");
               fn.setAttribute("input", "value");
