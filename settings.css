@@ -284,6 +284,34 @@ a {
     font-weight:500;
     font-size:large;
   }
+  #heading>button{
+    display: grid;
+    place-content: center;
+    margin: 5px 5px;
+    transition: all 1s ease-in-out;
+    animation: to-left .71s forwards;
+    height:25px;
+    width:250px;
+    border-radius: 10px;
+    text-align: center;
+    border:none;
+    background-color:black;
+    color:white;
+  }
+  #heading .show {
+    visibility: visible;
+    pointer-events: visible;
+    transition: 0.6s ease-in-out;
+    animation: to-left .71s forwards;
+  }
+  #heading .hideonce{
+    visibility: hidden;
+  }
+  #heading .hide {
+    animation: to-right 1s forwards;
+    visibility: none;
+    pointer-events: none;
+  }
   .calendar-limit {
     position: relative;
     left: 0;
@@ -316,17 +344,7 @@ a {
     background-color:black;
     color:white;
   }
-  /* .calendar-limit  > div > div {
-    border-radius: 15px;
-    padding: 10px;
-    cursor: pointer;
-  }  */
-   /* .calendar-limit > div > div:hover {
-    background-color:#9796f0;
-    color: var(--dark-text);
-    transform: scale(0.9);
-    transition: all 0.2s ease-in-out;
-  } */
+  
   .calendar-limit>form .show {
     visibility: visible;
     pointer-events: visible;
