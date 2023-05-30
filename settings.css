@@ -273,9 +273,18 @@ a {
     background-color: #9796f0;
     border-radius: 50%;
   }
-  .calendar-days button.event {
+  /* .calendar-days button.event {
     color: var(--dark-text);
     background-color: #2522f1;
+    border-radius: 50%;
+  } */
+  .notif {
+    position: absolute;
+    top: 25px;
+    right: 12px;
+    width: 5px;
+    height: 5px;
+    background-color: rgb(1, 66, 83);
     border-radius: 50%;
   }
   #heading{
@@ -337,7 +346,6 @@ a {
   }
   .calendar-limit > form> button {
     height:25px;
-    width:250px;
     border-radius: 10px;
     text-align: center;
     border:none;
