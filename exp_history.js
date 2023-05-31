@@ -54,7 +54,6 @@ for (expense of exp_detail) {
     deleteCell.appendChild(deleteBtn);
 }
 
-
 //pie-chart-code
 
 google.charts.load('current', {'packages':['corechart']});
@@ -79,6 +78,9 @@ var inc=bal+expense.amount
 
  chart.draw(data, options);
 }
+
+
+
   //hamnurger
   const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
