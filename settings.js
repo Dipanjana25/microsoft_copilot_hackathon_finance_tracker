@@ -102,48 +102,72 @@ const isLeapYear = (year) => {
         }
           m.forEach(j => {
             if(j.datee === fstr){
-            day.classList.add('event');
+              if(year >= currentDate.getFullYear()){
+                if(month>currentDate.getMonth()||(month===currentDate.getMonth() && day.textContent>=currentDate.getDate())){
+                  var circle = document.createElement('div');
+                  circle.classList.add('notif');
+                  day.appendChild(circle);
+                }}
             }
           });
-    }
+      }
+      var count=0;
       day.addEventListener("click", function(){
         if(year >= currentDate.getFullYear()){
           if(month>currentDate.getMonth()||(month===currentDate.getMonth() && day.textContent>=currentDate.getDate())){
-            let s1=String(day.textContent).concat(".");
+            let s1=String(i).concat(".");
             let s2=String(month+1).concat(".");
             let s3=String(year);
             let str=s1.concat(s2);
             let fstr=str.concat(s3);
-              var f=0;
+              var flag=0;
               var j;
               m.some(j => {
                 if(j.datee === fstr){
                   let head = document.getElementById("heading");
-                  head.innerText=`Your Expense Limit is ${j.amount}`;
-                  f++;
+                  head.innerHTML=`Your Expense Limit is ${j.amount}`;
+                  flag++;
+                  var ok=document.createElement('button');
+                  ok.textContent="Press OK to continue";
+                  var br = document.createElement("br");
+                  head.appendChild(br.cloneNode());
+                  head.appendChild(ok);
                   dayTextFormate.classList.remove('showtime');
                   dayTextFormate.classList.add('hidetime');
                   timeFormate.classList.remove('showtime');
                   timeFormate.classList.add('hideTime');
                   dateFormate.classList.remove('showtime');
                   dateFormate.classList.add('hideTime');
+                  ok.addEventListener('click',function(){
+                    location.reload();
+                  });
                 }
               })
-            if(f===0){
+            if(flag===0){
+              count++;
+              if(count>1)
+              {
+                alert("please click on go back if this is not the date you want to set a limit for");
+                return;
+              }
               let head = document.getElementById("heading");
-              head.innerText=`Set Your Expense Limit`;
+              head.innerHTML=`Set Your Expense Limit for ${day.textContent}/${month+1}/${year} `;
               let f=document.createElement('form');
               var fn = document.createElement("input");
               fn.setAttribute("input", "value");
               fn.setAttribute("placeholder", "Amount");
               let s = document.createElement('button');
               s.textContent="Submit";
+              let gb = document.createElement('button');
+              gb.textContent="Go Back";
               var br = document.createElement("br");
               f.appendChild(head);
               f.appendChild(br.cloneNode());
               f.appendChild(fn);
               f.appendChild(br.cloneNode());
               f.appendChild(s);
+              f.appendChild(br.cloneNode());
+              f.appendChild(gb);
               f.appendChild(br.cloneNode());
               calendar_limit.appendChild(f);
               calendar_limit.classList.remove('hideonce');
@@ -180,7 +204,11 @@ const isLeapYear = (year) => {
                 txt = "You pressed Cancel!";
               }
               });
+              gb.addEventListener('click',function(){
+                return;
+              });
             }
+            // calendar_limit.removeChild(f);
           }  
         }
       });
