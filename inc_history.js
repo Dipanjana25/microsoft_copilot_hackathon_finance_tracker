@@ -62,9 +62,8 @@ for (income of inc_detail) {
     var exp= income.amount;
     var data = google.visualization.arrayToDataTable([
       ['Answer', 'Percentage'],
-      ['Income',     income.amount], //This static data needs to reflect dynamic data from html table
-      ['Expense',  income.amount-bal], //This static data needs to reflect dynamic data from html table
-    //   ['Balance',  ], //This static data needs to reflect dynamic data from html table
+      ['Income',     income.amount], 
+      ['Expense',  income.amount-bal], 
     ]);
 
     var options = {

@@ -62,9 +62,8 @@ function drawChart() {
 var inc=bal+expense.amount
  var data = google.visualization.arrayToDataTable([
    ['Answer', 'Percentage'],
-   ['Income',     inc], //This static data needs to reflect dynamic data from html table
-   ['Expense',   expense.amount], //This static data needs to reflect dynamic data from html table
- //   ['Balance',  ], //This static data needs to reflect dynamic data from html table
+   ['Income',     inc], 
+   ['Expense',   expense.amount], 
  ]);
 
  var options = {
@@ -79,9 +78,7 @@ var inc=bal+expense.amount
  chart.draw(data, options);
 }
 
-
-
-  //hamnurger
+  //hamburger
   const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 const navLink = document.querySelectorAll(".nav-link");
