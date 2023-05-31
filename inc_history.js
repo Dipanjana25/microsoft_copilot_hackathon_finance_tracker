@@ -55,36 +55,30 @@ for (income of inc_detail) {
 }
 
 //pie-chart-code
-anychart.onDocumentReady(function() {
-    var inc_detail = JSON.parse(localStorage.getItem("incomes"))
-    var ins=0;var exs=0;
-    inc_detail.forEach((element) => {
-        ins+=element;
-    });
-    // expenses.forEach((element) => {
-    //     exs+=element
-    // });
-    
-    // set the data
-    var data = [
-        {x: "Income", value: ins},
-        {x: "Expense", value: exs}
-    ];
-  
-    // create the chart
-    var chart = anychart.pie();
-  
-    // set the chart title
-    chart.title("Income vs Expense");
-  
-    // add the data
-    chart.data(data);
-  
-    // display the chart in the container
-    chart.container('container');
-    chart.draw();
-  
-  });
+
+   google.charts.load('current', {'packages':['corechart']});
+   google.charts.setOnLoadCallback(drawChart);
+  function drawChart() {
+    var exp= income.amount;
+    var data = google.visualization.arrayToDataTable([
+      ['Answer', 'Percentage'],
+      ['Income',     income.amount], //This static data needs to reflect dynamic data from html table
+      ['Expense',  income.amount-bal], //This static data needs to reflect dynamic data from html table
+    //   ['Balance',  ], //This static data needs to reflect dynamic data from html table
+    ]);
+
+    var options = {
+      title: 'Income Vs Expense Visualization',
+      fontSize: 25,
+      height: 800,
+      width: 800
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+
   //hamburger
   const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");

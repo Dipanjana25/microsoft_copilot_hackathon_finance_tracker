@@ -54,40 +54,31 @@ for (expense of exp_detail) {
     deleteCell.appendChild(deleteBtn);
 }
 
+
 //pie-chart-code
-anychart.onDocumentReady(function() {
-    var exp = JSON.parse(localStorage.getItem("expenses"))
-    var food=0, travel=0, investment=0, relax=0;
 
-    exp.forEach(item => {
-        if(item.category === "Food") food = food + 1;
-        if(item.category === "Travel") travel = travel + 1;
-        if(item.category === "Investment")  investment = investment + 1;
-        if(item.category === "Relax")  relax = relax + 1;
-    })
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+var inc=bal+expense.amount
+ var data = google.visualization.arrayToDataTable([
+   ['Answer', 'Percentage'],
+   ['Income',     inc], //This static data needs to reflect dynamic data from html table
+   ['Expense',   expense.amount], //This static data needs to reflect dynamic data from html table
+ //   ['Balance',  ], //This static data needs to reflect dynamic data from html table
+ ]);
 
-    // set the data
-    var data = [
-        {x: "Travel", value: travel},
-        {x: "Food", value: food},
-        {x: "Investment", value: investment},
-        {x: "Relax", value: relax},
-    ];
-  
-    // create the chart
-    var chart = anychart.pie();
-  
-    // set the chart title
-    chart.title("Expenses chart");
-  
-    // add the data
-    chart.data(data);
-  
-    // display the chart in the container
-    chart.container('container');
-    chart.draw();
-  
-  });
+ var options = {
+   title: 'Income Vs Expense Visualization',
+   fontSize: 25,
+   height: 800,
+   width: 800
+ };
+
+ var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+ chart.draw(data, options);
+}
   //hamnurger
   const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
