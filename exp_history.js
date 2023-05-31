@@ -59,18 +59,32 @@ for (expense of exp_detail) {
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
-var inc=bal+expense.amount
- var data = google.visualization.arrayToDataTable([
-   ['Answer', 'Percentage'],
-   ['Income',     inc], 
-   ['Expense',   expense.amount], 
- ]);
+    var food_exp= 0;
+    var travel_exp= 0;
+    var relax_exp= 0;
+    var invest_exp= 0;
+
+    var item = JSON.parse(localStorage.getItem("expenses") || "[]");
+    item.map((item) => {
+      if(item.category === "Food & Beverage")  food_exp+=item.amount;
+      else if(item.category === "Relaxing") relax_exp+=item.amount;
+      else if(item.category === "Investment") invest_exp+=item.amount;
+      else if(item.category === "Transport") travel_exp+=item.amount;
+    })
+    // console.log(sal_exp + " " + rent_exp + " " + subs_exp + " " + tax_exp+ "done");
+    var data = google.visualization.arrayToDataTable([
+      ['Answer', 'Percentage'],
+      ['Food & Beverage',  food_exp], 
+      ['Investment',  invest_exp],
+      ['Transport',  travel_exp],
+      ['Relaxing',  relax_exp],  
+    ]);
 
  var options = {
-   title: 'Income Vs Expense Visualization',
-   fontSize: 25,
-   height: 800,
-   width: 800
+   title: 'Category wise expenses visualization',
+   fontSize: 10,
+   height: 500,
+   width: 500
  };
 
  var chart = new google.visualization.PieChart(document.getElementById('piechart'));

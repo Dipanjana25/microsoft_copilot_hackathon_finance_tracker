@@ -1,3 +1,4 @@
+// localStorage.clear();
 let tasks_arr = [];
 window.addEventListener(('load'), ()=>{ //not 'windows' & not 'loads'
     const form = document.querySelector("#add-form");

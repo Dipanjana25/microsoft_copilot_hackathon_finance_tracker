@@ -1,3 +1,4 @@
+// localStorage.clear();
 var inc_detail = JSON.parse(localStorage.getItem("incomes") || "[]");
 console.log(inc_detail);
 
@@ -59,18 +60,32 @@ for (income of inc_detail) {
    google.charts.load('current', {'packages':['corechart']});
    google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
-    var exp= income.amount;
+    var sal_exp= 0;
+    var rent_exp= 0;
+    var subs_exp= 0;
+    var tax_exp= 0;
+
+    var item = JSON.parse(localStorage.getItem("incomes") || "[]");
+    item.map((item) => {
+      if(item.category === "Salary")  sal_exp+=item.amount;
+      else if(item.category === "Income tax return") tax_exp+=item.amount;
+      else if(item.category === "Rent") rent_exp+=item.amount;
+      else if(item.category === "Subsidy") subs_exp+=item.amount;
+    })
+    console.log(sal_exp + " " + rent_exp + " " + subs_exp + " " + tax_exp+ "done");
     var data = google.visualization.arrayToDataTable([
       ['Answer', 'Percentage'],
-      ['Income',     income.amount], 
-      ['Expense',  income.amount-bal], 
+      ['Salary',  sal_exp], 
+      ['Rent',  rent_exp],
+      ['Subsidy',  subs_exp],
+      ['Income tax return',  tax_exp],  
     ]);
 
     var options = {
-      title: 'Income Vs Expense Visualization',
-      fontSize: 25,
-      height: 800,
-      width: 800
+      title: 'Category based Income Visualization',
+      fontSize: 10,
+      height: 500,
+      width: 500
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));

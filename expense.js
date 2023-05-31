@@ -1,3 +1,4 @@
+// localStorage.clear();
 let expenses = [];
 const categoryEl = document.getElementById("category-select");
 const inputEl = document.getElementById("amount-input");
