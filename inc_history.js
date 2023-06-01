@@ -32,11 +32,11 @@ for (income of inc_detail) {
 
     const newRow = inc_detailTableBody.insertRow();
     const categoryCell = newRow.insertCell();
+    const noteCell = newRow.insertCell();
     const amountCell = newRow.insertCell();
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
     const editCell = newRow.insertCell();
-    editCell.classList.add('eddit-btn');
 
     const deleteBtn = document.createElement('button');
     const editBtn = document.createElement('button');
@@ -87,6 +87,7 @@ var value = parseInt(income.amount);
     })
 
     categoryCell.textContent = income.category;
+    noteCell.textContent = income.note;
     amountCell.textContent = value;
     dateCell.textContent = income.date;
     deleteCell.appendChild(deleteBtn);

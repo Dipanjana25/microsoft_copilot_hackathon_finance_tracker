@@ -1,3 +1,4 @@
+// localStorage.clear();
 var exp_detail = JSON.parse(localStorage.getItem("expenses") || "[]");
 console.log(exp_detail);
 
@@ -26,6 +27,7 @@ for (expense of exp_detail) {
 
     const newRow = exp_detailTableBody.insertRow();
     const categoryCell = newRow.insertCell();
+    const noteCell = newRow.insertCell();
     const amountCell = newRow.insertCell();
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
@@ -53,6 +55,7 @@ for (expense of exp_detail) {
         }
     })
     categoryCell.textContent = expense.category;
+    noteCell.textContent = expense.note;
     amountCell.textContent = expense.amount;
     dateCell.textContent = expense.date;
     deleteCell.appendChild(deleteBtn);
