@@ -1,4 +1,4 @@
-let tasks_arr = [];
+
 window.addEventListener(('load'), ()=>{ //not 'windows' & not 'loads'
     const form = document.querySelector("#add-form");
     const input = document.querySelector("#add-text");
@@ -80,20 +80,23 @@ window.addEventListener(('load'), ()=>{ //not 'windows' & not 'loads'
             t_delete_element.addEventListener('click', ()=>{
                 if(t_delete_element.innerHTML.toLowerCase() == "delete"){
                     t.remove();
+                    updateLocalStorage();
                 }
             })
         }
     })
 
     function updateLocalStorage(){
-        var tasks_arr = JSON.parse(localStorage.getItem("tasks_arr") || "[]");
-                const the_task = input.value;
-                tasks_arr.push({
-                    task: the_task
-                })
-                localStorage.setItem("tasks_arr", JSON.stringify(tasks_arr));
-                console.log(tasks_arr);
+       localStorage.setItem("data",tasks.innerHTML);
     }
+    function showTasks(){
+        tasks.innerHTML=localStorage.getItem("data");
+        console.log(tasks);
+    }
+    showTasks();
+
+
+
 
     const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
