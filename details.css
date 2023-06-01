@@ -87,6 +87,18 @@ a {
   z-index: 2;
 }
 
+/* #incvsexpchart{
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+} */
+.graphs{
+  width: 100%;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+}
 
 
 @media only screen and (max-width: 768px) {

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Details</title>
     <link rel="stylesheet" href="details.css">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 <body>
     <div class="navbar" id="navbar">
@@ -37,12 +39,11 @@
         </header>
     </div>
     <h2  style="margin: 4px;" class="balance" id="balance">Current Balance: 0</h2>
-    <div style="display: flex; flex-direction: horizontal; justify-content: center">
-        <!-- pie-chart-code -->
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">     </script>
-    <div id="piechart"></div>
-
+     <!-- pie-chart-code -->
+    <div class="graphs" style="display:flex; flex-direction: column;">
+    <div id="incvsexpchart" ></div>
+    <div id="explimitchart"></div>
+    </div>
     <!--end  -->
     <script src="details.js"></script>
 </body>
