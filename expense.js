@@ -45,11 +45,12 @@ subBtn.addEventListener('click', () => {
         alert('Please select a date')
         return;
     }
-    // expenses.push({category, amount, date});
 
 
-    // const val = inputEl.value //here val is the string form of the amount
     bal-=amount;
+    if(bal<0)
+    alert('Insufficient balance');
+    else
     updateLocalStorage();
     console.log(amount);
     console.log(categoryEl.value);

@@ -7,6 +7,11 @@ function delete_from_LocalStorage(){
     balEl.innerText=`Current Balance: ${bal}`;
 }
 
+const toggleDropdown = function () {
+  dropdownMenu.classList.toggle("show");
+  toggleArrow.classList.toggle("arrow");
+};
+
 let totalAmount = 0;
 const inc_detailTableBody = document.getElementById('income-table-body');
 const totalAmountCell = document.getElementById('total-amount-income');
@@ -30,8 +35,13 @@ for (income of inc_detail) {
     const amountCell = newRow.insertCell();
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
+    const editCell = newRow.insertCell();
+    editCell.classList.add('eddit-btn');
+
     const deleteBtn = document.createElement('button');
+    const editBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
+    editBtn.textContent = 'Edit';
     // deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function() {
         var txt; //useless variable for now
@@ -45,14 +55,42 @@ for (income of inc_detail) {
             localStorage.setItem("bal", JSON.stringify(bal));
             balEl.innerText=`Current Balance: ${bal}`;
             txt = "You pressed OK!";
+            location.reload();
         } else {
             txt = "You pressed Cancel!";
         }
     })
+var value = parseInt(income.amount);
+    editBtn.addEventListener('click', function() {
+        if(editBtn.innerHTML.toLowerCase() == "edit"){
+            amountCell.focus();
+            amountCell.style.backgroundColor = "beige";
+            amountCell.contentEditable = true;
+            editBtn.innerHTML = "Save";
+            value = amountCell.innerHTML;
+        }
+
+        else if(editBtn.innerHTML.toLowerCase() == "save"){
+            amountCell.innerHTML = value;
+            console.log(value);
+            amountCell.contentEditable = false;
+            amountCell.style.backgroundColor = "white";
+            editBtn.innerHTML = "Edit";
+
+            localStorage.setItem("incomes", JSON.stringify(inc_detail));
+            localStorage.setItem("bal", JSON.stringify(bal));
+            balEl.innerText=`Current Balance: ${bal}`;
+            location.reload();
+            console.log(inc_detail);
+            console.log(bal);
+        }
+    })
+
     categoryCell.textContent = income.category;
-    amountCell.textContent = income.amount;
+    amountCell.textContent = value;
     dateCell.textContent = income.date;
     deleteCell.appendChild(deleteBtn);
+    editCell.appendChild(editBtn);
 }
 
 //pie-chart-code
@@ -72,7 +110,7 @@ for (income of inc_detail) {
       else if(item.category === "Rent") rent_exp+=item.amount;
       else if(item.category === "Subsidy") subs_exp+=item.amount;
     })
-    console.log(sal_exp + " " + rent_exp + " " + subs_exp + " " + tax_exp+ "done");
+    console.log(sal_exp + " " + rent_exp + " " + subs_exp + " " + tax_exp+ " done");
     var data = google.visualization.arrayToDataTable([
       ['Answer', 'Percentage'],
       ['Salary',  sal_exp], 

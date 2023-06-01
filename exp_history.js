@@ -29,8 +29,11 @@ for (expense of exp_detail) {
     const amountCell = newRow.insertCell();
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
+    const editCell = newRow.insertCell();
     const deleteBtn = document.createElement('button');
+    const editBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
+    editBtn.textContent = 'Edit';
     // deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function() {
         var txt; //useless variable for now
@@ -44,6 +47,7 @@ for (expense of exp_detail) {
             localStorage.setItem("bal", JSON.stringify(bal));
             balEl.innerText=`Current Balance: ${bal}`;
             txt = "You pressed OK!";
+            location.reload();
         } else {
             txt = "You pressed Cancel!";
         }
@@ -52,6 +56,7 @@ for (expense of exp_detail) {
     amountCell.textContent = expense.amount;
     dateCell.textContent = expense.date;
     deleteCell.appendChild(deleteBtn);
+    editCell.appendChild(editBtn);
 }
 
 //pie-chart-code
