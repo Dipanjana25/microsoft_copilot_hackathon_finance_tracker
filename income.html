@@ -42,7 +42,7 @@
         <h3 id="view-bal">View balance</h3>
         <h4 class="balance" id="balance">Balance: 0</h4>
         <!-- <label for="category-select">Category:</label> -->
-        <select id="category-select-income">
+        <select id="category-select-income" required>
             <option value="" disabled selected hidden>Select source</option>
             <option value="Salary">Salary</option>
             <option value="Income tax return">Income tax return</option>
@@ -50,9 +50,11 @@
             <option value="Subsidy">Subsidy</option>
         </select>
         <!-- <label for="amount-input">Amount:</label> -->
-        <input type="number" id="amount-input-income" autofocus placeholder="Amount">
+        <input type="number" id="amount-input-income" autofocus placeholder="Amount" required>
         <!-- <label for="date-input">Date:</label> -->
-        <input type="date" id="date-input-income">
+        <input type="date" id="date-input-income" required>
+        <br>
+        <input type="text" id="note-input-income" autofocus placeholder="Add note..">
         <button id="sub-btn"type="submit">Submit</button>
         <h2 id="msg"></h2>
     </div>

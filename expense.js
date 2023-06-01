@@ -3,6 +3,7 @@ let expenses = [];
 const categoryEl = document.getElementById("category-select");
 const inputEl = document.getElementById("amount-input");
 const dateEl = document.getElementById("date-input");
+const noteEl = document.getElementById("note-input");
 const subBtn = document.getElementById("sub-btn");
 
 const balEl = document.getElementById("balance");
@@ -32,6 +33,7 @@ subBtn.addEventListener('click', () => {
     const category = categoryEl.value;
     const amount = Number(inputEl.value);
     const date = dateEl.value;
+    const note = noteEl.value;
 
     if (category === '') {
         alert('Please select a category');
@@ -55,10 +57,11 @@ subBtn.addEventListener('click', () => {
     console.log(amount);
     console.log(categoryEl.value);
     console.log(dateEl.value);
+    console.log(noteEl.value);
     console.log(bal);    
 
     var expenses = JSON.parse(localStorage.getItem("expenses") || "[]");
-    expenses.push({category, amount, date, bal});
+    expenses.push({category, amount, date, note, bal});
     // Saving
     localStorage.setItem("expenses", JSON.stringify(expenses));
     console.log(expenses);
@@ -66,6 +69,7 @@ subBtn.addEventListener('click', () => {
     categoryEl.value = '';
     inputEl.value = '';
     dateEl.value = '';
+    noteEl.value = '';
 
     const msg = document.getElementById("msg");
     msg.innerText = "Expense added successfully";
