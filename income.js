@@ -1,3 +1,4 @@
+// localStorage.clear();
 let incomes=[];
 const categoryEl = document.getElementById("category-select-income");
 const inputEl = document.getElementById("amount-input-income");
