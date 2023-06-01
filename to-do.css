@@ -1,37 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
-* {
+body{
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* overflow-x: hidden; */
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-size: cover;
+    overflow-x: hidden;
+    overflow-y: scroll
+    
 }
 
-html {
-    font-size: 62.5%;
-    font-family: 'Roboto', sans-serif;
-}
+  @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
-li {
-    list-style: none;
 
-}
-
-a {
-    text-decoration: none;
   
-}
+  html {
+      font-size: 62.5%;
+      font-family: 'Roboto', sans-serif;
+  }
 
-
-.header{
-    border-bottom: 1px solid #E2E8F0;
+.container{
+    padding-top: 30px;
 }
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1.5rem 1.5rem;
     background-color: #94d2bd;
 }
 
@@ -79,12 +76,27 @@ a {
     font-size: 2.1rem;
     font-weight: 500;
     color: #482ff7;
+    position:fixed;
+    left: 20px;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+  
+  
 
 @media only screen and (max-width: 768px) {
+    .to-do h2{
+
+        position: relative;
+        top: 1vh;
+        
+    }
     .nav-menu {
-        max-width: 100vw;
         position: fixed;
         left: -100%;
         top: 5rem;
@@ -96,31 +108,8 @@ a {
         transition: 0.3s;
         box-shadow:
             0 10px 27px rgba(0, 0, 0, 0.05);
+
     }
-
-
-         
-            #tasks{
-                position: fixed;
-                left: 100px;
-                top: 700px;
-            }
-            .task{
-                display: flex;
-                 
-                justify-content: center;
-                align-items: center;
-               
-                padding: 1rem 1.5rem;
-                border-bottom: 1px solid #E2E8F0;
-                width: 50%;
-               
-            }
-            
-            
-            
-           
-        
 
     .nav-menu.active {
         left: 0;
@@ -151,53 +140,99 @@ a {
         
     }
 }
+li,a{
+    display: inline;
+    list-style: none;
+    margin-top: 0px;
+    color: white;
+    text-align: center;
+    padding-right: 12px;
+    text-decoration: none;
+}
+.container{
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+}
+.to-do{
 
-.overlay{
+    border-radius: 10px;
+    height: fit-content;
+    min-height: 50vh;
+    width: 60vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #94d2bd;
-    width: 70vw;
-    height: 40vh;
-    margin:auto;
-    margin-top: 10vh;
-    border-radius: 10px;
-    box-shadow: 1px 0px 2px rgb(124, 124, 124);
+    margin: 25vh auto 25vh;
+
+    background-color: rgb(202, 234, 234);
+    box-shadow: 0px 1px 5px rgb(123, 123, 123);
+    opacity: 0.85;
 }
-#add-text{
+.to-do h2{
+
+    /* margin-bottom: 150px; */
+    position: relative;
+    top: 2px;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 200;
+    font-size: 3rem;
+    text-shadow: 1px 1px 1px #ffffff;
+}
+.input-unit{
     display: flex;
-    justify-content: center;
+    background: #fefefe;
+    width: 50%;
     align-items: center;
-    width: 60vw;
-    margin-bottom: 2vh;
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: #475569;
-    /* fancy border */
-    border-width: 0.5px;
-    border-radius: 10px;
-    padding: 1rem 1.5rem;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 0px 0px 0px 1vw;
+    box-shadow: 1px 1px 3px rgb(62, 62, 62);
+    margin-bottom: 5px;
+    
 
 }
-.task-list{
+.input-unit input
+{
+    flex: 1;
+    width: 50%;
+    background-color: #fefefe;
+    border: none;
+    outline:none;
+}
+button{
+    border: none;
+    outline: none;
+    padding: 1vw 2vw;
+    background: #94d2bd;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+
+}
+button:hover{
+    background: #8cc9b5;
+}
+/* .to-do li{
+    color: black;
     display: flex;
-
-    justify-content: center;
-    align-items: center;
-
-
-   
-}
+    flex-direction: column;
+    justify-content: space-between;
+    list-style: none;
+    font-size: 17px;
+    padding: 1vh;
+    cursor: pointer;
+    position: relative; 
+    right: 200px;
+} */
 #tasks{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-
-
+    flex-direction: column;
 }
-
 .task{
     display: flex;
  
@@ -208,60 +243,15 @@ a {
     padding: 1rem 1.5rem;
     border-bottom: 1px solid #E2E8F0;
 }
-
-.actions{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 20%;
-}
-.actions button{
-    cursor: pointer;
-}
-
-
-.task-text{
-    font-size: 16px;
-    padding-left: 1vw;
-    font-weight: 400;
-    color: #475569;
+.actual{
+    flex: 1;
     border: none;
+    outline: none;
+    background-color: rgb(202, 234, 234);
 }
-
-
-
-#add-btn{
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #313f54;
-    background-color: #94a8d2;
-    border: none;
-    border-radius: 10px;
-    padding: 1rem 1rem;
-    cursor: pointer;
-    margin: auto;
-}
-
-.edit{
-    font-size: 13px;
-    font-weight: 400;
-    color: #313f54;
-    background-color: #94a8d2;
-    border: none;
-    border-radius: 10px;
-    padding: 1rem 1rem;
-    cursor: pointer;
-    margin-left: 5px;
-}
-
 .delete{
-    font-size: 13px;
-    font-weight: 400;
-    color: #313f54;
-    background-color: #94a8d2;
-    border: none;
-    border-radius: 10px;
-    padding: 1rem 1rem;
+    font-size: 12px;
     cursor: pointer;
-    margin-left: 5px;
+    border-radius: 30px;
+    margin-left: 1vw;
 }
