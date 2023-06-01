@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task List</title>
+    <title>To-do List</title>
     <link rel="stylesheet" href="to-do.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header>
         <!-- HTML !-->
         <nav class="navbar">
             <a href="#" class="nav-logo"><img src="images/fin.jpg" height="60px" style="border-radius: 50%; padding-top: 10px;"></a>
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
                 <li class="nav-item">
                     <a href="exp_history.html" class="nav-link">Expense History</a>
                 </li>
@@ -26,7 +24,9 @@
                 <li class="nav-item">
                     <a href="details.html" class="nav-link">Data Visualization</a>
                 </li>
-               
+                <li class="nav-item">
+                    <a href="to-do.html" class="nav-link">Action Items</a>
+                </li>
                 <li class="nav-item">
                     <a href="settings.html" class="nav-link">Settings</a>
                 </li>
@@ -38,42 +38,31 @@
             </div>
         </nav>
     </header>
-    
-    <!-- class row -->
-    <div class="overlay">
-        <h1 style="display:flex;  justify-content: center; padding-top: 50px; padding-bottom: 50px;">Add Task</h1> 
-        <form id="add-form">
-            <input type="text" id="add-text" placeholder="What's on your mind?">
-            <input type="submit" id="add-btn" value="Add Task">
-        </form>
-    </div>
-    <br><br>
-
-      <!-- <main> -->
-        <!-- class container -->
-        <div class="task-list"> 
-            <!-- class todo-app -->
+    <div class="container">
+        <div class="to-do">
+            <h2>Add Task</h2>
+            <div class="input-unit">
+                <input type="text" id="input1" placeholder="Add Task" autocomplete="off">
+                <button onclick="addtask()">Add</button>
+            </div>
             <div id = "tasks">
                 <div class="task">
                     <div id="checkboxes">
-                        <input type="checkbox" class="check">
+                        <input type="checkbox" class="check" checked="false">
                     </div>
-                <div class="content">
-                    <input type="text" class="task-text" value="some text" readonly>
-                </div>
-    
-                <div class="actions">
-                    <button class="edit">Edit</button> 
-                    <!-- remember don't pass value attribute for button text, it will show empty buttons -->
-                    <button class="delete">Delete</button>
-                </div>
+                    <div class="content">
+                        <!-- <input type="text" class="task-text" value="Task 1" readonly> -->
+                        <div class="actual"></div>
+                    </div>
+                    <div class="actions"> 
+                        <button class="delete">Delete</button>
+                    </div>
                 </div>
             </div>
     
         </div>
-        <!-- </main> -->
-    
 
-    <script src="to-do.js"></script>
+    </div>
+   <script src="to-do.js"></script> 
 </body>
 </html>

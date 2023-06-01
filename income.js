@@ -1,8 +1,14 @@
+// localStorage.clear();
 let incomes=[];
 const categoryEl = document.getElementById("category-select-income");
 const inputEl = document.getElementById("amount-input-income");
 const dateEl = document.getElementById("date-input-income");
+const noteEl = document.getElementById("note-input-income");
 const subBtn = document.getElementById("sub-btn");
+    const deleteBtn = document.createElement('button');
+    const editBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    editBtn.textContent = 'Edit';
 
 const balEl = document.getElementById("balance");
 let bal = parseInt(localStorage.getItem("bal"));
@@ -23,12 +29,19 @@ else if(viewBtn.innerText === `₹${bal}`){
         // alert(`Your balance is ${bal}`);
 }
 })
-
+var item_id = -1;
 subBtn.addEventListener('click', () => {
 
     const category = categoryEl.value;
     const amount = Number(inputEl.value);
     const date = dateEl.value;
+    const note = noteEl.value;
+    item_id = parseInt(item_id) + 1;
+    const d_b = deleteBtn;
+    const e_b = editBtn;
+
+    d_b.value = item_id;
+    e_b.value = item_id;
 
     
     if (category === '') {
@@ -50,11 +63,15 @@ subBtn.addEventListener('click', () => {
     console.log(amount);
     console.log(categoryEl.value);
     console.log(dateEl.value);
-    console.log(bal);    
+    console.log(noteEl.value);
+    console.log(bal);  
+    // console.log(item_id); 
+    console.log(d_b.value);
+    console.log(e_b.value); 
     //to store all the incomes in the income array(not balance)
 
     var incomes = JSON.parse(localStorage.getItem("incomes") || "[]");
-    incomes.push({category, amount, date, bal});
+    incomes.push({category, amount, date, note, bal, item_id});
     // Saving
     localStorage.setItem("incomes", JSON.stringify(incomes));
     console.log(incomes);
@@ -62,6 +79,7 @@ subBtn.addEventListener('click', () => {
     categoryEl.value = '';
     inputEl.value = '';
     dateEl.value = '';
+    noteEl.value = '';
 
     const msg = document.getElementById("msg");
     msg.innerText = "Income added successfully";

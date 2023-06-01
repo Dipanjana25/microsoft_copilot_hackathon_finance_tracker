@@ -42,29 +42,24 @@
     </div>
 
 
-   
+   <br>
     <h1  style="margin: 4px;">INCOME HISTORY</h1>
-    <br>
     <h2  style="margin: 4px;" class="balance" id="balance">Current Balance: 0</h2>
-    <br>
-    <div style="display: flex; flex-direction: horizontal; justify-content: center">
-        <!-- pie-chart-code -->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">     </script>
-    <div id="piechart"></div>
-    <!--end  -->
+    <div class = "search">
+        <input class="search-val"><input value="search" type="submit" class="search-btn">
     </div>
-    <!-- </div>
-    <div> -->
-    <h2>Income Source</h2>
+
     <br>
     <div class="income-list">
         <table>
             <thead>
                 <tr>
                     <th>Category</th>
+                    <th>Note</th>
                     <th>Amount</th>
                     <th>Date</th>
                     <th>Delete</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody id="income-table-body">
@@ -72,8 +67,10 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td>Total_Balance:</td>
+                    <td>Total Income:</td>
                     <td id="total-amount-income"></td>
+                    <td></td>
+                    <td></td>
                     <td></td>
                     <td></td>
                 </tr>
@@ -81,6 +78,13 @@
         </table>
     </div>
     <div>
+    </div>
+
+    <div style="display: flex; flex-direction: horizontal; justify-content: center">
+        <!-- pie-chart-code -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js">     </script>
+    <div id="piechart"></div>
+    <!--end  -->
     </div>
     <script src="inc_history.js"></script>
 </body>

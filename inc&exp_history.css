@@ -37,6 +37,9 @@ body {
   .expenses-list {
     margin: 20px;
   }
+  .income-list {
+    margin: 20px;
+  }
   
   table {
     width: 100%;
@@ -241,4 +244,40 @@ body {
         transform: translateY(-8px) rotate(-45deg);
         
     }
+}
+
+.search{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 1.5rem;
+}
+
+.search-val{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  background-color: #f1f1f1;
+}
+
+.search-btn{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* padding: 10px; */
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  background-color: #fbf8ca;
+  cursor: pointer; 
 }
