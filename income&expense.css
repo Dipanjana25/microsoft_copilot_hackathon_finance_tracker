@@ -37,6 +37,14 @@ a {
 }
 
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+  
+
 .hamburger {
     display: none;
     z-index: 2;

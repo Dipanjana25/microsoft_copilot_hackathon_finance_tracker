@@ -13,28 +13,15 @@ body{
   @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-  }
+
   
   html {
       font-size: 62.5%;
       font-family: 'Roboto', sans-serif;
   }
-  
-  li {
-      list-style: none;
-  
-  }
-  
-  a {
-      text-decoration: none;
-    
-  }
-  .header{
-    border-bottom: 1px solid #E2E8F0;
+
+.container{
+    padding-top: 30px;
 }
 
 .navbar {
@@ -93,8 +80,22 @@ body{
     left: 20px;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+  
+  
 
 @media only screen and (max-width: 768px) {
+    .to-do h2{
+
+        position: relative;
+        top: 1vh;
+        
+    }
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -141,6 +142,7 @@ body{
 }
 li,a{
     display: inline;
+    list-style: none;
     margin-top: 0px;
     color: white;
     text-align: center;
@@ -165,7 +167,7 @@ li,a{
     align-items: center;
     margin: 25vh auto 25vh;
 
-    background-color: aliceblue;
+    background-color: rgb(202, 234, 234);
     box-shadow: 0px 1px 5px rgb(123, 123, 123);
     opacity: 0.85;
 }
@@ -173,10 +175,10 @@ li,a{
 
     /* margin-bottom: 150px; */
     position: relative;
-    top: 3px;
+    top: 2px;
     font-family: 'Inconsolata', monospace;
     font-weight: 200;
-    font-size: 2rem;
+    font-size: 3rem;
     text-shadow: 1px 1px 1px #ffffff;
 }
 .input-unit{
@@ -204,14 +206,14 @@ button{
     border: none;
     outline: none;
     padding: 1vw 2vw;
-    background: #c692c3;
+    background: #94d2bd;
     font-size: 16px;
     cursor: pointer;
     border-radius: 30px;
 
 }
 button:hover{
-    background: #b785b4;
+    background: #8cc9b5;
 }
 /* .to-do li{
     color: black;
@@ -245,20 +247,11 @@ button:hover{
     flex: 1;
     border: none;
     outline: none;
-    background-color: aliceblue;
+    background-color: rgb(202, 234, 234);
 }
 .delete{
     font-size: 12px;
     cursor: pointer;
     border-radius: 30px;
     margin-left: 1vw;
-}
-@media screen and (max-width: 860px)
-{
-    .to-do h2{
-
-        position: relative;
-        top: 1vh;
-        
-    }
 }
