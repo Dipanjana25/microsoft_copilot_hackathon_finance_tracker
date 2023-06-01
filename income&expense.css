@@ -202,6 +202,18 @@ a {
     align-content: center;
 }
 
+#note-input{
+    width: 30rem;
+    height: 3rem;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
+    outline: none;
+    align-content: center;
+}
+
 #category-select-income{
     width: 30rem;
     height: 3rem;
@@ -257,3 +269,4 @@ h4{
     font-size: 18px;
     margin-top: 4px;
 }
+
