@@ -40,12 +40,23 @@ const isLeapYear = (year) => {
     'November',
     'December',
   ];
+  var p=0; var q=0;
   let month_picker = document.querySelector('#month-picker');
   const dayTextFormate = document.querySelector('.day-text-formate');
   const timeFormate = document.querySelector('.time-formate');
   const dateFormate = document.querySelector('.date-formate');
   let calendar_limit = document.querySelector('.calendar-limit');
   month_picker.onclick = () => {
+    var rect = dayTextFormate.getBoundingClientRect();
+  if (
+    p===0
+    // rect.top >= 0 &&
+    // rect.left >= 0 &&
+    // rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    // rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    // dayTextFormate.classList.contains('showtime')
+  ) {
+    
     month_list.classList.remove('hideonce');
     month_list.classList.remove('hide');
     month_list.classList.add('show');
@@ -55,6 +66,7 @@ const isLeapYear = (year) => {
     timeFormate.classList.add('hideTime');
     dateFormate.classList.remove('showtime');
     dateFormate.classList.add('hideTime');
+  } 
   };
   var m = JSON.parse(localStorage.getItem("m") || "[]");
   const generateCalendar = (month, year) => {
@@ -125,7 +137,16 @@ const isLeapYear = (year) => {
               var j;
               m.some(j => {
                 if(j.datee === fstr){
+                  count++;
+                  p++;q++;
+                  if(count>1)
+                  {
+                    // alert("please click on go back if this is not the date you want to set a limit for");
+                    return;
+                  }
+                  // head.scrollIntoView({ behavior: 'smooth' });
                   let head = document.getElementById("heading");
+                  head.scrollIntoView({ behavior: 'smooth' });
                   head.innerHTML=`Your Expense Limit is ${j.amount}`;
                   flag++;
                   var ok=document.createElement('button');
@@ -145,13 +166,14 @@ const isLeapYear = (year) => {
                 }
               })
             if(flag===0){
-              count++;
+              count++;p++;q++;
               if(count>1)
               {
-                alert("please click on go back if this is not the date you want to set a limit for");
+                // alert("please click on go back if this is not the date you want to set a limit for");
                 return;
               }
               let head = document.getElementById("heading");
+              calendar_limit.scrollIntoView({ behavior: 'smooth' });
               head.innerHTML=`Set Your Expense Limit for ${day.textContent}/${month+1}/${year} `;
               let f=document.createElement('form');
               var fn = document.createElement("input");
@@ -223,6 +245,7 @@ const isLeapYear = (year) => {
     month.innerHTML = `<div>${e}</div>`;
     month_list.append(month);
     month.onclick = () => {
+      // if(count<0){
       currentMonth.value = index;
       generateCalendar(currentMonth.value, currentYear.value);
       month_list.classList.replace('show', 'hide');
@@ -232,19 +255,42 @@ const isLeapYear = (year) => {
       timeFormate.classList.add('showtime');
       dateFormate.classList.remove('hideTime');
       dateFormate.classList.add('showtime');
+      // }
     };
   });
   
   (function () {
     month_list.classList.add('hideonce');
   })();
+
   document.querySelector('#pre-year').onclick = () => {
+    var rect = dateFormate.getBoundingClientRect();
+    if (
+      q===0
+      // rect.top >= 0 &&
+      // rect.left >= 0 &&
+      // rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      // rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      // dayTextFormate.classList.contains('showtime')
+    ) {
     --currentYear.value;
     generateCalendar(currentMonth.value, currentYear.value);
+  }
   };
   document.querySelector('#next-year').onclick = () => {
+    // var rect = dateFormate.getBoundingClientRect();
+    if (
+      q===0
+      // f.style.display==="none"
+      // rect.top >= 0 &&
+      // rect.left >= 0 &&
+      // rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      // rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      // dayTextFormate.classList.contains('showtime')
+    ) {
     ++currentYear.value;
     generateCalendar(currentMonth.value, currentYear.value);
+  }
   };
   
   let currentDate = new Date();

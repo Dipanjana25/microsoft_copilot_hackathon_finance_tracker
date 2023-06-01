@@ -14,17 +14,34 @@ function closeMenu() {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 }
+let currentDate = new Date();
+var m = JSON.parse(localStorage.getItem("m") || "[]");
+let mm=currentDate.getMonth()+1;
+let dd=currentDate.getDate();
+let yy=currentDate.getFullYear();
+let sa1=String(dd).concat(".");
+let sa2=String(mm).concat(".");
+let sa3=String(yy);
+let star=sa1.concat(sa2);
+let fastr=star.concat(sa3);
+var am=0;
+m.forEach(j => {
+  if(j.datee === fastr){
+    am=Number(j.amount);
+    
+  }
+});
 
-
-//pie-chart-code
+//pie-chart-code for income vs expense
 
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
+async function drawChart() {
  var data = google.visualization.arrayToDataTable([
-   ['Answer', 'Percentage'],
-   ['Income',     100], 
-   ['Expense',   23], 
+   [{label: 'Answer', type: 'string'},
+   {label: 'Percentage', type: 'number'}],
+   ['Income',100], 
+   ['Expense',23], 
  ]);
 
  var options = {
@@ -34,12 +51,40 @@ function drawChart() {
    width: 800
  };
 
- var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
+ var chart = new google.visualization.PieChart(document.getElementById('incvsexpchart'));
  chart.draw(data, options);
 }
+drawChart();
 
+//pie-chart-code for expense limit
+var text=document.createElement('div');
+text.innerHTML=`Expense vs Expense Limit`;
+google.charts.load('current', {'packages':['gauge']});
+google.charts.setOnLoadCallback(drawexpChart);
+async function drawexpChart() {
+  var data = google.visualization.arrayToDataTable([
+    [{label: 'Label', type: 'string'},
+    {label: 'Value', type: 'number'}],
+    ['Expense', am]
+  ]);
 
+  var options = {
+    title:'Titlekiunhidikhrhagawddddddddddd',
+    fontSize: 25,
+    height: 350,
+    width: 350,
+    redFrom: am/2, redTo: am,
+    yellowFrom:0, yellowTo: am,
+    minorTicks: 5
+  };
+  var chart = new google.visualization.Gauge(document.getElementById('explimitchart'));
+  chart.draw(data, options);
+  setInterval(function() {
+    data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
+    chart.draw(data, options);
+  }, 13000);
+}
+drawexpChart();
 
 //sticky navbar
 window.onscroll = function() {myFunction()};
