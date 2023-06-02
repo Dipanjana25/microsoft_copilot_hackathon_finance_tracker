@@ -28,6 +28,42 @@ else if(viewBtn.innerText === `₹${bal}`){
 }
 })
 
+let currentDate = new Date();
+var m = JSON.parse(localStorage.getItem("m") || "[]");
+let mm=currentDate.getMonth()+1;
+let dd=currentDate.getDate();
+let yy=currentDate.getFullYear();
+let s1=String(dd).concat(".");
+let s2=String(mm).concat(".");
+let s3=String(yy);
+let str=s1.concat(s2);
+let fstr=str.concat(s3);
+var am=-1;
+m.forEach(j => {
+    if(j.datee === fstr){
+        // console.log(j.amount);
+        am=Number(j.amount);
+        // console.log(am);
+    }
+});
+var sa,sa1,sa2;
+if(dd<10){
+    sa1="0".concat(String(dd));
+}
+else{
+    sa1=String(dd);
+}
+if(mm<10){
+    sa="0".concat(String(mm));
+    sa2=sa.concat("-");
+}
+else{
+    sa2=String(mm).concat("-");
+}
+let sa3=String(yy).concat("-");
+let star=sa3.concat(sa2);
+let fastr=star.concat(sa1);
+
 subBtn.addEventListener('click', () => {
 
     const category = categoryEl.value;
@@ -47,8 +83,7 @@ subBtn.addEventListener('click', () => {
         alert('Please select a date')
         return;
     }
-
-
+    
     bal-=amount;
     if(bal<0)
     alert('Insufficient balance');
@@ -65,7 +100,28 @@ subBtn.addEventListener('click', () => {
     // Saving
     localStorage.setItem("expenses", JSON.stringify(expenses));
     console.log(expenses);
-
+    var e=0;
+    expenses.map((k) => {
+        if(k.date=== fastr)
+        e+=k.amount;
+    })
+    console.log(e);var stat;
+    if(am>=0 && e>0)
+    {
+        if(e<=am)
+        {
+            stat = document.getElementById("status");
+            stat.innerText = "Good going, expenses are within the limit";
+            stat.style.color="green";
+            setTimeout(() => stat.innerText = "", 2000);
+        }
+        else{
+            stat=document.getElementById("status");
+            stat.innerText = "Umm, seems like today's expenses have gone overboard!!";
+            stat.style.color="red";
+            setTimeout(() => stat.innerText = "", 2000);
+        }
+    }
     categoryEl.value = '';
     inputEl.value = '';
     dateEl.value = '';
@@ -73,7 +129,7 @@ subBtn.addEventListener('click', () => {
 
     const msg = document.getElementById("msg");
     msg.innerText = "Expense added successfully";
-    setTimeout(() => msg.innerText = "", 1500);
+    setTimeout(() => msg.innerText = "", 2000);
 })
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))//local storage only stores strings for security purpose

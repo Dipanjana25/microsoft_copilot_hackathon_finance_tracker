@@ -151,13 +151,23 @@ const isLeapYear = (year) => {
                   // head.scrollIntoView({ behavior: 'smooth' });
                   let head = document.getElementById("heading");
                   head.scrollIntoView({ behavior: 'smooth' });
-                  head.innerHTML=`Your Expense Limit is ${j.amount}`;
+                  head.innerHTML=`Your Expense Limit is ${j.amount} for ${j.event}`;
                   flag++;
                   var ok=document.createElement('button');
                   ok.textContent="Press OK to continue";
                   var br = document.createElement("br");
+                  let del = document.createElement('button');
+                  del.id='delete';
+                  del.textContent="Delete";
+                  let ed = document.createElement('button');
+                  // ed.classList.add('cross');
+                  ed.id='edit';
+                  ed.innerHTML = 'Edit';
                   head.appendChild(br.cloneNode());
                   head.appendChild(ok);
+                  // head.appendChild(br.cloneNode());
+                  head.appendChild(ed);
+                  head.appendChild(del);
                   dayTextFormate.classList.remove('showtime');
                   dayTextFormate.classList.add('hidetime');
                   timeFormate.classList.remove('showtime');
@@ -183,14 +193,23 @@ const isLeapYear = (year) => {
               var fn = document.createElement("input");
               fn.setAttribute("input", "value");
               fn.setAttribute("placeholder", "Amount");
+              var note = document.createElement("input");
+              note.setAttribute("input", "text");
+              note.setAttribute("placeholder", "Subject for reminder");
               let s = document.createElement('button');
+              s.id='sub';
               s.textContent="Submit";
               let gb = document.createElement('button');
-              gb.textContent="Go Back";
+              gb.classList.add('cross');
+              gb.id='goback';
+              gb.innerHTML = '&times;';
+              // gb.textContent="Go Back";
               var br = document.createElement("br");
               f.appendChild(head);
               f.appendChild(br.cloneNode());
               f.appendChild(fn);
+              f.appendChild(br.cloneNode());
+              f.appendChild(note);
               f.appendChild(br.cloneNode());
               f.appendChild(s);
               f.appendChild(br.cloneNode());
@@ -214,9 +233,16 @@ const isLeapYear = (year) => {
                   alert('Please enter a valid amount')
                   return;
                 }
+                const n= note.value;
+                if (n === '') {
+                  alert('Please enter what you want to be reminded of');
+                  return;
+                }
                 m.push({
                   datee:fstr,
-                  amount:am});
+                  amount:am,
+                  event:n
+                });
                 calendar_limit.classList.replace('show', 'hide');
                 dayTextFormate.classList.remove('hideTime');
                 dayTextFormate.classList.add('showtime');
@@ -226,9 +252,14 @@ const isLeapYear = (year) => {
                 dateFormate.classList.add('showtime');
                 calendar_limit.classList.add('hideonce');
                 localStorage.setItem("m", JSON.stringify(m));
+                // const msg = document.createElement('div');
+                // msg.innerText = "Expense limit and its reminder added successfully";
+                // setTimeout(() => msg.innerText = "", 1500);
               } 
               else {
-                txt = "You pressed Cancel!";
+                // const msg = document.createElement('div');
+                // msg.innerText = "You pressed Cancel";
+                // setTimeout(() => msg.innerText = "", 1500);
               }
               });
               gb.addEventListener('click',function(){
