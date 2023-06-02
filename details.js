@@ -1,3 +1,6 @@
+var exp_detail = JSON.parse(localStorage.getItem("expenses") || "[]");
+var inc_detail = JSON.parse(localStorage.getItem("incomes") || "[]");
+
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 const navLink = document.querySelectorAll(".nav-link");
@@ -37,18 +40,29 @@ m.forEach(j => {
 google.charts.load('current', {'packages':['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 async function drawChart() {
- var data = google.visualization.arrayToDataTable([
-   [{label: 'Answer', type: 'string'},
-   {label: 'Percentage', type: 'number'}],
-   ['Income',100], 
-   ['Expense',23], 
- ]);
+  var e=0;
+  var i=0;
+  var e_item = JSON.parse(localStorage.getItem("expenses") || "[]");
+  var i_item = JSON.parse(localStorage.getItem("incomes") || "[]");
+
+  e_item.map((e_item) => {
+    e+=e_item.amount;
+  })
+  i_item.map((i_item) => {  
+    i+=i_item.amount;
+  })
+
+  var data = google.visualization.arrayToDataTable([
+    ['Answer', 'Percentage'],
+    ['Income',  i],
+    ['Expense',  e],  
+  ]);
 
  var options = {
    title: 'Income Vs Expense Visualization',
-   fontSize: 25,
-   height: 800,
-   width: 800
+   fontSize: 10,
+   height: 500,
+   width: 500
  };
 
  var chart = new google.visualization.PieChart(document.getElementById('incvsexpchart'));
