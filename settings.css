@@ -270,7 +270,7 @@ a {
   }
   .calendar-days button.current-date {
     color: var(--dark-text);
-    background-color: #9796f0;
+    background-color: #52ba49;
     border-radius: 50%;
   }
   /* .calendar-days button.event {
@@ -280,10 +280,10 @@ a {
   } */
   .notif {
     position: absolute;
-    top: 25px;
-    right: 12px;
-    width: 5px;
-    height: 5px;
+    top: 2px;
+    right: 2px;
+    width: 6px;
+    height: 6px;
     background-color: rgb(1, 66, 83);
     border-radius: 50%;
   }
@@ -370,7 +370,7 @@ a {
   .month-list {
     position: relative;
     left: 0;
-    top: -50px;
+    top: -20px;
     background-color: #ebebeb;
     color: var(--light-text);
     display: grid;

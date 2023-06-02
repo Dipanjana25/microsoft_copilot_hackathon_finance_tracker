@@ -22,16 +22,19 @@ var m = JSON.parse(localStorage.getItem("m") || "[]");
 let mm=currentDate.getMonth()+1;
 let dd=currentDate.getDate();
 let yy=currentDate.getFullYear();
-let sa1=String(dd).concat(".");
-let sa2=String(mm).concat(".");
-let sa3=String(yy);
-let star=sa1.concat(sa2);
-let fastr=star.concat(sa3);
+let s1=String(dd).concat(".");
+let s2=String(mm).concat(".");
+let s3=String(yy);
+let str=s1.concat(s2);
+let fstr=str.concat(s3);
+// console.log(fstr);
+//j.datee: (2+3).6.2023 because 4 spaces and then calendar is starting, now it is fixed
 var am=0;
 m.forEach(j => {
-  if(j.datee === fastr){
-    am=Number(j.amount);
-    
+  if(j.datee === fstr){
+    // console.log(j.amount);
+    am+=Number(j.amount);
+    // console.log(am);
   }
 });
 
@@ -76,27 +79,59 @@ text.innerHTML=`Expense vs Expense Limit`;
 google.charts.load('current', {'packages':['gauge']});
 google.charts.setOnLoadCallback(drawexpChart);
 async function drawexpChart() {
+  var sa,sa1,sa2;
+  if(dd<10){
+    sa1="0".concat(String(dd));
+  }
+  else{
+    sa1=String(dd);
+  }
+  if(mm<10){
+    sa="0".concat(String(mm));
+    sa2=sa.concat("-");
+  }
+  else{
+    sa2=String(mm).concat("-");
+  }
+  let sa3=String(yy).concat("-");
+  let star=sa3.concat(sa2);
+  let fastr=star.concat(sa1);
+  var e=0;
+  var e_item = JSON.parse(localStorage.getItem("expenses") || "[]");
+  e_item.map((k) => {
+    // console.log(j.date): 2023-06-02;
+    // fastr is yyyy-mm-dd
+    if(k.date=== fastr)
+    e+=k.amount;
+  })
+  console.log(fastr);
+  console.log(e);
+  console.log(am);
   var data = google.visualization.arrayToDataTable([
     [{label: 'Label', type: 'string'},
     {label: 'Value', type: 'number'}],
-    ['Expense', am]
+    ['Expense', e]
   ]);
 
   var options = {
-    title:'Titlekiunhidikhrhagawddddddddddd',
+    min:0,max:am,
     fontSize: 25,
     height: 350,
     width: 350,
-    redFrom: am/2, redTo: am,
-    yellowFrom:0, yellowTo: am,
-    minorTicks: 5
+    redFrom: (am/2), redTo: am,
+    yellowFrom:0, yellowTo: (am/2),
+    minorTicks: am/5,
+    animation: {
+      duration: 1000,
+      easing: 'inAndOut'
+    }
   };
   var chart = new google.visualization.Gauge(document.getElementById('explimitchart'));
   chart.draw(data, options);
-  setInterval(function() {
-    data.setValue(0, 1, 40 + Math.round(60 * Math.random()));
-    chart.draw(data, options);
-  }, 13000);
+  // setInterval(function() {
+  //   data.setValue(0, 1, Math.round(100 * Math.random()));
+  //   chart.draw(data, options);
+  // }, 2000);
 }
 drawexpChart();
 

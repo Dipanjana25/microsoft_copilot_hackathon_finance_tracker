@@ -46,31 +46,31 @@ const isLeapYear = (year) => {
   const timeFormate = document.querySelector('.time-formate');
   const dateFormate = document.querySelector('.date-formate');
   let calendar_limit = document.querySelector('.calendar-limit');
+  let calendar_days = document.querySelector('.calendar-days');
   month_picker.onclick = () => {
-    var rect = dayTextFormate.getBoundingClientRect();
-  if (
-    p===0
+    // var rect = dayTextFormate.getBoundingClientRect();
+    if(p===0
     // rect.top >= 0 &&
     // rect.left >= 0 &&
     // rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
     // rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    // dayTextFormate.classList.contains('showtime')
-  ) {
-    
-    month_list.classList.remove('hideonce');
-    month_list.classList.remove('hide');
-    month_list.classList.add('show');
-    dayTextFormate.classList.remove('showtime');
-    dayTextFormate.classList.add('hidetime');
-    timeFormate.classList.remove('showtime');
-    timeFormate.classList.add('hideTime');
-    dateFormate.classList.remove('showtime');
-    dateFormate.classList.add('hideTime');
+    // dayTextFormate.classList.contains('showtime')// did not work :(
+    ){
+      month_list.classList.remove('hideonce');
+      month_list.classList.remove('hide');
+      month_list.classList.add('show');
+      dayTextFormate.classList.remove('showtime');
+      dayTextFormate.classList.add('hidetime');
+      timeFormate.classList.remove('showtime');
+      timeFormate.classList.add('hideTime');
+      dateFormate.classList.remove('showtime');
+      dateFormate.classList.add('hideTime');
+      calendar_days.innerHTML=' ';
   } 
   };
   var m = JSON.parse(localStorage.getItem("m") || "[]");
   const generateCalendar = (month, year) => {
-    let calendar_days = document.querySelector('.calendar-days');
+    
     calendar_days.innerHTML = '';
     let calendar_header_year = document.querySelector('#year');
     let days_of_month = [
@@ -95,16 +95,18 @@ const isLeapYear = (year) => {
     calendar_header_year.innerHTML = year;
     
     let first_day = new Date(year, month);
+    console.log(first_day.getDay()-1);//4-1=3,34 slots to be filled so 0 to 33
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
 
       let day = document.createElement('button');
       day.style.border="none";
-      let s1=String(i).concat(".");
-      let s2=String(month+1).concat(".");
-      let s3=String(year);
-      let str=s1.concat(s2);
-      let fstr=str.concat(s3);
       if (i >= first_day.getDay()) {
+        let s1=String(i-first_day.getDay() + 1).concat(".");
+        let s2=String(month+1).concat(".");
+        let s3=String(year);
+        let str=s1.concat(s2);
+        let fstr=str.concat(s3);
+        // console.log(fstr);
         day.innerHTML = i - first_day.getDay() + 1;
 
         if (i - first_day.getDay() + 1 === currentDate.getDate() &&
@@ -117,6 +119,8 @@ const isLeapYear = (year) => {
             if(j.datee === fstr){
               if(year >= currentDate.getFullYear()){
                 if(month>currentDate.getMonth()||(month===currentDate.getMonth() && day.textContent>=currentDate.getDate())){
+                  console.log(j.amount);
+                  console.log(j.datee);
                   var circle = document.createElement('div');
                   circle.classList.add('notif');
                   day.appendChild(circle);
@@ -128,7 +132,7 @@ const isLeapYear = (year) => {
       day.addEventListener("click", function(){
         if(year >= currentDate.getFullYear()){
           if(month>currentDate.getMonth()||(month===currentDate.getMonth() && day.textContent>=currentDate.getDate())){
-            let s1=String(i).concat(".");
+            let s1=String(day.textContent).concat(".");
             let s2=String(month+1).concat(".");
             let s3=String(year);
             let str=s1.concat(s2);
