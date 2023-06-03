@@ -199,7 +199,7 @@ a {
   .calendar-days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 2px;
+    gap: 10px;
     color: var(--color-txt);
   }
   .calendar-days button {
@@ -264,29 +264,29 @@ a {
   }
   .calendar-days button:hover {
     transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
-    background-color: #04445e;
+    background-color: #0878a4;
     border-radius: 50%;
     color: var(--dark-text);
   }
   .calendar-days button.current-date {
     color: var(--dark-text);
-    background-color: #9796f0;
+    background-color: #52ba49;
     border-radius: 50%;
   }
-  /* .calendar-days button.event {
-    color: var(--dark-text);
-    background-color: #2522f1;
-    border-radius: 50%;
-  } */
+
   .notif {
     position: absolute;
-    top: 25px;
-    right: 12px;
-    width: 5px;
-    height: 5px;
+    top: 2px;
+    right: -1px;
+    width: 7px;
+    height: 7px;
     background-color: rgb(1, 66, 83);
     border-radius: 50%;
+    border-style: outset;
+    border-color: #b9eaf8 ;
+    border-width:1px;
   }
+  
   #heading{
     position:relative;
     text-align:center;
@@ -300,26 +300,44 @@ a {
     transition: all 1s ease-in-out;
     animation: to-left .71s forwards;
     height:25px;
-    width:250px;
+    width:100%;
     border-radius: 10px;
     text-align: center;
     border:none;
     background-color:black;
     color:white;
   }
-  #heading .show {
-    visibility: visible;
-    pointer-events: visible;
-    transition: 0.6s ease-in-out;
+  #heading>button#delete{
+    display: grid;
+    /* display:flex; */
+    place-content: center;
+    margin: 5px 5px;
+    transition: all 1s ease-in-out;
     animation: to-left .71s forwards;
+    height:25px;
+    width:50%;
+    border-radius: 20px;
+    text-align: center;
+    border:1px solid rgb(0, 0, 0);
+    background-color:rgb(192, 57, 57);;
+    color:white;
+    cursor:pointer;
   }
-  #heading .hideonce{
-    visibility: hidden;
-  }
-  #heading .hide {
-    animation: to-right 1s forwards;
-    visibility: none;
-    pointer-events: none;
+  #heading>button#edit{
+    display: grid;
+    /* display:flex; */
+    place-content: center;
+    margin: 5px 5px;
+    transition: all 1s ease-in-out;
+    animation: to-left .71s forwards;
+    height:25px;
+    width:50%;
+    border-radius: 20px;
+    text-align: center;
+    border:1px solid rgb(0, 0, 0);
+    background-color:#0878a4;
+    color:white;
+    cursor:pointer;
   }
   .calendar-limit {
     position: relative;
@@ -344,7 +362,7 @@ a {
     text-align: center;
     border-color: gray;
   }
-  .calendar-limit > form> button {
+  .calendar-limit > form> button#sub {
     height:25px;
     border-radius: 10px;
     text-align: center;
@@ -352,7 +370,26 @@ a {
     background-color:black;
     color:white;
   }
-  
+  .cross {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    border: none;
+    border-radius:50%;
+    background-color: rgb(192, 57, 57);
+    /* text-align:center; */
+    font-size: 17px;
+    height:20px;
+    width:20px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: transform 2s ease;
+  }
+  .cross:hover{
+    transform:rotate(360deg);
+    background-color: rgb(120, 4, 4);
+  }
+
   .calendar-limit>form .show {
     visibility: visible;
     pointer-events: visible;
@@ -370,7 +407,7 @@ a {
   .month-list {
     position: relative;
     left: 0;
-    top: -50px;
+    top: -20px;
     background-color: #ebebeb;
     color: var(--light-text);
     display: grid;
