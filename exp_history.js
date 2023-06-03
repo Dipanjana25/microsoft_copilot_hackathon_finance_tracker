@@ -43,6 +43,7 @@ for (expense of exp_detail) {
             // console.log(exp_detail.indexOf(expense));
             // console.log(e.target.closest('tr').rowIndex);
             var ind = e.target.closest('tr').rowIndex;
+            ind--;
             console.log(ind);
 
 
@@ -51,7 +52,7 @@ for (expense of exp_detail) {
             totalAmount -= exp_detail[ind].amount;
             totalAmountCell.textContent = totalAmount;
             bal+=exp_detail[ind].amount;
-            exp_detail.splice(exp_detail[ind], 1);
+            exp_detail.splice(ind, 1);
             localStorage.setItem("expenses", JSON.stringify(exp_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
             balEl.innerText=`Current Balance: ${bal}`;
