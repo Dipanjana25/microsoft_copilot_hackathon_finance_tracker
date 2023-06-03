@@ -83,11 +83,13 @@ subBtn.addEventListener('click', () => {
         alert('Please select a date')
         return;
     }
+    if(amount>bal)
+    {
+        alert('Insufficient balance');
+        return;
+    }
     
     bal-=amount;
-    if(bal<0)
-    alert('Insufficient balance');
-    else
     updateLocalStorage();
     console.log(amount);
     console.log(categoryEl.value);

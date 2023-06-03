@@ -24,7 +24,7 @@ bal=0;
 
 balEl.innerText=`Current Balance: ${bal}`;
 
-inc_detail.reverse();
+// inc_detail.reverse();
 var income = inc_detail[0];
 for (income of inc_detail) {
     totalAmount += income.amount;
@@ -43,14 +43,20 @@ for (income of inc_detail) {
     deleteBtn.textContent = 'Delete';
     editBtn.textContent = 'Edit';
     // deleteBtn.classList.add('delete-btn');
-    deleteBtn.addEventListener('click', function() {
+    deleteBtn.addEventListener('click', function(e) {
         var txt; //useless variable for now
         if (confirm("Confirm Delete?")) {
-            inc_detail.splice(inc_detail.indexOf(income), 1);
-            totalAmount -= income.amount;
+
+            var ind = e.target.closest('tr').rowIndex;
+            ind--;
+            console.log(ind);
+            console.log(inc_detail[ind].amount)
+            
+            totalAmount -= inc_detail[ind].amount;
             totalAmountCell.textContent = totalAmount;
-            bal-=income.amount;
-            inc_detailTableBody.removeChild(newRow);
+            bal-=inc_detail[ind].amount;
+            inc_detail.splice(ind, 1);
+            // inc_detailTableBody.removeChild(newRow);
             localStorage.setItem("incomes", JSON.stringify(inc_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
             balEl.innerText=`Current Balance: ${bal}`;
