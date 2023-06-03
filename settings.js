@@ -69,6 +69,7 @@ const isLeapYear = (year) => {
   } 
   };
   var m = JSON.parse(localStorage.getItem("m") || "[]");
+  console.log(m);
   const generateCalendar = (month, year) => {
     
     calendar_days.innerHTML = '';
@@ -95,7 +96,7 @@ const isLeapYear = (year) => {
     calendar_header_year.innerHTML = year;
     
     let first_day = new Date(year, month);
-    console.log(first_day.getDay()-1);//4-1=3,34 slots to be filled so 0 to 33
+    // console.log(first_day.getDay()-1);//4-1=3,34 slots to be filled so 0 to 33
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
 
       let day = document.createElement('button');
@@ -119,8 +120,8 @@ const isLeapYear = (year) => {
             if(j.datee === fstr){
               if(year >= currentDate.getFullYear()){
                 if(month>currentDate.getMonth()||(month===currentDate.getMonth() && day.textContent>=currentDate.getDate())){
-                  console.log(j.amount);
-                  console.log(j.datee);
+                  // console.log(j.amount);
+                  // console.log(j.datee);
                   var circle = document.createElement('div');
                   circle.classList.add('notif');
                   day.appendChild(circle);
@@ -151,7 +152,7 @@ const isLeapYear = (year) => {
                   // head.scrollIntoView({ behavior: 'smooth' });
                   let head = document.getElementById("heading");
                   head.scrollIntoView({ behavior: 'smooth' });
-                  head.innerHTML=`Your Expense Limit is ${j.amount} for ${j.event}`;
+                  head.innerHTML=`Your Expense Limit is  \u20B9${j.amount} for ${j.event}`;
                   flag++;
                   var ok=document.createElement('button');
                   ok.textContent="Press OK to continue";
@@ -166,7 +167,7 @@ const isLeapYear = (year) => {
                   head.appendChild(br.cloneNode());
                   head.appendChild(ok);
                   // head.appendChild(br.cloneNode());
-                  head.appendChild(ed);
+                  // head.appendChild(ed);
                   head.appendChild(del);
                   dayTextFormate.classList.remove('showtime');
                   dayTextFormate.classList.add('hidetime');
@@ -176,6 +177,15 @@ const isLeapYear = (year) => {
                   dateFormate.classList.add('hideTime');
                   ok.addEventListener('click',function(){
                     location.reload();
+                  });
+                  del.addEventListener('click',function(){
+                    // location.reload();
+                    if (confirm("Confirm Delete?")){
+                    const indexToDelete = m.findIndex((entry) => entry.datee === fstr);
+                      m.splice(indexToDelete, 1);
+                      localStorage.setItem("m", JSON.stringify(m));
+                      location.reload();
+                    }
                   });
                 }
               })

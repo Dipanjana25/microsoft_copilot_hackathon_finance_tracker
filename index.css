@@ -35,6 +35,47 @@ body{
     /* background-color: #065dd8; */
     transform: translateY(-2px);
   }
+  .bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #5c77ff;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .bubble:hover {
+    transform: scale(1.1);
+  }
+  
+  .bubble-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .bubble-icon {
+    font-size: 32px;
+    color: #fff;
+  }
+  
+  .reminder-list {
+    display: none;
+    position: absolute;
+    top: 70%;
+    left: 85%;
+    height:max-content;
+    width:max-content;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #94d2bd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
   
   @media (min-width: 768px) {
     .button-66 {

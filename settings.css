@@ -297,6 +297,7 @@ a {
   #heading>button{
     display: grid;
     place-content: center;
+    justify-content: center;
     margin: 5px 5px;
     transition: all 1s ease-in-out;
     animation: to-left .71s forwards;
@@ -307,10 +308,17 @@ a {
     border:none;
     background-color:black;
     color:white;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+  }
+  #heading>button:hover{
+    transform: scale(0.9);
+    transition: all 0.5s ease-in-out;
   }
   #heading>button#delete{
     display: grid;
     /* display:flex; */
+    justify-content: center;
     place-content: center;
     margin: 5px 5px;
     transition: all 1s ease-in-out;
@@ -326,13 +334,13 @@ a {
   }
   #heading>button#edit{
     display: grid;
-    /* display:flex; */
+    justify-content: center;
     place-content: center;
     margin: 5px 5px;
     transition: all 1s ease-in-out;
     animation: to-left .71s forwards;
     height:25px;
-    width:50%;
+    width:75%;
     border-radius: 20px;
     text-align: center;
     border:1px solid rgb(0, 0, 0);

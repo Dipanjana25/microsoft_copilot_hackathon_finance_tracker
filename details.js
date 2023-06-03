@@ -17,6 +17,11 @@ function closeMenu() {
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 }
+
+let bal = parseInt(localStorage.getItem("bal"));
+let print=document.getElementById('balance');
+print.innerText=`Current Balance: \u20B9${bal}`;
+
 let currentDate = new Date();
 var m = JSON.parse(localStorage.getItem("m") || "[]");
 let mm=currentDate.getMonth()+1;
@@ -63,7 +68,7 @@ async function drawChart() {
 
  var options = {
    title: 'Income Vs Expense Visualization',
-   fontSize: 10,
+   fontSize: 15,
    height: 500,
    width: 500
  };
@@ -74,8 +79,9 @@ async function drawChart() {
 drawChart();
 
 //pie-chart-code for expense limit
-var text=document.createElement('div');
-text.innerHTML=`Expense vs Expense Limit`;
+// var text=document.createElement('div');
+// text.innerHTML=`Expense vs Expense Limit`;
+if(am>0){
 google.charts.load('current', {'packages':['gauge']});
 google.charts.setOnLoadCallback(drawexpChart);
 async function drawexpChart() {
@@ -134,7 +140,7 @@ async function drawexpChart() {
   // }, 2000);
 }
 drawexpChart();
-
+}
 //sticky navbar
 window.onscroll = function() {myFunction()};
 var navbar = document.getElementById("navbar");
