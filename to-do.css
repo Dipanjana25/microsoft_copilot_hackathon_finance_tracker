@@ -6,7 +6,8 @@ body{
     height: 100vh;
     background-size: cover;
     overflow-x: hidden;
-    overflow-y: scroll
+    overflow-y: scroll;
+    text-decoration: none;
     
 }
 

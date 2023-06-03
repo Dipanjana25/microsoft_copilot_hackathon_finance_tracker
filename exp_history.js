@@ -37,14 +37,21 @@ for (expense of exp_detail) {
     deleteBtn.textContent = 'Delete';
     editBtn.textContent = 'Edit';
     // deleteBtn.classList.add('delete-btn');
-    deleteBtn.addEventListener('click', function() {
+    deleteBtn.addEventListener('click', function (e) {
         var txt; //useless variable for now
         if (confirm("Confirm Delete?")) {
-            exp_detail.splice(exp_detail.indexOf(expense), 1);
-            totalAmount -= expense.amount;
+            // console.log(exp_detail.indexOf(expense));
+            // console.log(e.target.closest('tr').rowIndex);
+            var ind = e.target.closest('tr').rowIndex;
+            console.log(ind);
+
+
+            // console.log(exp_detail[ind].amount);
+            
+            totalAmount -= exp_detail[ind].amount;
             totalAmountCell.textContent = totalAmount;
-            bal+=expense.amount;
-            exp_detailTableBody.removeChild(newRow);
+            bal+=exp_detail[ind].amount;
+            exp_detail.splice(exp_detail[ind], 1);
             localStorage.setItem("expenses", JSON.stringify(exp_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
             balEl.innerText=`Current Balance: ${bal}`;
