@@ -4,7 +4,7 @@ console.log(exp_detail);
 
 function delete_from_LocalStorage(){
     exp_detail.slice(exp_detail.indexOf(expense), 1);
-    balEl.innerText=`balance: ${bal}`;
+    balEl.innerText=`balance: \u20B9${bal}`;
 }
 
 let totalAmount = 0;
@@ -13,11 +13,21 @@ const totalAmountCell = document.getElementById('total-amount');
 const balEl = document.getElementById("balance");
 
 let bal = parseInt(localStorage.getItem("bal"));
-
 if(!bal)
 bal=0;
+// balEl.innerText=`Balance: ${bal}`;
 
-balEl.innerText=`Current balance: ${bal}`;
+const viewBtn = document.getElementById("view-balance");
+
+viewBtn.addEventListener('click', () => {
+if(viewBtn.innerText === "View balance"){
+        viewBtn.innerText = `Balance: ₹${bal}`;
+}
+else {
+        viewBtn.innerText = "View balance";
+}
+})
+
 
 exp_detail.reverse();
 var expense = exp_detail[0];
@@ -55,7 +65,7 @@ for (expense of exp_detail) {
             exp_detail.splice(ind, 1);
             localStorage.setItem("expenses", JSON.stringify(exp_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
-            balEl.innerText=`Current Balance: ${bal}`;
+            balEl.innerText=`Current Balance: \u20B9${bal}`;
             txt = "You pressed OK!";
             location.reload();
         } else {

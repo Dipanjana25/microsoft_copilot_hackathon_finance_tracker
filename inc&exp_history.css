@@ -290,3 +290,6 @@ body {
   background-color: #fbf8ca;
   cursor: pointer; 
 }
+#view-balance{
+  cursor: pointer;
+}

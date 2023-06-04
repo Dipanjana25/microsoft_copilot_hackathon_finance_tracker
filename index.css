@@ -137,8 +137,17 @@ body{
   color:#482ff7;
 }
 .image_home{
-  display:none;  }
+  display:none;  
+}
 
+.cross{
+  position :absolute;
+  right:5px;
+  top:5px;
+  height:10px;
+  width:10px;
+  cursor: pointer;
+}
   /* .reminder-list {
     display: none;
     position: absolute;
@@ -179,7 +188,11 @@ body{
   }
   .image_home{
     display:none;  }
-
+  /* .bg{
+    height:100px;
+    width:100px;
+    opacity:0.3;
+  } */
    
 
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');

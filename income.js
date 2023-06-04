@@ -15,7 +15,7 @@ let bal = parseInt(localStorage.getItem("bal"));
 
 if(!bal)
 bal=0;
-balEl.innerText=`Balance: ${bal}`;
+balEl.innerText=`Balance: \u20B9${bal}`;
 
 const viewBtn = document.getElementById("view-bal");
 
@@ -88,7 +88,7 @@ subBtn.addEventListener('click', () => {
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))
     //local storage only stores string for security purpose
-    balEl.innerText=`Balance: ${bal}`;
+    balEl.innerText=`Balance: \u20B9${bal}`;
 }
 
 //hamburger
