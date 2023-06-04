@@ -109,6 +109,9 @@ body{
   height: 100px; /* Adjust the desired height */
   opacity: 1;
 }
+.reminder-list.hide{
+  display:none;
+}
 .triangle{
     content: '';
     position: fixed;
@@ -125,11 +128,16 @@ body{
   transition:opacity 1.5s ease-in;
   opacity:1;
 }
+.triangle.hide{
+  display:none;
+}
 .link {
   font-weight: bold;
   text-decoration: none;
   color:#482ff7;
 }
+.image_home{
+  display:none;  }
 
   /* .reminder-list {
     display: none;
@@ -170,12 +178,12 @@ body{
     margin-top: 50px;
   }
   .image_home{
-    height: 95%;
-    width: 95%;  }
+    display:none;  }
 
    
 
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+ 
 
 * {
     margin: 0;
@@ -185,7 +193,8 @@ body{
 
 html {
     font-size: 62.5%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    
 }
 
 li {
@@ -208,6 +217,7 @@ a {
     align-items: center;
     padding: 1rem 1.5rem;
     background-color: #94d2bd;
+    font-weight: 300;
 }
 
 .sticky {
@@ -262,12 +272,26 @@ a {
     font-weight: 500;
     color: #482ff7;
 }
+.grid-container {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  justify-content: center;
+  align-items: center;
+}
 
 
 @media only screen and (max-width: 768px) {
+
+  .image_home{
+    display: block;
+    height: 95%;
+    width: 100%;  }
+
     .grid-container {
         display: grid;
         grid-template-rows: auto auto auto auto;
+        justify-content: center;
+        align-items: center;
       }
       .welcome{
         font-size: 25px;
@@ -319,6 +343,6 @@ a {
     }
 }
 
-#v{
+#view-balance{
     cursor: pointer;
 }

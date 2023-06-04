@@ -21,13 +21,13 @@ if(!bal)
 bal=0;
 // balEl.innerText=`Balance: ${bal}`;
 
-const viewBtn = document.getElementById("v");
+const viewBtn = document.getElementById("view-balance");
 
 viewBtn.addEventListener('click', () => {
 if(viewBtn.innerText === "View balance"){
-        viewBtn.innerText = `₹${bal}`;
+        viewBtn.innerText = `Balance: ₹${bal}`;
 }
-else if(viewBtn.innerText === `₹${bal}`){
+else {
         viewBtn.innerText = "View balance";
 }
 })
@@ -67,15 +67,25 @@ if(flag===0){
   boxContent.appendChild(listItem);
   boxContent.appendChild(redirect);
 }
+
+
 bubble.addEventListener('click',function(){
   reminderList.classList.toggle('show');
   tri.classList.toggle('show');
+  const myTimeout = setTimeout(hide,6000);
+
+  
 });
-window.addEventListener('click', (event) => {
-  if (!bubble.contains(event.target) && !reminderList.contains(event.target)) {
-    location.reload();
-  }
-});
+function hide(){
+  reminderList.classList.toggle('hide');
+  tri.classList.toggle('hide');
+
+}
+// window.addEventListener('click', (event) => {
+//   if (!bubble.contains(event.target) && !reminderList.contains(event.target)) {
+//     location.reload();
+//   }
+// });
 
 //sticky navbar
 // window.onscroll = function() {myFunction()};
