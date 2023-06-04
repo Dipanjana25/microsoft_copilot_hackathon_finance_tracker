@@ -34,7 +34,9 @@ else if(viewBtn.innerText === `₹${bal}`){
 
 const bubble = document.getElementById('bubble');
 var m = JSON.parse(localStorage.getItem("m") || "[]");
-const reminderList = document.getElementById('reminderList');
+let reminderList = document.getElementById('reminderList');
+const boxContent = document.querySelector('.contents');
+const tri=document.querySelector('.triangle');
 let currentDate = new Date();
 let mm=currentDate.getMonth()+1;
 let dd=currentDate.getDate();
@@ -44,42 +46,45 @@ let s2=String(mm).concat(".");
 let s3=String(yy);
 let str=s1.concat(s2);
 let fstr=str.concat(s3);
-reminderList.innerHTML = '';
+// reminderList.innerHTML = '';
 var flag=0;
 m.forEach(j => {
   if(j.datee === fstr){
     flag++;
-    var br = document.createElement("br");
-    const listItem = document.createElement('div');
-    // listItem.textContent = j.amount;
-    listItem.innerHTML=`Subject: ${j.event}\nAmount: ${j.amount}\nDate:${dd}/${mm}/${yy}`;
-    reminderList.appendChild(listItem);
-    reminderList.appendChild(br.cloneNode());
-      // remind.style.display='block';
+    // const space = document.createElement('br');
+    const newContent = document.createElement('p');
+    newContent.innerHTML = `Subject: ${j.event} <br> Amount: ${j.amount} <br> Date:${dd}/${mm}/${yy}`;
+    boxContent.appendChild(newContent);
+    // boxContent.appendChild(space);
   }
 });
-if(flag!==0){
-  const listItem = document.createElement('div');
-  listItem.innerHTML=`You have no reminders for today`;
-  reminderList.appendChild(listItem);
+if(flag===0){
+  const listItem = document.createElement('p');
+  listItem.textContent="You have no reminders for today !!";
+  const redirect = document.createElement('p');
+  const content='In order to set one, go to <a href="settings.html" class="link">Settings</a>';
+  redirect.innerHTML=content;
+  boxContent.appendChild(listItem);
+  boxContent.appendChild(redirect);
 }
 bubble.addEventListener('click',function(){
-  reminderList.style.display = 'block';
+  reminderList.classList.toggle('show');
+  tri.classList.toggle('show');
 });
 window.addEventListener('click', (event) => {
   if (!bubble.contains(event.target) && !reminderList.contains(event.target)) {
-    reminderList.style.display = 'none';
+    location.reload();
   }
 });
 
 //sticky navbar
-window.onscroll = function() {myFunction()};
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}
+// window.onscroll = function() {myFunction()};
+// var navbar = document.getElementById("navbar");
+// var sticky = navbar.offsetTop;
+// function myFunction() {
+//   if (window.pageYOffset >= sticky) {
+//     navbar.classList.add("sticky")
+//   } else {
+//     navbar.classList.remove("sticky");
+//   }
+// }

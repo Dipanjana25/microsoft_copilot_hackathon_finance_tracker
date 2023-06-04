@@ -63,7 +63,75 @@ body{
     color: #fff;
   }
   
-  .reminder-list {
+  .reminder-list{
+    height: 100px;
+    width: 250px;
+    scroll-behavior: smooth;
+    background-color: #94d2bd;
+    position: fixed;
+    border-radius: 6px;
+    overflow-y: auto;
+    opacity:0;
+    pointer-events: auto;
+    transition: transform 1s ease-in-out;
+    scrollbar-width: thin;
+    overflow-x: hidden; 
+    padding: 10px;
+    transform: translateY(100%);
+}
+.reminder-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reminder-list::-webkit-scrollbar-track {
+  background-color: #94d2bd;
+}
+
+.reminder-list::-webkit-scrollbar-thumb {
+  background-color: #5c77ff;
+  border-radius: 4px;
+}
+
+.reminder-list::-webkit-scrollbar-thumb:hover {
+  background-color: #482ff7;
+}
+.contents{
+  word-wrap:break-word;
+  padding-left: 10px;
+  padding-top:10px;
+}
+
+.reminder-list.show {
+  display: block;
+  bottom: 20px; 
+  right:20px;/* Set the desired position after animation */
+  transform: translateX(0) translateY(-75%) ; /* Set the desired position after animation */
+  height: 100px; /* Adjust the desired height */
+  opacity: 1;
+}
+.triangle{
+    content: '';
+    position: fixed;
+    height:20px;
+    width: 20px;
+    background: #94d2bd;
+    right:27px;
+    bottom:86px;
+    opacity:0;
+    /* transform: translateY(100%); */
+    transform:rotate(-45deg);
+}
+.triangle.show {
+  transition:opacity 1.5s ease-in;
+  opacity:1;
+}
+.link {
+  font-weight: bold;
+  text-decoration: none;
+  color:#482ff7;
+}
+
+  /* .reminder-list {
     display: none;
     position: absolute;
     top: 70%;
@@ -75,7 +143,7 @@ body{
     background-color: #94d2bd;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
+  } */
   
   @media (min-width: 768px) {
     .button-66 {
