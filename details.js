@@ -24,7 +24,10 @@ print.innerText=`Current Balance: \u20B9${bal}`;
 
 let currentDate = new Date();
 var m = JSON.parse(localStorage.getItem("m") || "[]");
+console.log("m is");
+console.log(m);
 let mm=currentDate.getMonth()+1;
+console.log(mm);
 let dd=currentDate.getDate();
 let yy=currentDate.getFullYear();
 let s1=String(dd).concat(".");
@@ -68,9 +71,11 @@ async function drawChart() {
 
  var options = {
    title: 'Income Vs Expense Visualization',
-   fontSize: 15,
+   fontSize: 16,
+   fontName: 'Poppins',
    height: 500,
-   width: 500
+   width: 500,
+   is3D: true
  };
 
  var chart = new google.visualization.PieChart(document.getElementById('incvsexpchart'));
@@ -82,6 +87,7 @@ drawChart();
 // var text=document.createElement('div');
 // text.innerHTML=`Expense vs Expense Limit`;
 if(am>0){
+titl.classList.toggle('show');
 google.charts.load('current', {'packages':['gauge']});
 google.charts.setOnLoadCallback(drawexpChart);
 async function drawexpChart() {
@@ -120,6 +126,7 @@ async function drawexpChart() {
   ]);
 
   var options = {
+
     min:0,max:am,
     fontSize: 25,
     height: 350,

@@ -9,8 +9,15 @@
 
 html {
     font-size: 62.5%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
+h2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+}
+
 
 li {
     list-style: none;
@@ -94,12 +101,23 @@ a {
   align-items: center;
 } */
 .graphs{
+ 
+  margin-top: 20px;
   width: 100%;
-  display: inline-block;
+  display: flex;
   align-items: center;
   justify-content: center;
-  display: grid;
+
 }
+#titl{
+  display: none;
+}
+
+#titl.show{
+  display: block;
+  font-size: 20px;
+}
+
 
 
 @media only screen and (max-width: 768px) {
