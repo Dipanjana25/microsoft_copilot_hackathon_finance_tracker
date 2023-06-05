@@ -139,7 +139,8 @@ var value = parseInt(income.amount);
       title: 'Category based Income Visualization',
       fontSize: 10,
       height: 500,
-      width: 500
+      width: 500,
+      is3D: true
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -165,15 +166,3 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 
-
-//sticky navbar
-window.onscroll = function() {myFunction()};
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}

@@ -1,8 +1,9 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     text-decoration: none;
   }
+ 
   
   h1, h2 {
     text-align: center;
@@ -290,6 +291,6 @@ body {
   background-color: #fbf8ca;
   cursor: pointer; 
 }
-#view-balance{
-  cursor: pointer;
+.search-btn:hover{
+  background-color: #e8e4b2;
 }

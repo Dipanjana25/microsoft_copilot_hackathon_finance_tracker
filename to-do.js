@@ -70,8 +70,14 @@ function addtask(){
 
 
 tasksEl.addEventListener("click", function(e){
+    
     if(e.target.tagName === "BUTTON")
+    {
+        if(confirm("Delete this task?"))
+        {
     e.target.parentElement.parentElement.remove();
+        }
+    }
     else if(e.target.tagName === "INPUT")
     {
         if(e.target.checked===true)
@@ -84,6 +90,7 @@ tasksEl.addEventListener("click", function(e){
         }
     }
     savedata();
+
 
 },false)
 
@@ -121,15 +128,3 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 
-
-//sticky navbar
-window.onscroll = function() {myFunction()};
-var navbar = document.getElementById("navbar");
-var sticky = navbar.offsetTop;
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navbar.classList.add("sticky")
-  } else {
-    navbar.classList.remove("sticky");
-  }
-}

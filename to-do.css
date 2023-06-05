@@ -1,6 +1,13 @@
-
-body{
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    
+    
+}
+body{
+
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -8,35 +15,34 @@ body{
     overflow-x: hidden;
     overflow-y: scroll;
     text-decoration: none;
+    background-color: rgb(246, 249, 248);
     
 }
-
-  @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-
   
   html {
       font-size: 62.5%;
-       font-family: 'Poppins', sans-serif;
+      font-family: 'Poppins', sans-serif;
   }
+
 
 .container{
     padding-top: 30px;
 }
 
 .navbar {
-    margin-top:0px;
+
+    margin-top: 0px;
+
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     align-items: center;
-    padding: 1.5rem 1.5rem;
+    padding: 3.09rem 1rem;
     background-color: #94d2bd;
 }
 
 .hamburger {
     display: none;
-    z-index: 2;
+    z-index: 200;
 }
 
 .bar {
@@ -80,17 +86,10 @@ body{
     font-weight: 500;
     color: #482ff7;
     position:fixed;
-    left: 20px;
+    left: 15px;
 }
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 2;
-}
-  
-  
+    
 
 @media only screen and (max-width: 768px) {
     .to-do h2{
@@ -101,7 +100,7 @@ body{
     }
     .nav-menu {
         position: fixed;
-        left: -100%;
+        left: -120%;
         top: 5rem;
         flex-direction: column;
         background-color: #fff;
@@ -179,10 +178,11 @@ li,a{
     /* margin-bottom: 150px; */
     position: relative;
     top: 2px;
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Poppins', sans-serif;
     font-weight: 200;
-    font-size: 3rem;
-    text-shadow: 1px 1px 1px #ffffff;
+    font-size: 2.5rem;
+    padding-bottom: 1rem;
+    text-shadow: 1px 1px 1px #e7f0ec;
 }
 .input-unit{
     display: flex;
@@ -248,7 +248,9 @@ button:hover{
 }
 .actual{
     flex: 1;
+    min-width: 100px;
     border: none;
+    padding-left: 3px;
     outline: none;
     background-color: rgb(202, 234, 234);
 }
