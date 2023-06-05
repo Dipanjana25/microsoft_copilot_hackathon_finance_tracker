@@ -6,14 +6,12 @@ const dateEl = document.getElementById("date-input");
 const noteEl = document.getElementById("note-input");
 const subBtn = document.getElementById("sub-btn");
 
-const balEl = document.getElementById("balance");
 
 let bal = parseInt(localStorage.getItem("bal"));
 
 if(!bal)
 bal=0;
 
-balEl.innerText=`Balance: \u20B9${bal}`;
 
 const viewBtn = document.getElementById("view-bal");
 
@@ -65,7 +63,6 @@ let star=sa3.concat(sa2);
 let fastr=star.concat(sa1);
 
 subBtn.addEventListener('click', () => {
-
     const category = categoryEl.value;
     const amount = Number(inputEl.value);
     const date = dateEl.value;
@@ -91,6 +88,7 @@ subBtn.addEventListener('click', () => {
     
     bal-=amount;
     updateLocalStorage();
+    viewBtn.innerText = "View balance";
     console.log(amount);
     console.log(categoryEl.value);
     console.log(dateEl.value);
@@ -134,8 +132,13 @@ subBtn.addEventListener('click', () => {
     setTimeout(() => msg.innerText = "", 2000);
 })
 function updateLocalStorage(){
-    localStorage.setItem("bal", JSON.stringify(bal))//local storage only stores strings for security purpose
-    balEl.innerText=`balance: \u20B9${bal}`;
+    localStorage.setItem("bal", JSON.stringify(bal))
+    if(viewBtn.innerText === "View balance"){
+        viewBtn.innerText = "View balance";
+}
+else if(viewBtn.innerText === `₹${bal}`){
+        viewBtn.innerText = `₹${bal}`;
+}
 }
 
 //hamburger

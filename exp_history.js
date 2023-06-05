@@ -2,15 +2,11 @@
 var exp_detail = JSON.parse(localStorage.getItem("expenses") || "[]");
 console.log(exp_detail);
 
-function delete_from_LocalStorage(){
-    exp_detail.slice(exp_detail.indexOf(expense), 1);
-    balEl.innerText=`balance: \u20B9${bal}`;
-}
 
 let totalAmount = 0;
 const exp_detailTableBody = document.getElementById('expense-table-body');
 const totalAmountCell = document.getElementById('total-amount');
-const balEl = document.getElementById("balance");
+// const balEl = document.getElementById("balance");
 
 let bal = parseInt(localStorage.getItem("bal"));
 if(!bal)
@@ -37,8 +33,9 @@ for (expense of exp_detail) {
 
     const newRow = exp_detailTableBody.insertRow();
     const categoryCell = newRow.insertCell();
-    const noteCell = newRow.insertCell();
+    
     const amountCell = newRow.insertCell();
+    const noteCell = newRow.insertCell();
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
     const editCell = newRow.insertCell();
@@ -50,22 +47,46 @@ for (expense of exp_detail) {
     deleteBtn.addEventListener('click', function (e) {
         var txt; //useless variable for now
         if (confirm("Confirm Delete?")) {
-            // console.log(exp_detail.indexOf(expense));
-            // console.log(e.target.closest('tr').rowIndex);
+            // // console.log(exp_detail.indexOf(expense));
+            // // console.log(e.target.closest('tr').rowIndex);
+            // var ind = e.target.closest('tr').rowIndex;
+            // ind--;
+            // console.log(ind);
+
+
+            // // console.log(exp_detail[ind].amount);
+            
+            // totalAmount -= exp_detail[ind].amount;
+            // totalAmountCell.textContent = totalAmount;
+            // bal+=exp_detail[ind].amount;
+            // exp_detail.splice(ind, 1);
+            // inc_detailTableBody.removeChild(newRow);
+            // localStorage.setItem("expenses", JSON.stringify(exp_detail));
+            // localStorage.setItem("bal", JSON.stringify(bal));
+            // balEl.innerText=`Current Balance: \u20B9${bal}`;
+            // txt = "You pressed OK!";
+            // location.reload();
+
+
             var ind = e.target.closest('tr').rowIndex;
             ind--;
             console.log(ind);
-
-
-            // console.log(exp_detail[ind].amount);
+            console.log(exp_detail[ind].amount)
             
             totalAmount -= exp_detail[ind].amount;
             totalAmountCell.textContent = totalAmount;
             bal+=exp_detail[ind].amount;
+            if(viewBtn.innerText === "View balance"){
+              viewBtn.innerText = "View balance";
+            }
+            else {
+              viewBtn.innerText = `Balance: ₹${bal}`;
+            }
             exp_detail.splice(ind, 1);
+            exp_detailTableBody.removeChild(newRow);
             localStorage.setItem("expenses", JSON.stringify(exp_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
-            balEl.innerText=`Current Balance: \u20B9${bal}`;
+            // balEl.innerText=`Current Balance: \u20B9${bal}`;
             txt = "You pressed OK!";
             location.reload();
         } else {

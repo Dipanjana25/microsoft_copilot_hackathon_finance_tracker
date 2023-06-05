@@ -198,7 +198,7 @@ const isLeapYear = (year) => {
               }
               let head = document.getElementById("heading");
               calendar_limit.scrollIntoView({ behavior: 'smooth' });
-              head.innerHTML=`Set Your Expense Limit for ${day.textContent}/${month+1}/${year} `;
+              // head.innerHTML=`Set Your Expense Limit for ${day.textContent}/${month+1}/${year} `;
               let f=document.createElement('form');
               var fn = document.createElement("input");
               fn.setAttribute("input", "value");
@@ -208,14 +208,14 @@ const isLeapYear = (year) => {
               note.setAttribute("placeholder", "Subject for reminder");
               let s = document.createElement('button');
               s.id='sub';
-              s.textContent="Submit";
+              s.textContent="Set Limit for " + `${day.textContent}/${month+1}/${year}`;
               let gb = document.createElement('button');
               gb.classList.add('cross');
               gb.id='goback';
               gb.innerHTML = '&times;';
               // gb.textContent="Go Back";
               var br = document.createElement("br");
-              f.appendChild(head);
+              // f.appendChild(head);
               f.appendChild(br.cloneNode());
               f.appendChild(fn);
               f.appendChild(br.cloneNode());
