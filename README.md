@@ -84,3 +84,6 @@ Track Progress and Adapt as Needed
 </pre>
 
 Thank you!!
+
+![image](https://github.com/Dipanjana25/microsoft_copilot_hackathon_finance_tracker/assets/96725005/cbf35bf4-59a3-4cfb-9935-b0d4d3ad6bb0)
+
