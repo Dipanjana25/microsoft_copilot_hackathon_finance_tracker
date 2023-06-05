@@ -42,7 +42,7 @@ body{
 
 .hamburger {
     display: none;
-    z-index: 2;
+    z-index: 200;
 }
 
 .bar {
