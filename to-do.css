@@ -24,12 +24,15 @@ body{
       font-family: 'Poppins', sans-serif;
   }
 
+
 .container{
     padding-top: 30px;
 }
 
 .navbar {
+
     margin-top: 0px;
+
     display: flex;
     justify-content: end;
     align-items: center;
@@ -57,13 +60,13 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1;
+    z-index: 100;
     margin-right: 7rem;
 }
 
 .nav-item {
     margin-left: 7rem;
-    
+    font-family: 'Poppins', sans-serif;
 }
 
 .nav-link{
@@ -71,6 +74,7 @@ body{
     font-weight: 400;
     color: #475569;
     transition: all 0.3s ease 0s;
+    font-family: 'Poppins', sans-serif;
 }
 
 .nav-link:hover{

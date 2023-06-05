@@ -72,7 +72,7 @@ if(flag===0){
 bubble.addEventListener('click',function(){
   reminderList.classList.toggle('show');
   tri.classList.toggle('show');
-  const myTimeout = setTimeout(hide,6000);
+  // const myTimeout = setTimeout(hide,6000);
 
   
 });

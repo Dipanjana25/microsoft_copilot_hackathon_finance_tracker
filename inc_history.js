@@ -4,7 +4,7 @@ console.log(inc_detail);
 
 function delete_from_LocalStorage(){
     inc_detail.pop(inc_detail.indexOf(income), 1);
-    balEl.innerText=`Current Balance: ${bal}`;
+    balEl.innerText=`Current Balance:\u20B9 ${bal}`;
 }
 
 const toggleDropdown = function () {
@@ -18,11 +18,20 @@ const totalAmountCell = document.getElementById('total-amount-income');
 const balEl = document.getElementById("balance");
 
 let bal = parseInt(localStorage.getItem("bal"));
-
 if(!bal)
 bal=0;
+// balEl.innerText=`Balance: ${bal}`;
 
-balEl.innerText=`Current Balance: ${bal}`;
+const viewBtn = document.getElementById("view-balance");
+
+viewBtn.addEventListener('click', () => {
+if(viewBtn.innerText === "View balance"){
+        viewBtn.innerText = `Balance: ₹${bal}`;
+}
+else {
+        viewBtn.innerText = "View balance";
+}
+})
 
 // inc_detail.reverse();
 var income = inc_detail[0];
@@ -59,7 +68,7 @@ for (income of inc_detail) {
             // inc_detailTableBody.removeChild(newRow);
             localStorage.setItem("incomes", JSON.stringify(inc_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
-            balEl.innerText=`Current Balance: ${bal}`;
+            balEl.innerText=`Current Balance: \u20B9${bal}`;
             txt = "You pressed OK!";
             location.reload();
         } else {
@@ -85,7 +94,7 @@ var value = parseInt(income.amount);
 
             localStorage.setItem("incomes", JSON.stringify(inc_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
-            balEl.innerText=`Current Balance: ${bal}`;
+            balEl.innerText=`Current Balance: \u20B9${bal}`;
             location.reload();
             console.log(inc_detail);
             console.log(bal);

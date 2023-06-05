@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
 
 * {
     margin: 0;
@@ -239,7 +241,7 @@ a {
     cursor: pointer;
   }
   .year-change:hover {
-    background-color: #9796f0;
+    background-color: #0878a4;
     transition:all .2s ease-in-out ;
     transform: scale(1.12);
   }
@@ -434,7 +436,7 @@ a {
     cursor: pointer;
   }
   .month-list > div > div:hover {
-    background-color:#9796f0;
+    background-color:#0878a4;
     color: var(--dark-text);
     transform: scale(0.9);
     transition: all 0.2s ease-in-out;
