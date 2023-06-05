@@ -7,6 +7,7 @@
     text-decoration: none;
 }
 
+
 html {
     font-size: 62.5%;
     font-family: 'Poppins', sans-serif;
@@ -38,6 +39,7 @@ a {
   align-items: center;
   padding: 1.5rem 1.5rem;
   background-color: #94d2bd;
+
 }
 
 .hamburger {
@@ -88,13 +90,6 @@ a {
   left: 20px;
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-}
-
 /* #incvsexpchart{
   justify-content: center;
   text-align: center;
@@ -121,6 +116,9 @@ a {
 
 
 @media only screen and (max-width: 768px) {
+  *{
+    overflow-x: hidden;
+  }
   .nav-menu {
       position: fixed;
       left: -100%;

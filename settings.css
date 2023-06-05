@@ -6,6 +6,10 @@
     box-sizing: border-box;
     text-decoration: none;
     
+    
+}
+body{
+  background-color: rgb(246, 249, 248);
 }
 
 html {
@@ -37,15 +41,9 @@ a {
 }
 
 
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-}
 .hamburger {
     display: none;
-    z-index: 2;
+    z-index: 200;
 }
 
 .bar {
