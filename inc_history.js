@@ -27,7 +27,9 @@ else {
         viewBtn.innerText = "View balance";
 }
 })
-
+inc_detail.sort(function(a, b) {
+  return a.date - b.date;
+});
 // inc_detail.reverse();
 var income = inc_detail[0];
 for (income of inc_detail) {
@@ -76,35 +78,134 @@ for (income of inc_detail) {
             txt = "You pressed Cancel!";
         }
     })
-var value = parseInt(income.amount);
-    editBtn.addEventListener('click', function() {
-        if(editBtn.innerHTML.toLowerCase() == "edit"){
-            amountCell.focus();
-            amountCell.style.backgroundColor = "beige";
-            amountCell.contentEditable = true;
-            editBtn.innerHTML = "Save";
-            value = amountCell.innerHTML;
-        }
-
-        else if(editBtn.innerHTML.toLowerCase() == "save"){
-            amountCell.innerHTML = value;
-            console.log(value);
-            amountCell.contentEditable = false;
-            amountCell.style.backgroundColor = "white";
-            editBtn.innerHTML = "Edit";
-
-            localStorage.setItem("incomes", JSON.stringify(inc_detail));
-            localStorage.setItem("bal", JSON.stringify(bal));
-            balEl.innerText=`Current Balance: \u20B9${bal}`;
-            location.reload();
-            console.log(inc_detail);
-            console.log(bal);
-        }
+    var f=0;var count=0;var datecount=0;
+    editBtn.addEventListener('click', function (e) {
+      f++;
+      if((f%2)===1){
+        noteCell.classList.add('avatar');
+        amountCell.classList.add('avatar');
+        categoryCell.classList.add('avatar');
+        dateCell.classList.add('avatar');
+        noteCell.setAttribute('contenteditable', 'true');
+        amountCell.setAttribute('contenteditable', 'true');
+        categoryCell.addEventListener('click',function(){
+          categoryCell.setAttribute('contenteditable', 'true');
+          var dropdown = document.createElement('div');
+          dropdown.className = 'dropdown';
+          var select = document.createElement('select');
+          select.onchange = function() {
+            replaceValue(this);
+            count++;
+          };
+          var options = ['Salary','Income tax return','Rent','Subsidy'];
+          for (var i = 0; i < options.length; i++) {
+            var option = document.createElement('option');
+            option.value = options[i];
+            option.text = options[i];
+            select.appendChild(option);
+          }
+          dropdown.appendChild(select);
+          categoryCell.innerText = '';
+          categoryCell.appendChild(dropdown);
+          dropdown.style.display = 'block';
+          dropdown.onclick = function(event) {
+            event.stopPropagation();
+          };
+          function replaceValue(select) {
+            var selectedOption = select.value;
+            categoryCell.innerText = selectedOption;
+          }
+        });
+        dateCell.addEventListener('click',function(){
+          dateCell.setAttribute('contenteditable', 'true');
+          var datePicker=document.createElement("input");
+          datePicker.type="date";
+          datePicker.value = dateCell.innerText;
+          datePicker.onblur = function() {
+            replace(this);
+            // datecount++;
+          };
+          // if(datecount!==0){
+          dateCell.innerText = '';
+          dateCell.appendChild(datePicker);
+          // datePicker.focus();
+          function replace(datePicker) {
+            var selectedDate = datePicker.value;
+            var pattern = /^\d{4}-\d{2}-\d{2}$/;
+            // if(pattern.test(selectedDate))
+            dateCell.innerText = selectedDate;
+            // else
+            // alert("please enter a valid format of date which is yyyy-mm-dd");
+          }
+        // }
+        });
+        editBtn.textContent = 'Save';
+        editBtn.style.backgroundColor="green";
+        var ind = e.target.closest('tr').rowIndex;
+        ind--;
+        totalAmount -= inc_detail[ind].amount;
+        bal-=inc_detail[ind].amount;
+    }
+    else{
+      noteCell.classList.remove('avatar');
+      amountCell.classList.remove('avatar');
+      categoryCell.classList.remove('avatar');
+      dateCell.classList.remove('avatar');
+      var ind = e.target.closest('tr').rowIndex;
+      ind--;
+      var newamount=amountCell.innerText;
+      var newnote=noteCell.innerText;
+      if(count!==0)
+      {var newcategory=categoryCell.innerText;
+        inc_detail[ind].category=newcategory;
+      }
+      if(datecount!==0){
+        var newdate=dateCell.innerText;
+        inc_detail[ind].date=newdate;
+      }
+      inc_detail[ind].note=newnote;
+      totalAmount += Number(newamount);
+      totalAmountCell.textContent = totalAmount;
+      noteCell.textContent=newnote;
+      inc_detail[ind].amount=Number(newamount);
+      bal+=inc_detail[ind].amount;
+      amountCell.removeAttribute('contenteditable');
+      editBtn.innerText = 'Edit';
+      localStorage.setItem("incomes", JSON.stringify(inc_detail));
+      localStorage.setItem("bal", JSON.stringify(bal));
+      txt = "You pressed OK!";
+      location.reload();
+    }
     })
+// var value = parseInt(income.amount);
+    // editBtn.addEventListener('click', function() {
+    //     if(editBtn.innerHTML.toLowerCase() == "edit"){
+    //         amountCell.focus();
+    //         amountCell.style.backgroundColor = "beige";
+    //         amountCell.contentEditable = true;
+    //         editBtn.innerHTML = "Save";
+    //         value = amountCell.innerHTML;
+    //     }
+
+    //     else if(editBtn.innerHTML.toLowerCase() == "save"){
+    //         amountCell.innerHTML = value;
+    //         console.log(value);
+    //         amountCell.contentEditable = false;
+    //         amountCell.style.backgroundColor = "white";
+    //         editBtn.innerHTML = "Edit";
+
+    //         localStorage.setItem("incomes", JSON.stringify(inc_detail));
+    //         localStorage.setItem("bal", JSON.stringify(bal));
+    //         balEl.innerText=`Current Balance: \u20B9${bal}`;
+    //         location.reload();
+    //         console.log(inc_detail);
+    //         console.log(bal);
+    //     }
+    // })
 
     categoryCell.textContent = income.category;
     noteCell.textContent = income.note;
-    amountCell.textContent = value;
+    amountCell.textContent = income.amount;
     dateCell.textContent = income.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);

@@ -298,3 +298,6 @@ body {
 #view-balance{
   cursor: pointer;
 }
+.avatar{
+  background:#94d2bd;
+}

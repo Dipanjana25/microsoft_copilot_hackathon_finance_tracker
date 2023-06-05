@@ -14,10 +14,11 @@ The site consist of different sections and pages that are interrelated.
 For making this website, GitHub copilot has proven to be a great asset for us.
 We have also used different Microsoft technologies for completing this project.
 
-Goals and objectives
-A user-friendly interface where user can track his daily/monthly income or expenditures.
+Goals and objectives:
+A user-friendly interface where the user can track his daily/monthly income or expenditures.
 The active balance sheet that the user can edit anytime.
 A to-do list where person can add his desired goals of investments, if any.
+In the settings section, we can add the limit for the daily expense. On home page, we can visualize it as a reminder.
 The primary goal of this project is to balance the daily expenditures of the person for the better future. 
 
 Stacks we use:
