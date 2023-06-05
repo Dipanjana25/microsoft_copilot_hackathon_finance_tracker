@@ -130,7 +130,8 @@ var value = parseInt(income.amount);
       title: 'Category based Income Visualization',
       fontSize: 10,
       height: 500,
-      width: 500
+      width: 500,
+      is3D: true
     };
 
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));

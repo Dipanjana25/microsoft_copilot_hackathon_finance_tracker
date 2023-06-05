@@ -70,6 +70,8 @@ function addtask(){
 
 
 tasksEl.addEventListener("click", function(e){
+    if(confirm("Confirm Delete?"))
+    {
     if(e.target.tagName === "BUTTON")
     e.target.parentElement.parentElement.remove();
     else if(e.target.tagName === "INPUT")
@@ -84,6 +86,7 @@ tasksEl.addEventListener("click", function(e){
         }
     }
     savedata();
+}
 
 },false)
 

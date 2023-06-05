@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     text-decoration: none;
   }
@@ -289,4 +289,7 @@ body {
   font-size: 16px;
   background-color: #fbf8ca;
   cursor: pointer; 
+}
+.search-btn:hover{
+  background-color: #e8e4b2;
 }

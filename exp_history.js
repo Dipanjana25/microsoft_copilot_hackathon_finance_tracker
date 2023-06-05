@@ -100,7 +100,8 @@ function drawChart() {
    title: 'Category wise expenses visualization',
    fontSize: 10,
    height: 500,
-   width: 500
+   width: 500,
+   is3D: true
  };
 
  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
