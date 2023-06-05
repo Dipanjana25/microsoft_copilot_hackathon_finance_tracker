@@ -1,3 +1,4 @@
+// localStorage.clear();
 const inputEl = document.getElementById("input1");
 const tasksEl= document.getElementById("tasks");
 

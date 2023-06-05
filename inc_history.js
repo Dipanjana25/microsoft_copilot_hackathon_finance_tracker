@@ -2,11 +2,6 @@
 var inc_detail = JSON.parse(localStorage.getItem("incomes") || "[]");
 console.log(inc_detail);
 
-function delete_from_LocalStorage(){
-    inc_detail.pop(inc_detail.indexOf(income), 1);
-    balEl.innerText=`Current Balance:\u20B9 ${bal}`;
-}
-
 const toggleDropdown = function () {
   dropdownMenu.classList.toggle("show");
   toggleArrow.classList.toggle("arrow");
@@ -64,11 +59,17 @@ for (income of inc_detail) {
             totalAmount -= inc_detail[ind].amount;
             totalAmountCell.textContent = totalAmount;
             bal-=inc_detail[ind].amount;
+            if(viewBtn.innerText === "View balance"){
+              viewBtn.innerText = "View balance";
+            }
+            else {
+              viewBtn.innerText = `Balance: ₹${bal}`;
+            }
             inc_detail.splice(ind, 1);
-            // inc_detailTableBody.removeChild(newRow);
+            inc_detailTableBody.removeChild(newRow);
             localStorage.setItem("incomes", JSON.stringify(inc_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
-            balEl.innerText=`Current Balance: \u20B9${bal}`;
+            // balEl.innerText=`Current Balance: \u20B9${bal}`;
             txt = "You pressed OK!";
             location.reload();
         } else {

@@ -294,3 +294,7 @@ body {
 .search-btn:hover{
   background-color: #e8e4b2;
 }
+
+#view-balance{
+  cursor: pointer;
+}
