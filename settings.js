@@ -155,7 +155,8 @@ const isLeapYear = (year) => {
                   head.innerHTML=`Your Expense Limit is  \u20B9${j.amount} for ${j.event}`;
                   flag++;
                   var ok=document.createElement('button');
-                  ok.textContent="Press OK to continue";
+                  ok.textContent="OK";
+                  ok.id='ok';
                   var br = document.createElement("br");
                   let del = document.createElement('button');
                   del.id='delete';

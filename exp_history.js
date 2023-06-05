@@ -91,7 +91,7 @@ for (expense of exp_detail) {
             replaceValue(this);
             count++;
           };
-          var options = ['Food & Beverage','Transport','Investment','Relaxing'];
+          var options = ['Category','Food & Beverage','Transport','Investment','Relaxing'];
           for (var i = 0; i < options.length; i++) {
             var option = document.createElement('option');
             option.value = options[i];
