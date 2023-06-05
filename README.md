@@ -31,31 +31,34 @@ A to-do list where person can add his desired goals of investments, if any.
 The primary goal of this project is to balance the daily expenditures of the person for the better future. 
 
 <strong>HTML</strong>
-HTML is essential for building the user interface of a project. It allows us to define the layout, structure,
-and visual elements of the application. Using HTML we created forms, input fields, buttons, dropdown menus,
-and other UI components needed to collect user input and facilitate interactions.
+HTML is essential for building the user interface of a project. It allows us to 
+define the layout, structure,and visual elements of the application. Using HTML 
+we created forms, input fields, buttons, dropdown menus,and other UI components 
+needed to collect user input and facilitate interactions.
 
 <strong>CSS</strong>
-CSS allows us to style various HTML elements and create visually appealing designs. We implemented responsive design 
-techniques to ensure our project looks and functions well across different devices and screen sizes. It allows us to 
-customize the project's design, create engaging user interfaces, and convey a professional image.
+CSS allows us to style various HTML elements and create visually appealing designs. 
+We implemented responsive design techniques to ensure our project looks and functions 
+well across different devices and screen sizes. It allows us to customize the project's 
+design, create engaging user interfaces, and convey a professional image.
 
 <strong>JavaScript</strong>
-JavaScript enables us to capture user input from forms and perform validation before submitting data. We dynamically 
-generate and update content on the website. It is used to implement filtering functionalities. We represent expense categories 
-through pie charts. It provides access to the browser's local storage, which allows us to store data on the user's device.
+JavaScript enables us to capture user input from forms and perform validation before 
+submitting data. We dynamically generate and update content on the website. It is used 
+to implement filtering functionalities. We represent expense categories through pie charts. 
+It provides access to the browser's local storage, which allows us to store data on the user's device.
 
 <b>Use of GitHub Copilot</b>
 GitHub Copilot is an AI-powered code completion tool developed by GitHub and OpenAI. 
-1. Efficient Code Writing:  Copilot analyzes the context and suggests relevant code snippets, reducing the need for manual 
-typing and saving time. 
-2. Boilerplate Generation: Copilot provides us the initial code structures, including basic HTML layout, CSS styles, and 
-JavaScript event handling, reducing repetitive manual setup. 
-3. Code Refactoring : When working on an existing HTML, CSS, or JavaScript codebase, Copilot identify redundant or inefficient 
-code patterns and propose more optimized alternatives. 
-4. Developer Productivity: By assisting with code completion and offering intelligent suggestions, Copilot enhances
-our(developer) productivity. It reduces the cognitive load associated with remembering syntax details, and encourages 
-faster code iteration and experimentation.
+1. Efficient Code Writing:  Copilot analyzes the context and suggests relevant code snippets,
+reducing the need for manual typing and saving time. 
+2. Boilerplate Generation: Copilot provides us the initial code structures, including basic 
+HTML layout, CSS styles, and JavaScript event handling, reducing repetitive manual setup. 
+3. Code Refactoring : When working on an existing HTML, CSS, or JavaScript codebase, Copilot 
+identify redundant or inefficient code patterns and propose more optimized alternatives. 
+4. Developer Productivity: By assisting with code completion and offering intelligent suggestions, 
+Copilot enhancesour(developer) productivity. It reduces the cognitive load associated with remembering 
+syntax details, and encourages faster code iteration and experimentation.
 
 <b>Division of the time:</b>
 Preparing the idea:
@@ -77,4 +80,6 @@ Track Progress and Adapt as Needed
 </pre>
 
 Thank you!!
+
 ![image](https://github.com/Dipanjana25/microsoft_copilot_hackathon_finance_tracker/assets/96725005/cbf35bf4-59a3-4cfb-9935-b0d4d3ad6bb0)
+
