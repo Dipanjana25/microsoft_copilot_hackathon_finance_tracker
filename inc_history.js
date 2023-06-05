@@ -97,7 +97,7 @@ for (income of inc_detail) {
             replaceValue(this);
             count++;
           };
-          var options = ['Salary','Income tax return','Rent','Subsidy'];
+          var options = ['Category','Salary','Income tax return','Rent','Subsidy'];
           for (var i = 0; i < options.length; i++) {
             var option = document.createElement('option');
             option.value = options[i];

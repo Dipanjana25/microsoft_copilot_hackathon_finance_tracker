@@ -42,7 +42,7 @@ body{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #5c77ff;
+    background-color: #a4c5fe;
     cursor: pointer;
     transition: transform 0.3s;
   }
@@ -67,7 +67,7 @@ body{
     height: 100px;
     width: 250px;
     scroll-behavior: smooth;
-    background-color: #94d2bd;
+    background-color: #b4defc;
     position: fixed;
     border-radius: 6px;
     overflow-y: auto;
@@ -84,7 +84,7 @@ body{
 }
 
 .reminder-list::-webkit-scrollbar-track {
-  background-color: #94d2bd;
+  background-color: #a4fedf;
 }
 
 .reminder-list::-webkit-scrollbar-thumb {
@@ -117,7 +117,7 @@ body{
     position: fixed;
     height:20px;
     width: 20px;
-    background: #94d2bd;
+    background: #b4defc;
     right:27px;
     bottom:86px;
     opacity:0;
