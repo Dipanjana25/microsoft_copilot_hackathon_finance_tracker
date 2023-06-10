@@ -88,8 +88,9 @@ for (expense of exp_detail) {
           dropdown.className = 'dropdown';
           var select = document.createElement('select');
           select.onchange = function() {
-            replaceValue(this);
             count++;
+            replaceValue(this);
+            // count++;
           };
           var options = ['Category','Food & Beverage','Transport','Investment','Relaxing'];
           for (var i = 0; i < options.length; i++) {
@@ -107,6 +108,7 @@ for (expense of exp_detail) {
           };
           function replaceValue(select) {
             var selectedOption = select.value;
+            if(count!==0)
             categoryCell.innerText = selectedOption;
           }
         });
@@ -116,17 +118,21 @@ for (expense of exp_detail) {
           datePicker.type="date";
           datePicker.value = dateCell.innerText;
           datePicker.onblur = function() {
+            datecount++;
             replace(this);
-            // datecount++;
           };
           // if(datecount!==0){
           dateCell.innerText = '';
           dateCell.appendChild(datePicker);
-          // datePicker.focus();
+          datePicker.onclick = function(event) {
+            event.stopPropagation();
+          };
+          datePicker.focus();
           function replace(datePicker) {
             var selectedDate = datePicker.value;
             var pattern = /^\d{4}-\d{2}-\d{2}$/;
             // if(pattern.test(selectedDate))
+            if(datecount!==0)
             dateCell.innerText = selectedDate;
             // else
             // alert("please enter a valid format of date which is yyyy-mm-dd");
@@ -153,10 +159,10 @@ for (expense of exp_detail) {
       {var newcategory=categoryCell.innerText;
         exp_detail[ind].category=newcategory;
       }
-      if(datecount!==0){
+      // if(datecount!==0){
         var newdate=dateCell.innerText;
         exp_detail[ind].date=newdate;
-      }
+      // }
       exp_detail[ind].note=newnote;
       totalAmount += Number(newamount);
       totalAmountCell.textContent = totalAmount;
