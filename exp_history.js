@@ -41,10 +41,19 @@ for (expense of exp_detail) {
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
     const editCell = newRow.insertCell();
+    const downloadCell = newRow.insertCell();
     const deleteBtn = document.createElement('button');
     const editBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
-    editBtn.textContent = 'Edit';
+    const downloadBtn=document.createElement('button');
+    var icon = document.createElement('i');
+    icon.className = 'fa-solid fa-trash';
+    deleteBtn.appendChild(icon); 
+    var icon = document.createElement('i');
+    icon.className = 'fa-regular fa-pen-to-square';
+    editBtn.appendChild(icon); 
+    var icon = document.createElement('i');
+    icon.className = 'fa-solid fa-download';
+    downloadBtn.appendChild(icon); 
     deleteBtn.addEventListener('click', function (e) {
         var txt; //useless variable for now
         if (confirm("Confirm Delete?")) {
@@ -177,12 +186,30 @@ for (expense of exp_detail) {
       location.reload();
     }
     })
+    downloadBtn.addEventListener('click', function (e) {
+      var ind = e.target.closest('tr').rowIndex;
+      ind--;
+      var category =exp_detail[ind].category;
+      var amount=exp_detail[ind].amount;
+      var note=exp_detail[ind].note;
+      var date=exp_detail[ind].date;
+      var contentDiv = document.createElement('div');
+      contentDiv.className='previewpdf';
+      contentDiv.innerHTML = '<h3>Category: ' +category+ '</h3>\n<h3>Amount: ₹' +amount+ '</h3>\n<h3>Note: ' +note+ '</h3>\n<h3>Date: ' +date+ '</h3>';
+      var previewWindow = window.open('', '_blank');
+      previewWindow.document.open();
+      previewWindow.document.write('<html><head><title>PDF Preview</title></head><body>');
+      previewWindow.document.write(contentDiv.innerHTML);
+      previewWindow.document.write('</body></html>');
+      previewWindow.print();
+    })
     categoryCell.textContent = expense.category;
     noteCell.textContent = expense.note;
     amountCell.textContent = expense.amount;
     dateCell.textContent = expense.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
+    downloadCell.appendChild(downloadBtn);
 }
 
 //pie-chart-code

@@ -43,11 +43,19 @@ for (income of inc_detail) {
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
     const editCell = newRow.insertCell();
-
+    const downloadCell = newRow.insertCell();
     const deleteBtn = document.createElement('button');
     const editBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
-    editBtn.textContent = 'Edit';
+    const downloadBtn=document.createElement('button');
+    var icon = document.createElement('i');
+    icon.className = 'fa-solid fa-trash';
+    deleteBtn.appendChild(icon); 
+    var icon = document.createElement('i');
+    icon.className = 'fa-regular fa-pen-to-square';
+    editBtn.appendChild(icon); 
+    var icon = document.createElement('i');
+    icon.className = 'fa-solid fa-download';
+    downloadBtn.appendChild(icon); 
     // deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function(e) {
         var txt; //useless variable for now
@@ -94,8 +102,8 @@ for (income of inc_detail) {
           dropdown.className = 'dropdown';
           var select = document.createElement('select');
           select.onchange = function() {
-            replaceValue(this);
             count++;
+            replaceValue(this);
           };
           var options = ['Category','Salary','Income tax return','Rent','Subsidy'];
           for (var i = 0; i < options.length; i++) {
@@ -113,6 +121,7 @@ for (income of inc_detail) {
           };
           function replaceValue(select) {
             var selectedOption = select.value;
+            if(count!==0)
             categoryCell.innerText = selectedOption;
           }
         });
@@ -122,13 +131,16 @@ for (income of inc_detail) {
           datePicker.type="date";
           datePicker.value = dateCell.innerText;
           datePicker.onblur = function() {
+            datecount++;
             replace(this);
-            // datecount++;
           };
           // if(datecount!==0){
           dateCell.innerText = '';
           dateCell.appendChild(datePicker);
-          // datePicker.focus();
+          datePicker.onclick = function(event) {
+            event.stopPropagation();
+          };
+          datePicker.focus();
           function replace(datePicker) {
             var selectedDate = datePicker.value;
             var pattern = /^\d{4}-\d{2}-\d{2}$/;
@@ -159,10 +171,10 @@ for (income of inc_detail) {
       {var newcategory=categoryCell.innerText;
         inc_detail[ind].category=newcategory;
       }
-      if(datecount!==0){
+      // if(datecount!==0){
         var newdate=dateCell.innerText;
         inc_detail[ind].date=newdate;
-      }
+      // }
       inc_detail[ind].note=newnote;
       totalAmount += Number(newamount);
       totalAmountCell.textContent = totalAmount;
@@ -176,6 +188,23 @@ for (income of inc_detail) {
       txt = "You pressed OK!";
       location.reload();
     }
+    })
+    downloadBtn.addEventListener('click', function (e) {
+      var ind = e.target.closest('tr').rowIndex;
+      ind--;
+      var category =inc_detail[ind].category;
+      var amount=inc_detail[ind].amount;
+      var note=inc_detail[ind].note;
+      var date=inc_detail[ind].date;
+      var contentDiv = document.createElement('div');
+      contentDiv.className='previewpdf';
+      contentDiv.innerHTML = '<h3>Category: ' +category+ '</h3>\n<h3>Amount: ₹' +amount+ '</h3>\n<h3>Note: ' +note+ '</h3>\n<h3>Date: ' +date+ '</h3>';
+      var previewWindow = window.open('', '_blank');
+      previewWindow.document.open();
+      previewWindow.document.write('<html><head><title>PDF Preview</title></head><body>');
+      previewWindow.document.write(contentDiv.innerHTML);
+      previewWindow.document.write('</body></html>');
+      previewWindow.print();
     })
 // var value = parseInt(income.amount);
     // editBtn.addEventListener('click', function() {
@@ -209,6 +238,7 @@ for (income of inc_detail) {
     dateCell.textContent = income.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
+    downloadCell.appendChild(downloadBtn);
 }
 
 //pie-chart-code
