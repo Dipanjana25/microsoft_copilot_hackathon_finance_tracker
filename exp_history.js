@@ -328,15 +328,57 @@ function printData()
 
 
 //search
+var p=0;
+var categoryFilter = document.getElementById('categoryFilter');
+var input = document.getElementById("input_my");
+var dateInput = document.getElementById("dateInput");
+categoryFilter.addEventListener('change', updatePlaceholder);
+var placeholder="Search...";
+function updatePlaceholder(){
+  var selectedCategory = categoryFilter.value;
+  switch (selectedCategory) {
+    case 'category1':
+      placeholder = 'Search by category';
+      p=0;
+      break;
+    case 'category2':
+      placeholder = 'Search by amount';
+      p=1;
+      break;
+    case 'category3':
+      placeholder = 'Search by note';
+      p=2;
+      break;
+    case 'category4':
+      placeholder = 'Search by date';
+      p=3;
+      break;
+    default:
+    placeholder = 'Search...';
+  }
+if(p===3){
+  input.style.display = "none";
+  dateInput.style.display = 'inline-block';
+  // var selectedDate = dateInput.value;
+  // console.log(selectedDate);
+}
+else{
+  input.style.display = 'block';
+  dateInput.style.display = 'none';
+  input.placeholder = placeholder;
+}
+}
 function myFunction_() {
- 
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("input_my");
   filter = input.value.toUpperCase();
   table = document.getElementById("table_my");
+  // var dateInput = document.getElementById("dateInput");
+  var selectedDate = dateInput.value;
+  console.log(selectedDate);
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length-1; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
+    td = tr[i].getElementsByTagName("td")[p];
     if (td) {
       txtValue = td.textContent || td.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {

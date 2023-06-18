@@ -55,7 +55,16 @@
     <h2 id="view-balance">View balance</h2><br>
         <div class = "search">
             <!-- <input class="search-val"> -->
-            <input onkeyup="myFunction_()" id="input_my" type="text" placeholder="search by type of expense.." style="font-size: 20px; border: 2px solid rgb(255, 153, 0); border-radius: 20px;padding:10px;">
+            <input onkeyup="myFunction_()" id="input_my" type="text" placeholder="Search..." style="font-size: 20px; border: 2px solid rgb(255, 153, 0); border-radius: 20px;padding:10px;">
+            <input type="date" id="dateInput" placeholder="Search..." style="font-size: 20px; border: 2px solid rgb(255, 153, 0); border-radius: 20px;padding:10px;">
+            <!-- <p id="formattedDate"></p> -->
+            <select id="categoryFilter">
+                <option value="">Apply Filter</option>
+                <option value="category1">Category</option>
+                <option value="category2">Amount</option>
+                <option value="category3">Note</option>
+                <option value="category4">Date</option>
+            </select>
         </div>
     <div class="expenses-list" id="content">
         <table id="table_my">
@@ -107,7 +116,7 @@
     <script src="exp_history.js"></script>
 
 
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    <!-- <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.."> -->
 
 </body>
 

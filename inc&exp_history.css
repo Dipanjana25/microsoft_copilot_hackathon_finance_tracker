@@ -301,16 +301,23 @@ body {
 .avatar{
   background:#eef1bf;
 }
-.cheading {
-  color: blue;
-  font-size: 16px;
-  font-weight: bold;
-  /* Add more styles as needed */
-}
 
-.cvalue {
-  color: green;
-  font-size: 16px;
-  font-weight: 200;
-  /* Add more styles as needed */
+
+#categoryFilter{
+  width: max-content;
+  height: 45px;
+  border-radius: 20px;
+  border: 1px solid #0671fc;
+  font-size: 2rem;
+  font-weight: 400;
+  padding-left: 1rem;
+  outline: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#dateInput{
+  display:none;
 }
