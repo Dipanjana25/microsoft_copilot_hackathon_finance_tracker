@@ -298,3 +298,15 @@ function closeMenu() {
     navMenu.classList.remove("active");
 }
 
+//pdf code
+function printData()
+{
+   var divToPrint=document.getElementById("content");
+   
+   newWin= window.open("");
+   newWin.document.write(divToPrint.outerHTML);
+   newWin.print();
+   newWin.close();
+}
+
+
