@@ -34,12 +34,12 @@ inc_detail.sort(function(a, b) {
 var income = inc_detail[0];
 for (income of inc_detail) {
     totalAmount += income.amount;
-    totalAmountCell.textContent = totalAmount;
+    totalAmountCell.textContent = "₹"+totalAmount;
 
     const newRow = inc_detailTableBody.insertRow();
     const categoryCell = newRow.insertCell();
-    const noteCell = newRow.insertCell();
     const amountCell = newRow.insertCell();
+    const noteCell = newRow.insertCell();
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
     const editCell = newRow.insertCell();
@@ -216,35 +216,9 @@ for (income of inc_detail) {
       previewWindow.close();
       location.reload();
     })
-// var value = parseInt(income.amount);
-    // editBtn.addEventListener('click', function() {
-    //     if(editBtn.innerHTML.toLowerCase() == "edit"){
-    //         amountCell.focus();
-    //         amountCell.style.backgroundColor = "beige";
-    //         amountCell.contentEditable = true;
-    //         editBtn.innerHTML = "Save";
-    //         value = amountCell.innerHTML;
-    //     }
-
-    //     else if(editBtn.innerHTML.toLowerCase() == "save"){
-    //         amountCell.innerHTML = value;
-    //         console.log(value);
-    //         amountCell.contentEditable = false;
-    //         amountCell.style.backgroundColor = "white";
-    //         editBtn.innerHTML = "Edit";
-
-    //         localStorage.setItem("incomes", JSON.stringify(inc_detail));
-    //         localStorage.setItem("bal", JSON.stringify(bal));
-    //         balEl.innerText=`Current Balance: \u20B9${bal}`;
-    //         location.reload();
-    //         console.log(inc_detail);
-    //         console.log(bal);
-    //     }
-    // })
-
     categoryCell.textContent = income.category;
     noteCell.textContent = income.note;
-    amountCell.textContent = income.amount;
+    amountCell.textContent = "₹"+income.amount;
     dateCell.textContent = income.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
@@ -315,21 +289,38 @@ function printData()
   var table = document.getElementById("table_my");
   var th = table.getElementsByTagName("th");
   var tr = table.getElementsByTagName("tr");
-  var totalColumns = th.length;
-  var columnsToExclude = 3;
-  var excludeIndex = totalColumns - columnsToExclude;
-  for (var i = excludeIndex; i < totalColumns; i++) {
+  var totCol = th.length;
+  var colex = 3;
+  var exin = totCol-colex;
+  for (var i = exin; i < totCol; i++) {
     th[i].style.display = "none";
   }
-  for (var i = 0; i < tr.length-1; i++) {
-    for (var j = excludeIndex; j < totalColumns; j++) {
+  for(var i=0;i<exin;i++){
+    th[i].classList.add("cheading");
+    console.log(th[i]);
+  }
+  for (var i = 1; i < tr.length-1; i++) {
+    for (var j = exin; j < totCol; j++) {
       var col= tr[i].cells[j];
       col.style.display="none";
     }
+    for (var j = 0; j < exin; j++) {
+      tr[i].cells[j].classList.add("cvalue");
+    }
+  }
+  for(var i=0;i<2;i++){
+    tr[tr.length-1].cells[i].classList.add("cheading");
   }
   tr[tr.length-1].cells[2].style.display="none";
   newWin= window.open("");
+  var contenthead=document.createElement('div');
+  contenthead.innerHTML='<h1 class="headd">My income list</h1>';
   newWin.document.write('<html><head><title>PDF Preview</title></head><body>');
+  newWin.document.write('<style>');
+  newWin.document.write('.headd{text-align:center;color:black;font-weight:light; padding:10px;}','.cheading { color: #030547; font-size:18px;font-weight: bolder;padding:10px;}','.cvalue {color: #0e5d0e; font-size: 16px; font-weight: 200;padding:10px;}');
+  newWin.document.write('</style><body>');
+  newWin.document.write('<img src="images/fin.jpg" alt="Logo" height="60px" style="border-radius: 50%; padding-top: 10px;">');
+  newWin.document.write(contenthead.innerHTML);
   newWin.document.write(divToPrint.outerHTML);
   newWin.document.write('</body></html>');
   newWin.print();

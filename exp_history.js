@@ -31,7 +31,7 @@ exp_detail.sort(function(a, b) {
 var expense = exp_detail[0];
 for (expense of exp_detail) {
     totalAmount += expense.amount;
-    totalAmountCell.textContent = totalAmount;
+    totalAmountCell.textContent = "₹"+totalAmount;
 
     const newRow = exp_detailTableBody.insertRow();
     const categoryCell = newRow.insertCell();
@@ -215,7 +215,7 @@ for (expense of exp_detail) {
     })
     categoryCell.textContent = expense.category;
     noteCell.textContent = expense.note;
-    amountCell.textContent = expense.amount;
+    amountCell.textContent ="₹"+expense.amount;
     dateCell.textContent = expense.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
@@ -293,15 +293,32 @@ function printData()
   for (var i = exin; i < totCol; i++) {
     th[i].style.display = "none";
   }
-  for (var i = 0; i < tr.length-1; i++) {
+  for(var i=0;i<exin;i++){
+    th[i].classList.add("cheading");
+    console.log(th[i]);
+  }
+  for (var i = 1; i < tr.length-1; i++) {
     for (var j = exin; j < totCol; j++) {
       var col= tr[i].cells[j];
       col.style.display="none";
     }
+    for (var j = 0; j < exin; j++) {
+      tr[i].cells[j].classList.add("cvalue");
+    }
+  }
+  for(var i=0;i<2;i++){
+    tr[tr.length-1].cells[i].classList.add("cheading");
   }
   tr[tr.length-1].cells[2].style.display="none";
   newWin= window.open("");
+  var contenthead=document.createElement('div');
+  contenthead.innerHTML='<h1 class="headd">My expense list</h1>';
   newWin.document.write('<html><head><title>PDF Preview</title></head><body>');
+  newWin.document.write('<style>');
+  newWin.document.write('.headd{text-align:center;color:black;font-weight:light; padding:10px;}','.cheading { color: #030547; font-size:18px;font-weight: bolder;padding:10px;}','.cvalue {color: #0e5d0e; font-size: 16px; font-weight: 200;padding:10px;}');
+  newWin.document.write('</style><body>');
+  newWin.document.write('<img src="images/fin.jpg" alt="Logo" height="60px" style="border-radius: 50%; padding-top: 10px;">');
+  newWin.document.write(contenthead.innerHTML);
   newWin.document.write(divToPrint.outerHTML);
   newWin.document.write('</body></html>');
   newWin.print();
