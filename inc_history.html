@@ -66,13 +66,14 @@
     <h2 id="view-balance">View balance</h2><br>
     <!-- <h2  style="margin: 4px;" class="balance" id="balance">Current Balance: 0</h2> -->
     <div class = "search">
-        <input class="search-val"><input value="search" type="submit" class="search-btn">
+        <!-- <input class="search-val"> -->
+        <input onkeyup="myFunction_()" id="input_my" type="text" placeholder="search by type of income " style="font-size: 20px; border: 2px solid rgb(255, 153, 0)">
     </div>
 
     <br>
     <div class="income-list">
     <div  id="content">
-        <table>
+        <table id="table_my">
             <thead>
                 <tr>
                     <th>Category</th>
