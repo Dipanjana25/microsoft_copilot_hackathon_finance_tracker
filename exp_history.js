@@ -283,12 +283,30 @@ function closeMenu() {
 //pdf
 function printData()
 {
-   var divToPrint=document.getElementById("content");
-   newWin= window.open("");
-   newWin.document.write('<html><head><title>PDF Preview</title></head><body>');
-   newWin.document.write(divToPrint.outerHTML);
-   newWin.print();
-   newWin.close();
+  var divToPrint=document.getElementById("content");
+  var table = document.getElementById("table_my");
+  var th = table.getElementsByTagName("th");
+  var tr = table.getElementsByTagName("tr");
+  var totCol = th.length;
+  var colex = 3;
+  var exin = totCol-colex;
+  for (var i = exin; i < totCol; i++) {
+    th[i].style.display = "none";
+  }
+  for (var i = 0; i < tr.length-1; i++) {
+    for (var j = exin; j < totCol; j++) {
+      var col= tr[i].cells[j];
+      col.style.display="none";
+    }
+  }
+  tr[tr.length-1].cells[2].style.display="none";
+  newWin= window.open("");
+  newWin.document.write('<html><head><title>PDF Preview</title></head><body>');
+  newWin.document.write(divToPrint.outerHTML);
+  newWin.document.write('</body></html>');
+  newWin.print();
+  newWin.close();
+  location.reload();
 }
 
 
