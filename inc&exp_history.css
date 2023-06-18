@@ -301,3 +301,16 @@ body {
 .avatar{
   background:#eef1bf;
 }
+.cheading {
+  color: blue;
+  font-size: 16px;
+  font-weight: bold;
+  /* Add more styles as needed */
+}
+
+.cvalue {
+  color: green;
+  font-size: 16px;
+  font-weight: 200;
+  /* Add more styles as needed */
+}

@@ -51,18 +51,11 @@
 
    <br>
     <h1 style="margin: 4px;">EXPENSE HISTORY</h1><br>
-    <button onclick="printData()" style="font-size: 25px;
-     border: 2px solid rgb(11, 3, 58); 
-     background-color: rgb(73, 17, 138);
-     color:rgb(227, 227, 235);
-     margin: 4px;
-     padding: 1px;
-     border-radius: 2px;
-     "> Print PDF<i class="fa-solid fa-print"></i></button> 
+    
     <h2 id="view-balance">View balance</h2><br>
         <div class = "search">
             <!-- <input class="search-val"> -->
-            <input onkeyup="myFunction_()" id="input_my" type="text" placeholder="search by type of expense" style="font-size: 20px; border: 2px solid rgb(255, 153, 0)">
+            <input onkeyup="myFunction_()" id="input_my" type="text" placeholder="search by type of expense.." style="font-size: 20px; border: 2px solid rgb(255, 153, 0); border-radius: 20px;padding:10px;">
         </div>
     <div class="expenses-list" id="content">
         <table id="table_my">
@@ -84,6 +77,16 @@
                 <tr>
                     <td>Total Expense:</td>
                     <td id="total-amount"></td>
+                    <td>
+                        <button onclick="printData()" style="font-size: 15px;
+                        border: 1px solid rgb(11, 3, 58); 
+                        background-color: rgb(73, 17, 138);
+                        color:rgb(255, 255, 255);
+                        margin: 4px;
+                        padding: 10px;
+                        border-radius: 20px;
+                        "> Print PDF <i class="fa-solid fa-print"></i></button> 
+                    </td>
                     <!-- <td></td>
                     <td></td>
                     <td></td>

@@ -198,13 +198,23 @@ for (income of inc_detail) {
       var date=inc_detail[ind].date;
       var contentDiv = document.createElement('div');
       contentDiv.className='previewpdf';
-      contentDiv.innerHTML = '<h3>Category: ' +category+ '</h3>\n<h3>Amount: ₹' +amount+ '</h3>\n<h3>Note: ' +note+ '</h3>\n<h3>Date: ' +date+ '</h3>';
-      var previewWindow = window.open('', '_blank');
+      var contenthead=document.createElement('div');
+      contenthead.innerHTML='<h1 class="headd">My income record</h1>';
+      contentDiv.innerHTML = '<h3 class="cheading">Category: <span class="cvalue">' + category + '</span></h3>\n<h3 class="cheading">Amount: <span class="cvalue">' + ' ₹'+amount + '</span></h3>\n<h3 class="cheading">Note: <span class="cvalue">' + note + '</span></h3>\n<h3 class="cheading">Date: <span class="cvalue">' + date + '</span></h3>';
+      var previewWindow = window.open('');
       previewWindow.document.open();
       previewWindow.document.write('<html><head><title>PDF Preview</title></head><body>');
+      previewWindow.document.write('<style>');
+      // previewWindow.document.write('body{background:beige;}');
+      previewWindow.document.write('.headd{text-align:center;color:black;font-weight:light;}','.cheading { color: #030547; font-size:18px;font-weight: bolder;}','.cvalue {color: #0e5d0e; font-size: 16px; font-weight: 200;}');
+      previewWindow.document.write('</style><body>');
+      previewWindow.document.write('<img src="images/fin.jpg" alt="Logo" height="60px" style="border-radius: 50%; padding-top: 10px;">');
+      previewWindow.document.write(contenthead.innerHTML);
       previewWindow.document.write(contentDiv.innerHTML);
       previewWindow.document.write('</body></html>');
       previewWindow.print();
+      previewWindow.close();
+      location.reload();
     })
 // var value = parseInt(income.amount);
     // editBtn.addEventListener('click', function() {
@@ -302,8 +312,8 @@ function closeMenu() {
 function printData()
 {
    var divToPrint=document.getElementById("content");
-   
    newWin= window.open("");
+   newWin.document.write('<html><head><title>PDF Preview</title></head><body>');
    newWin.document.write(divToPrint.outerHTML);
    newWin.print();
    newWin.close();
@@ -319,7 +329,7 @@ function myFunction_() {
   tr = table.getElementsByTagName("tr");
 
   
-  for (i = 0; i < tr.length; i++) {
+  for (i = 0; i < tr.length-1; i++) {
     td = tr[i].getElementsByTagName("td")[0];
     if (td) {
       txtValue = td.textContent || td.innerText;
