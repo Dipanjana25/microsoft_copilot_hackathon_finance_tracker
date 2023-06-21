@@ -350,7 +350,6 @@ function updatePlaceholder(){
       p=2;
       break;
     case 'category4':
-      placeholder = 'Search by date';
       p=3;
       break;
     default:
@@ -358,9 +357,7 @@ function updatePlaceholder(){
   }
 if(p===3){
   input.style.display = "none";
-  dateInput.style.display = 'inline-block';
-  // var selectedDate = dateInput.value;
-  // console.log(selectedDate);
+  dateInput.style.display = 'block';
 }
 else{
   input.style.display = 'block';
@@ -368,14 +365,30 @@ else{
   input.placeholder = placeholder;
 }
 }
+dateInput.addEventListener("change", function() {
+  var filter, table, tr, td, i, txtValue;
+  dateInput = document.getElementById("dateInput"); 
+  filter = dateInput.value;
+  table = document.getElementById("table_my");
+  tr = table.getElementsByTagName("tr");
+  console.log(filter);
+  for (i = 0; i < tr.length-1; i++) {
+    td = tr[i].getElementsByTagName("td")[p];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+});
 function myFunction_() {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById("input_my");
   filter = input.value.toUpperCase();
   table = document.getElementById("table_my");
-  // var dateInput = document.getElementById("dateInput");
-  var selectedDate = dateInput.value;
-  console.log(selectedDate);
   tr = table.getElementsByTagName("tr");
   for (i = 0; i < tr.length-1; i++) {
     td = tr[i].getElementsByTagName("td")[p];
