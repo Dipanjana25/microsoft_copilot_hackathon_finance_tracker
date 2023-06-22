@@ -162,6 +162,30 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   } */
   
+  .convert{
+    font-size: 25px;
+    margin-bottom: 4px; 
+    background-color: rgb(24, 199, 199); 
+    border: 1px solid rgb(9, 116, 116);
+    border-radius: 5px;
+    cursor: pointer;
+   }
+   .convert:hover .fa-indian-rupee-sign:before{
+    content: "\24";
+    margin-bottom: 4px; 
+    background-color: rgb(101, 165, 71); 
+    border: 1px solid rgb(0, 90, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    opacity:1;
+    font-size: 35px;
+    
+   }
+  #result{
+   font-size: 20px;
+   color:rgb(71, 7, 7);
+   z-index: 1;
+  }
   @media (min-width: 768px) {
     .button-66 {
       padding: 16px 44px;
