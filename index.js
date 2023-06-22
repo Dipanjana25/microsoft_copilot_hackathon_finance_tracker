@@ -86,7 +86,11 @@ function hide(){
 const convert = document.getElementById("convert");
 const result = document.getElementById("result");
 let balance = parseInt(localStorage.getItem("bal"));
+var coo=0;
 convert.addEventListener("click", function() {
+  coo++;
+  if(coo%2===1){
+    result.style.display="block";
    let fromCurrency ="INR";
    let toCurrency = "USD";
    let amt = balance;
@@ -102,6 +106,10 @@ convert.addEventListener("click", function() {
       ${toCurrency}`;
       
    });
+  }
+  else{
+    result.style.display="none";
+  }
 });
 
 

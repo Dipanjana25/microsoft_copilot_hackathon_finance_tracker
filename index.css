@@ -165,17 +165,20 @@ body{
   .convert{
     font-size: 25px;
     margin-bottom: 4px; 
-    background-color: rgb(24, 199, 199); 
+    background-color: #a4fedf; 
     border: 1px solid rgb(9, 116, 116);
     border-radius: 5px;
     cursor: pointer;
+    height:40px;
+    width:40px;
+    border-radius: 50%;
    }
    .convert:hover .fa-indian-rupee-sign:before{
     content: "\24";
     margin-bottom: 4px; 
-    background-color: rgb(101, 165, 71); 
-    border: 1px solid rgb(0, 90, 0);
-    border-radius: 5px;
+    /* background-color: rgb(128, 205, 244);  */
+    /* border: 1px solid rgb(0, 90, 0); */
+    /* border-radius: 5px; */
     cursor: pointer;
     opacity:1;
     font-size: 35px;
