@@ -10,12 +10,10 @@ const subBtn = document.getElementById("sub-btn");
     deleteBtn.textContent = 'Delete';
     editBtn.textContent = 'Edit';
 
-const balEl = document.getElementById("balance");
 let bal = parseInt(localStorage.getItem("bal"));
 
 if(!bal)
 bal=0;
-balEl.innerText=`Balance: \u20B9${bal}`;
 
 const viewBtn = document.getElementById("view-bal");
 
@@ -60,6 +58,7 @@ subBtn.addEventListener('click', () => {
   
     bal+=amount;
     updateLocalStorage();
+    viewBtn.innerText = "View balance";
     console.log(amount);
     console.log(categoryEl.value);
     console.log(dateEl.value);
@@ -87,8 +86,13 @@ subBtn.addEventListener('click', () => {
 })
 function updateLocalStorage(){
     localStorage.setItem("bal", JSON.stringify(bal))
-    //local storage only stores string for security purpose
-    balEl.innerText=`Balance: \u20B9${bal}`;
+    if(viewBtn.innerText === "View balance"){
+        viewBtn.innerText = "View balance";
+}
+else if(viewBtn.innerText === `₹${bal}`){
+        viewBtn.innerText = `₹${bal}`;
+}
+
 }
 
 //hamburger

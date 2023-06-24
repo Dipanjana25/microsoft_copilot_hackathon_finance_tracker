@@ -324,27 +324,11 @@ a {
     transition: all 1s ease-in-out;
     animation: to-left .71s forwards;
     height:25px;
-    width:50%;
+    width:100%;
     border-radius: 20px;
     text-align: center;
     border:1px solid rgb(0, 0, 0);
     background-color:rgb(192, 57, 57);;
-    color:white;
-    cursor:pointer;
-  }
-  #heading>button#edit{
-    display: grid;
-    justify-content: center;
-    place-content: center;
-    margin: 5px 5px;
-    transition: all 1s ease-in-out;
-    animation: to-left .71s forwards;
-    height:25px;
-    width:75%;
-    border-radius: 20px;
-    text-align: center;
-    border:1px solid rgb(0, 0, 0);
-    background-color:#0878a4;
     color:white;
     cursor:pointer;
   }

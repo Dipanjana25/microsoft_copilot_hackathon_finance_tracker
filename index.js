@@ -1,3 +1,4 @@
+// localStorage.clear();
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 const navLink = document.querySelectorAll(".nav-link");
@@ -79,7 +80,7 @@ bubble.addEventListener('click',function(){
 function hide(){
   reminderList.classList.toggle('hide');
   tri.classList.toggle('hide');
-
+  location.reload();
 }
 // window.addEventListener('click', (event) => {
 //   if (!bubble.contains(event.target) && !reminderList.contains(event.target)) {

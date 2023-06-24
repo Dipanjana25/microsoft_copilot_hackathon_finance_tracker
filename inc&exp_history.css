@@ -294,3 +294,10 @@ body {
 .search-btn:hover{
   background-color: #e8e4b2;
 }
+
+#view-balance{
+  cursor: pointer;
+}
+.avatar{
+  background:#94d2bd;
+}

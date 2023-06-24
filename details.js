@@ -1,9 +1,20 @@
+// localStorage.clear();
 var exp_detail = JSON.parse(localStorage.getItem("expenses") || "[]");
 var inc_detail = JSON.parse(localStorage.getItem("incomes") || "[]");
 
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".nav-menu");
 const navLink = document.querySelectorAll(".nav-link");
+const viewBtn = document.getElementById("view-balance");
+
+viewBtn.addEventListener('click', () => {
+if(viewBtn.innerText === "View balance"){
+        viewBtn.innerText = `Balance: ₹${bal}`;
+}
+else {
+        viewBtn.innerText = "View balance";
+}
+})
 
 hamburger.addEventListener("click", mobileMenu);
 navLink.forEach(n => n.addEventListener("click", closeMenu));
@@ -19,8 +30,6 @@ function closeMenu() {
 }
 
 let bal = parseInt(localStorage.getItem("bal"));
-let print=document.getElementById('balance');
-print.innerText=`Current Balance: \u20B9${bal}`;
 
 let currentDate = new Date();
 var m = JSON.parse(localStorage.getItem("m") || "[]");

@@ -2,15 +2,11 @@
 var exp_detail = JSON.parse(localStorage.getItem("expenses") || "[]");
 console.log(exp_detail);
 
-function delete_from_LocalStorage(){
-    exp_detail.slice(exp_detail.indexOf(expense), 1);
-    balEl.innerText=`balance: \u20B9${bal}`;
-}
 
 let totalAmount = 0;
 const exp_detailTableBody = document.getElementById('expense-table-body');
 const totalAmountCell = document.getElementById('total-amount');
-const balEl = document.getElementById("balance");
+// const balEl = document.getElementById("balance");
 
 let bal = parseInt(localStorage.getItem("bal"));
 if(!bal)
@@ -28,8 +24,10 @@ else {
 }
 })
 
-
-exp_detail.reverse();
+exp_detail.sort(function(a, b) {
+  return a.date - b.date;
+});
+// exp_detail.reverse();
 var expense = exp_detail[0];
 for (expense of exp_detail) {
     totalAmount += expense.amount;
@@ -37,8 +35,9 @@ for (expense of exp_detail) {
 
     const newRow = exp_detailTableBody.insertRow();
     const categoryCell = newRow.insertCell();
-    const noteCell = newRow.insertCell();
+    
     const amountCell = newRow.insertCell();
+    const noteCell = newRow.insertCell();
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
     const editCell = newRow.insertCell();
@@ -46,31 +45,131 @@ for (expense of exp_detail) {
     const editBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
     editBtn.textContent = 'Edit';
-    // deleteBtn.classList.add('delete-btn');
     deleteBtn.addEventListener('click', function (e) {
         var txt; //useless variable for now
         if (confirm("Confirm Delete?")) {
-            // console.log(exp_detail.indexOf(expense));
-            // console.log(e.target.closest('tr').rowIndex);
             var ind = e.target.closest('tr').rowIndex;
             ind--;
             console.log(ind);
-
-
-            // console.log(exp_detail[ind].amount);
-            
+            console.log(exp_detail[ind].amount)
             totalAmount -= exp_detail[ind].amount;
             totalAmountCell.textContent = totalAmount;
             bal+=exp_detail[ind].amount;
+            if(viewBtn.innerText === "View balance"){
+              viewBtn.innerText = "View balance";
+            }
+            else {
+              viewBtn.innerText = `Balance: ₹${bal}`;
+            }
             exp_detail.splice(ind, 1);
+            exp_detailTableBody.removeChild(newRow);
             localStorage.setItem("expenses", JSON.stringify(exp_detail));
             localStorage.setItem("bal", JSON.stringify(bal));
-            balEl.innerText=`Current Balance: \u20B9${bal}`;
+            // balEl.innerText=`Current Balance: \u20B9${bal}`;
             txt = "You pressed OK!";
             location.reload();
         } else {
             txt = "You pressed Cancel!";
         }
+    })
+    var f=0;var count=0;var datecount=0;
+    editBtn.addEventListener('click', function (e) {
+      f++;
+      if((f%2)===1){
+        noteCell.classList.add('avatar');
+        amountCell.classList.add('avatar');
+        categoryCell.classList.add('avatar');
+        dateCell.classList.add('avatar');
+        noteCell.setAttribute('contenteditable', 'true');
+        amountCell.setAttribute('contenteditable', 'true');
+        categoryCell.addEventListener('click',function(){
+          categoryCell.setAttribute('contenteditable', 'true');
+          var dropdown = document.createElement('div');
+          dropdown.className = 'dropdown';
+          var select = document.createElement('select');
+          select.onchange = function() {
+            replaceValue(this);
+            count++;
+          };
+          var options = ['Food & Beverage','Transport','Investment','Relaxing'];
+          for (var i = 0; i < options.length; i++) {
+            var option = document.createElement('option');
+            option.value = options[i];
+            option.text = options[i];
+            select.appendChild(option);
+          }
+          dropdown.appendChild(select);
+          categoryCell.innerText = '';
+          categoryCell.appendChild(dropdown);
+          dropdown.style.display = 'block';
+          dropdown.onclick = function(event) {
+            event.stopPropagation();
+          };
+          function replaceValue(select) {
+            var selectedOption = select.value;
+            categoryCell.innerText = selectedOption;
+          }
+        });
+        dateCell.addEventListener('click',function(){
+          dateCell.setAttribute('contenteditable', 'true');
+          var datePicker=document.createElement("input");
+          datePicker.type="date";
+          datePicker.value = dateCell.innerText;
+          datePicker.onblur = function() {
+            replace(this);
+            // datecount++;
+          };
+          // if(datecount!==0){
+          dateCell.innerText = '';
+          dateCell.appendChild(datePicker);
+          // datePicker.focus();
+          function replace(datePicker) {
+            var selectedDate = datePicker.value;
+            var pattern = /^\d{4}-\d{2}-\d{2}$/;
+            // if(pattern.test(selectedDate))
+            dateCell.innerText = selectedDate;
+            // else
+            // alert("please enter a valid format of date which is yyyy-mm-dd");
+          }
+        // }
+        });
+        editBtn.textContent = 'Save';
+        editBtn.style.backgroundColor="green";
+        var ind = e.target.closest('tr').rowIndex;
+        ind--;
+        totalAmount -= exp_detail[ind].amount;
+        bal+=exp_detail[ind].amount;
+    }
+    else{
+      noteCell.classList.remove('avatar');
+      amountCell.classList.remove('avatar');
+      categoryCell.classList.remove('avatar');
+      dateCell.classList.remove('avatar');
+      var ind = e.target.closest('tr').rowIndex;
+      ind--;
+      var newamount=amountCell.innerText;
+      var newnote=noteCell.innerText;
+      if(count!==0)
+      {var newcategory=categoryCell.innerText;
+        exp_detail[ind].category=newcategory;
+      }
+      if(datecount!==0){
+        var newdate=dateCell.innerText;
+        exp_detail[ind].date=newdate;
+      }
+      exp_detail[ind].note=newnote;
+      totalAmount += Number(newamount);
+      totalAmountCell.textContent = totalAmount;
+      noteCell.textContent=newnote;
+      exp_detail[ind].amount=Number(newamount);
+      bal-=exp_detail[ind].amount;
+      amountCell.removeAttribute('contenteditable');
+      editBtn.innerText = 'Edit';
+      localStorage.setItem("expenses", JSON.stringify(exp_detail));
+      localStorage.setItem("bal", JSON.stringify(bal));
+      txt = "You pressed OK!";
+      location.reload();
+    }
     })
     categoryCell.textContent = expense.category;
     noteCell.textContent = expense.note;
