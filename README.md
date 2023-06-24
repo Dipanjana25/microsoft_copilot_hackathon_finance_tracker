@@ -5,7 +5,7 @@
 
 <div align="center">
   
- FINTRACK AN EXPENSE TRACKING SITE   
+ FINTRACK AN EXPENSE TRACKING SITE   
 </div>
 
 <div>Live Site: https://microsoft-copilot-hackathon-finance-tracker.vercel.app/</div>
@@ -98,4 +98,7 @@ Track Progress and Adapt as Needed
 Thank you!!
 
 ![image](https://github.com/Dipanjana25/microsoft_copilot_hackathon_finance_tracker/assets/96725005/cbf35bf4-59a3-4cfb-9935-b0d4d3ad6bb0)
+
+<strong>Website Link</strong>
+https://microsoft-copilot-hackathon-finance-tracker.vercel.app/
 

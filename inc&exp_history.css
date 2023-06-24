@@ -118,7 +118,34 @@ body {
   transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
   border-radius: 20%;
 }
-
+.convert{
+  
+  font-size: 25px;
+  margin-bottom: 4px; 
+  background-color: #a4fedf; 
+  border: 1px solid rgb(9, 116, 116);
+  border-radius: 5px;
+  cursor: pointer;
+  height:40px;
+  width:40px;
+  border-radius: 50%;
+ }
+ .convert:hover .fa-indian-rupee-sign:before{
+  content: "\24";
+  margin-bottom: 4px; 
+  /* background-color: rgb(128, 205, 244);  */
+  /* border: 1px solid rgb(0, 90, 0); */
+  /* border-radius: 5px; */
+  cursor: pointer;
+  opacity:1;
+  font-size: 35px;
+  
+ }
+#result{
+ font-size: 20px;
+ color:rgb(71, 7, 7);
+ z-index: 1;
+}
   @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
 
   * {
