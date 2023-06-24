@@ -218,7 +218,7 @@ for (income of inc_detail) {
     })
     categoryCell.textContent = income.category;
     noteCell.textContent = income.note;
-    amountCell.textContent = "₹"+income.amount;
+    amountCell.textContent = income.amount;
     dateCell.textContent = income.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
