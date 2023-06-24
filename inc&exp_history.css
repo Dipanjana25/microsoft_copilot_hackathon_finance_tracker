@@ -281,6 +281,14 @@ body {
         transform: translateY(-8px) rotate(-45deg);
         
     }
+
+    #input_my{
+      width:220px;
+    }
+
+    .navbar {
+      width:116%;
+  }
 }
 
 .search{
