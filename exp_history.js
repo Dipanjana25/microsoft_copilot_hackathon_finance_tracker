@@ -178,6 +178,7 @@ for (expense of exp_detail) {
       noteCell.textContent=newnote;
       exp_detail[ind].amount=Number(newamount);
       bal-=exp_detail[ind].amount;
+      console.log(exp_detail[ind].amount);
       amountCell.removeAttribute('contenteditable');
       editBtn.innerText = 'Edit';
       localStorage.setItem("expenses", JSON.stringify(exp_detail));
@@ -215,7 +216,7 @@ for (expense of exp_detail) {
     })
     categoryCell.textContent = expense.category;
     noteCell.textContent = expense.note;
-    amountCell.textContent ="₹"+expense.amount;
+    amountCell.textContent =expense.amount;
     dateCell.textContent = expense.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
@@ -402,3 +403,34 @@ function myFunction_() {
     }
   }
 }
+
+const convert = document.getElementById("convert");
+const result = document.getElementById("result");
+let balance = parseInt(localStorage.getItem("bal"));
+var coo=0;
+convert.addEventListener("click", function() {
+  coo++;
+  if(coo%2===1){
+    result.style.display="block";
+   let fromCurrency ="INR";
+   let toCurrency = "USD";
+   let amt = balance;
+   fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
+   .then(response => {
+         return response.json();
+   })
+   .then(data => {
+      let rate = data.rates[toCurrency];
+      let total = rate * amt;
+      // result.innerHTML = `${amt} ${fromCurrency} = ${total}
+      result.innerHTML = `${total}
+      ${toCurrency}`;
+      
+   });
+  }
+  else{
+    result.style.display="none";
+  }
+});
+
+

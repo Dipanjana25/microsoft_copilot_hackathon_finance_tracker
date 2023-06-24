@@ -53,6 +53,12 @@
     <h1 style="margin: 4px;">EXPENSE HISTORY</h1><br>
     
     <h2 id="view-balance">View balance</h2><br>
+    <div style=" text-align:center;justify-content: center;">
+        <button id="convert" class="convert">
+            <i class="fa-solid fa-indian-rupee-sign"></i></button>
+           <p id="result" ></p>
+           <br>
+    </div>
         <div class = "search">
             <!-- <input class="search-val"> -->
             <input onkeyup="myFunction_()" id="input_my" type="text" placeholder="Search..." style="font-size: 20px; border: 2px solid rgb(255, 153, 0); border-radius: 20px;padding:10px;">
@@ -70,7 +76,7 @@
             <thead>
                 <tr>
                     <th>Category</th>
-                    <th>Amount</th>
+                    <th>Amount(₹)</th>
                     <th>Note</th>
                     <th>Date</th>
                     <th>Delete</th>
