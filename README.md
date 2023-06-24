@@ -30,6 +30,19 @@ The active balance sheet that the user can edit anytime.
 A to-do list where person can add his desired goals of investments, if any.
 The primary goal of this project is to balance the daily expenditures of the person for the better future. 
 
+<strong>Other features:</strong>
+We have a implemented a currency converter, from INR to USD.
+We have search feature in our expense and income history. 
+      By different methods:
+                         1. Date
+                         2. Category
+                         3. Amount
+                         4. Note
+There is option where user can download the history of his/her expense in PDF form.
+We have different pie charts in different sections for more clear and depth data 
+      visualisation.
+
+
 <strong>HTML</strong>
 HTML is essential for building the user interface of a project. It allows us to 
 define the layout, structure,and visual elements of the application. Using HTML 
