@@ -82,8 +82,34 @@ function hide(){
   tri.classList.toggle('hide');
   location.reload();
 }
-// window.addEventListener('click', (event) => {
-//   if (!bubble.contains(event.target) && !reminderList.contains(event.target)) {
-//     location.reload();
-//   }
-// });
+
+const convert = document.getElementById("convert");
+const result = document.getElementById("result");
+let balance = parseInt(localStorage.getItem("bal"));
+var coo=0;
+convert.addEventListener("click", function() {
+  coo++;
+  if(coo%2===1){
+    result.style.display="block";
+   let fromCurrency ="INR";
+   let toCurrency = "USD";
+   let amt = balance;
+   fetch(`https://api.exchangerate-api.com/v4/latest/${fromCurrency}`)
+   .then(response => {
+         return response.json();
+   })
+   .then(data => {
+      let rate = data.rates[toCurrency];
+      let total = rate * amt;
+      // result.innerHTML = `${amt} ${fromCurrency} = ${total}
+      result.innerHTML = `${total}
+      ${toCurrency}`;
+      
+   });
+  }
+  else{
+    result.style.display="none";
+  }
+});
+
+

@@ -299,5 +299,25 @@ body {
   cursor: pointer;
 }
 .avatar{
-  background:#94d2bd;
+  background:#eef1bf;
+}
+
+
+#categoryFilter{
+  width: max-content;
+  height: 45px;
+  border-radius: 20px;
+  border: 1px solid #0671fc;
+  font-size: 2rem;
+  font-weight: 400;
+  padding-left: 1rem;
+  outline: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#dateInput{
+  display:none;
 }

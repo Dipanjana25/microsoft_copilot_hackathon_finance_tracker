@@ -42,7 +42,7 @@ body{
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: #5c77ff;
+    background-color: #a4c5fe;
     cursor: pointer;
     transition: transform 0.3s;
   }
@@ -67,7 +67,7 @@ body{
     height: 100px;
     width: 250px;
     scroll-behavior: smooth;
-    background-color: #94d2bd;
+    background-color: #b4defc;
     position: fixed;
     border-radius: 6px;
     overflow-y: auto;
@@ -84,7 +84,7 @@ body{
 }
 
 .reminder-list::-webkit-scrollbar-track {
-  background-color: #94d2bd;
+  background-color: #a4fedf;
 }
 
 .reminder-list::-webkit-scrollbar-thumb {
@@ -117,7 +117,7 @@ body{
     position: fixed;
     height:20px;
     width: 20px;
-    background: #94d2bd;
+    background: #b4defc;
     right:27px;
     bottom:86px;
     opacity:0;
@@ -162,6 +162,33 @@ body{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   } */
   
+  .convert{
+    font-size: 25px;
+    margin-bottom: 4px; 
+    background-color: #a4fedf; 
+    border: 1px solid rgb(9, 116, 116);
+    border-radius: 5px;
+    cursor: pointer;
+    height:40px;
+    width:40px;
+    border-radius: 50%;
+   }
+   .convert:hover .fa-indian-rupee-sign:before{
+    content: "\24";
+    margin-bottom: 4px; 
+    /* background-color: rgb(128, 205, 244);  */
+    /* border: 1px solid rgb(0, 90, 0); */
+    /* border-radius: 5px; */
+    cursor: pointer;
+    opacity:1;
+    font-size: 35px;
+    
+   }
+  #result{
+   font-size: 20px;
+   color:rgb(71, 7, 7);
+   z-index: 1;
+  }
   @media (min-width: 768px) {
     .button-66 {
       padding: 16px 44px;

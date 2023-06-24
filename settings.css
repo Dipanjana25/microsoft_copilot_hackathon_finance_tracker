@@ -159,6 +159,7 @@ a {
     right: 0%;
     width: 100%;
     height: 100%;
+    margin-bottom: 50px;
   }
   .calendar {
     height: max-content;
@@ -293,6 +294,11 @@ a {
     text-align:center;
     font-weight:500;
     font-size:large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   #heading>button{
     display: grid;
@@ -319,18 +325,56 @@ a {
     display: grid;
     /* display:flex; */
     justify-content: center;
+    align-items: center;
     place-content: center;
     margin: 5px 5px;
     transition: all 1s ease-in-out;
     animation: to-left .71s forwards;
     height:25px;
-    width:100%;
+    width:50%;
     border-radius: 20px;
     text-align: center;
-    border:1px solid rgb(0, 0, 0);
+    /* border:1px solid rgb(0, 0, 0); */
     background-color:rgb(192, 57, 57);;
     color:white;
     cursor:pointer;
+  }
+  #heading>button#ok{
+    display: grid;
+    /* display:flex; */
+    justify-content: center;
+    place-content: center;
+    margin: 5px 5px;
+    transition: all 1s ease-in-out;
+    animation: to-left .71s forwards;
+    height:25px;
+    width:50%;
+    border-radius: 20px;
+    text-align: center;
+    /* border:1px solid rgb(0, 0, 0); */
+    background-color: #4164ef;
+    color:white;
+    cursor:pointer;
+  }
+  #heading>button#edit{
+    display: grid;
+    justify-content: center;
+    place-content: center;
+    margin: 5px 5px;
+    transition: all 1s ease-in-out;
+    animation: to-left .71s forwards;
+    height:25px;
+    width:75%;
+    border-radius: 20px;
+    text-align: center;
+    border:1px solid rgb(0, 0, 0);
+    background-color:#0878a4;
+    color:white;
+    cursor:pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .calendar-limit {
     position: relative;

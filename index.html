@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/12671c0b06.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <title>FinTrack</title>
 </head>
 <body>
@@ -42,14 +44,16 @@
     </header>
     <!-- <span class="bg">&#8377;</span> -->
 
-      
         <div class="grid-container">
            
                 <div class="grid-item"><img src="home_im1.png" class="image_home"></div>
                 
                 <div class="grid-item"><div class="btn-container" >
                    <p class="welcome">Welcome to FinTrack</p>
-                   <h2 id="view-balance">View balance</h2><br>
+                   <h2 id="view-balance">View balance</h2><br> 
+                   <button id="convert" class="convert">
+                    <i class="fa-solid fa-indian-rupee-sign"></i></button>
+                   <p id="result" ></p>
                     <form action="income.html">
                     <button class="button-66" role="button" style="background-color: #4a63a5;">ADD INCOME</button>
                     </form>
@@ -61,7 +65,7 @@
           </div>
           <div class="bubble" id="bubble">
             <div class="bubble-content">
-              <span class="bubble-icon">&#8377;</span>
+              <span class="bubble-icon">&#128276;</span>
             </div>
           </div> 
           <div class="reminder-list" id="reminderList">

@@ -31,7 +31,7 @@ exp_detail.sort(function(a, b) {
 var expense = exp_detail[0];
 for (expense of exp_detail) {
     totalAmount += expense.amount;
-    totalAmountCell.textContent = totalAmount;
+    totalAmountCell.textContent = "₹"+totalAmount;
 
     const newRow = exp_detailTableBody.insertRow();
     const categoryCell = newRow.insertCell();
@@ -41,10 +41,19 @@ for (expense of exp_detail) {
     const dateCell = newRow.insertCell();
     const deleteCell = newRow.insertCell();
     const editCell = newRow.insertCell();
+    const downloadCell = newRow.insertCell();
     const deleteBtn = document.createElement('button');
     const editBtn = document.createElement('button');
-    deleteBtn.textContent = 'Delete';
-    editBtn.textContent = 'Edit';
+    const downloadBtn=document.createElement('button');
+    var icon = document.createElement('i');
+    icon.className = 'fa-solid fa-trash';
+    deleteBtn.appendChild(icon); 
+    var icon = document.createElement('i');
+    icon.className = 'fa-regular fa-pen-to-square';
+    editBtn.appendChild(icon); 
+    var icon = document.createElement('i');
+    icon.className = 'fa-solid fa-download';
+    downloadBtn.appendChild(icon); 
     deleteBtn.addEventListener('click', function (e) {
         var txt; //useless variable for now
         if (confirm("Confirm Delete?")) {
@@ -88,10 +97,11 @@ for (expense of exp_detail) {
           dropdown.className = 'dropdown';
           var select = document.createElement('select');
           select.onchange = function() {
-            replaceValue(this);
             count++;
+            replaceValue(this);
+            // count++;
           };
-          var options = ['Food & Beverage','Transport','Investment','Relaxing'];
+          var options = ['Category','Food & Beverage','Transport','Investment','Relaxing'];
           for (var i = 0; i < options.length; i++) {
             var option = document.createElement('option');
             option.value = options[i];
@@ -107,6 +117,7 @@ for (expense of exp_detail) {
           };
           function replaceValue(select) {
             var selectedOption = select.value;
+            if(count!==0)
             categoryCell.innerText = selectedOption;
           }
         });
@@ -116,17 +127,21 @@ for (expense of exp_detail) {
           datePicker.type="date";
           datePicker.value = dateCell.innerText;
           datePicker.onblur = function() {
+            datecount++;
             replace(this);
-            // datecount++;
           };
           // if(datecount!==0){
           dateCell.innerText = '';
           dateCell.appendChild(datePicker);
-          // datePicker.focus();
+          datePicker.onclick = function(event) {
+            event.stopPropagation();
+          };
+          datePicker.focus();
           function replace(datePicker) {
             var selectedDate = datePicker.value;
             var pattern = /^\d{4}-\d{2}-\d{2}$/;
             // if(pattern.test(selectedDate))
+            if(datecount!==0)
             dateCell.innerText = selectedDate;
             // else
             // alert("please enter a valid format of date which is yyyy-mm-dd");
@@ -153,10 +168,10 @@ for (expense of exp_detail) {
       {var newcategory=categoryCell.innerText;
         exp_detail[ind].category=newcategory;
       }
-      if(datecount!==0){
+      // if(datecount!==0){
         var newdate=dateCell.innerText;
         exp_detail[ind].date=newdate;
-      }
+      // }
       exp_detail[ind].note=newnote;
       totalAmount += Number(newamount);
       totalAmountCell.textContent = totalAmount;
@@ -171,12 +186,40 @@ for (expense of exp_detail) {
       location.reload();
     }
     })
+    downloadBtn.addEventListener('click', function (e) {
+      var ind = e.target.closest('tr').rowIndex;
+      ind--;
+      var category =exp_detail[ind].category;
+      var amount=exp_detail[ind].amount;
+      var note=exp_detail[ind].note;
+      var date=exp_detail[ind].date;
+      var contentDiv = document.createElement('div');
+      contentDiv.className='previewpdf';
+      var contenthead=document.createElement('div');
+      contenthead.innerHTML='<h1 class="headd">My expense record</h1>';
+      contentDiv.innerHTML = '<h3 class="cheading">Category: <span class="cvalue">' + category + '</span></h3>\n<h3 class="cheading">Amount: <span class="cvalue">' + ' ₹'+amount + '</span></h3>\n<h3 class="cheading">Note: <span class="cvalue">' + note + '</span></h3>\n<h3 class="cheading">Date: <span class="cvalue">' + date + '</span></h3>';
+      var previewWindow = window.open('');
+      previewWindow.document.open();
+      previewWindow.document.write('<html><head><title>PDF Preview</title></head><body>');
+      previewWindow.document.write('<style>');
+      // previewWindow.document.write('body{background:beige;}');
+      previewWindow.document.write('.headd{text-align:center;color:black;font-weight:light;}','.cheading { color: #030547; font-size:18px;font-weight: bolder;}','.cvalue {color: #0e5d0e; font-size: 16px; font-weight: 200;}');
+      previewWindow.document.write('</style><body>');
+      previewWindow.document.write('<img src="images/fin.jpg" alt="Logo" height="60px" style="border-radius: 50%; padding-top: 10px;">');
+      previewWindow.document.write(contenthead.innerHTML);
+      previewWindow.document.write(contentDiv.innerHTML);
+      previewWindow.document.write('</body></html>');
+      previewWindow.print();
+      previewWindow.close();
+      location.reload();
+    })
     categoryCell.textContent = expense.category;
     noteCell.textContent = expense.note;
-    amountCell.textContent = expense.amount;
+    amountCell.textContent ="₹"+expense.amount;
     dateCell.textContent = expense.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
+    downloadCell.appendChild(downloadBtn);
 }
 
 //pie-chart-code
@@ -237,3 +280,125 @@ function closeMenu() {
 }
 
 
+//pdf
+function printData()
+{
+  var divToPrint=document.getElementById("content");
+  var table = document.getElementById("table_my");
+  var th = table.getElementsByTagName("th");
+  var tr = table.getElementsByTagName("tr");
+  var totCol = th.length;
+  var colex = 3;
+  var exin = totCol-colex;
+  for (var i = exin; i < totCol; i++) {
+    th[i].style.display = "none";
+  }
+  for(var i=0;i<exin;i++){
+    th[i].classList.add("cheading");
+    console.log(th[i]);
+  }
+  for (var i = 1; i < tr.length-1; i++) {
+    for (var j = exin; j < totCol; j++) {
+      var col= tr[i].cells[j];
+      col.style.display="none";
+    }
+    for (var j = 0; j < exin; j++) {
+      tr[i].cells[j].classList.add("cvalue");
+    }
+  }
+  for(var i=0;i<2;i++){
+    tr[tr.length-1].cells[i].classList.add("cheading");
+  }
+  tr[tr.length-1].cells[2].style.display="none";
+  newWin= window.open("");
+  var contenthead=document.createElement('div');
+  contenthead.innerHTML='<h1 class="headd">My expense list</h1>';
+  newWin.document.write('<html><head><title>PDF Preview</title></head><body>');
+  newWin.document.write('<style>');
+  newWin.document.write('.headd{text-align:center;color:black;font-weight:light; padding:10px;}','.cheading { color: #030547; font-size:18px;font-weight: bolder;padding:10px;}','.cvalue {color: #0e5d0e; font-size: 16px; font-weight: 200;padding:10px;}');
+  newWin.document.write('</style><body>');
+  newWin.document.write('<img src="images/fin.jpg" alt="Logo" height="60px" style="border-radius: 50%; padding-top: 10px;">');
+  newWin.document.write(contenthead.innerHTML);
+  newWin.document.write(divToPrint.outerHTML);
+  newWin.document.write('</body></html>');
+  newWin.print();
+  newWin.close();
+  location.reload();
+}
+
+
+//search
+var p=0;
+var categoryFilter = document.getElementById('categoryFilter');
+var input = document.getElementById("input_my");
+var dateInput = document.getElementById("dateInput");
+categoryFilter.addEventListener('change', updatePlaceholder);
+var placeholder="Search...";
+function updatePlaceholder(){
+  var selectedCategory = categoryFilter.value;
+  switch (selectedCategory) {
+    case 'category1':
+      placeholder = 'Search by category';
+      p=0;
+      break;
+    case 'category2':
+      placeholder = 'Search by amount';
+      p=1;
+      break;
+    case 'category3':
+      placeholder = 'Search by note';
+      p=2;
+      break;
+    case 'category4':
+      p=3;
+      break;
+    default:
+    placeholder = 'Search...';
+  }
+if(p===3){
+  input.style.display = "none";
+  dateInput.style.display = 'block';
+}
+else{
+  input.style.display = 'block';
+  dateInput.style.display = 'none';
+  input.placeholder = placeholder;
+}
+}
+dateInput.addEventListener("change", function() {
+  var filter, table, tr, td, i, txtValue;
+  dateInput = document.getElementById("dateInput"); 
+  filter = dateInput.value;
+  table = document.getElementById("table_my");
+  tr = table.getElementsByTagName("tr");
+  console.log(filter);
+  for (i = 0; i < tr.length-1; i++) {
+    td = tr[i].getElementsByTagName("td")[p];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+});
+function myFunction_() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("input_my");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table_my");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length-1; i++) {
+    td = tr[i].getElementsByTagName("td")[p];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
