@@ -101,7 +101,7 @@ for (expense of exp_detail) {
             replaceValue(this);
             // count++;
           };
-          var options = ['Category','Food & Beverage','Transport','Investment','Relaxing'];
+          var options = ['Category','Food & Beverage','Transport','Investment','Relaxing','Others'];
           for (var i = 0; i < options.length; i++) {
             var option = document.createElement('option');
             option.value = options[i];
@@ -232,6 +232,7 @@ function drawChart() {
     var travel_exp= 0;
     var relax_exp= 0;
     var invest_exp= 0;
+    var oth_expp=0;
 
     var item = JSON.parse(localStorage.getItem("expenses") || "[]");
     item.map((item) => {
@@ -239,6 +240,7 @@ function drawChart() {
       else if(item.category === "Relaxing") relax_exp+=item.amount;
       else if(item.category === "Investment") invest_exp+=item.amount;
       else if(item.category === "Transport") travel_exp+=item.amount;
+      else if (item.category === "Others") oth_expp+=item.amount;
     })
     // console.log(sal_exp + " " + rent_exp + " " + subs_exp + " " + tax_exp+ "done");
     var data = google.visualization.arrayToDataTable([
@@ -246,7 +248,8 @@ function drawChart() {
       ['Food & Beverage',  food_exp], 
       ['Investment',  invest_exp],
       ['Transport',  travel_exp],
-      ['Relaxing',  relax_exp],  
+      ['Relaxing',  relax_exp], 
+      ['Others',  oth_expp] 
     ]);
 
  var options = {
