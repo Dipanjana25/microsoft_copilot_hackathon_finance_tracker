@@ -5,7 +5,7 @@
 
 <div align="center">
   
- FINTRACK AN EXPENSE TRACKING SITE   
+ FINTRACK AN EXPENSE TRACKING SITE   
 </div>
 
 <pre>
