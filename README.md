@@ -28,6 +28,15 @@ The site consists of different sections and pages that are interrelated.
 For making this website, GitHub Copilot has proven to be a great asset for us.
 We have also used different Microsoft technologies for completing this project.
 
+<strong>Importance of expense tracker</strong>strong>
+1.Financial Awareness: Expense tracking apps provide a clear and detailed picture of our spending habits. This awareness helps us make informed decisions, identify unnecessary expenses, and find areas where we can save money.
+2.Budgeting and Financial Planning: Expense tracking apps make it easier to create and maintain budgets. With accurate records of your income and expenses, we can set realistic financial goals, allocate funds to different categories, and track your progress over time.
+3.Expense Control: Tracking your expenses through an app allows us to identify patterns and trends in our spending behavior. We can analyze our expenditure by category, date, or note, enabling us to identify areas where we might be overspending. 
+4.Financial Security: We can quickly spot any fraudulent or unauthorized transactions. Many expense tracking apps offer features such as real-time notifications, transaction alerts, and the ability to link your accounts securely.
+5.Saving and Investment Opportunities: Provide insights into our financial health and help us identify areas where we can save more. With a clear view of our expenses, we can allocate funds toward savings and investment goals, such as an emergency fund, retirement planning, or other long-term objectives.
+
+
+
 Goals and objectives
 A user-friendly interface where user can track his daily/monthly income or expenditures.
 The active balance sheet that the user can edit anytime.
