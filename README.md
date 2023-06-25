@@ -37,7 +37,7 @@ We have also used different Microsoft technologies for completing this project.
 
 
 
-Goals and objectives
+<strong>Goals and objectives</strong>
 A user-friendly interface where user can track his daily/monthly income or expenditures.
 The active balance sheet that the user can edit anytime.
 A to-do list where person can add his desired goals of investments, if any.
@@ -105,7 +105,7 @@ Conduct Frequent Testing and User Feedback Sessions. Iterate and Refine the Solu
 Track Progress and Adapt as Needed
 </pre>
 
-Thank you!!
+# Thank you!!
 
 ![image](https://github.com/Dipanjana25/microsoft_copilot_hackathon_finance_tracker/assets/96725005/cbf35bf4-59a3-4cfb-9935-b0d4d3ad6bb0)
 
