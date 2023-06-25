@@ -105,7 +105,7 @@ for (income of inc_detail) {
             count++;
             replaceValue(this);
           };
-          var options = ['Category','Salary','Income tax return','Rent','Subsidy'];
+          var options = ['Category','Salary','Income tax return','Rent','Subsidy','Others'];
           for (var i = 0; i < options.length; i++) {
             var option = document.createElement('option');
             option.value = options[i];
@@ -218,7 +218,7 @@ for (income of inc_detail) {
     })
     categoryCell.textContent = income.category;
     noteCell.textContent = income.note;
-    amountCell.textContent = "₹"+income.amount;
+    amountCell.textContent = income.amount;
     dateCell.textContent = income.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
@@ -234,6 +234,7 @@ for (income of inc_detail) {
     var rent_exp= 0;
     var subs_exp= 0;
     var tax_exp= 0;
+    var oth_exp=0;
 
     var item = JSON.parse(localStorage.getItem("incomes") || "[]");
     item.map((item) => {
@@ -241,14 +242,16 @@ for (income of inc_detail) {
       else if(item.category === "Income tax return") tax_exp+=item.amount;
       else if(item.category === "Rent") rent_exp+=item.amount;
       else if(item.category === "Subsidy") subs_exp+=item.amount;
+      else if(item.category === "Others") oth_exp+=item.amount;
     })
-    console.log(sal_exp + " " + rent_exp + " " + subs_exp + " " + tax_exp+ " done");
+    console.log(sal_exp + " " + rent_exp + " " + subs_exp + " " + tax_exp+  " done");
     var data = google.visualization.arrayToDataTable([
       ['Answer', 'Percentage'],
       ['Salary',  sal_exp], 
       ['Rent',  rent_exp],
       ['Subsidy',  subs_exp],
-      ['Income tax return',  tax_exp],  
+      ['Income tax return',  tax_exp],
+      ['Others',  oth_exp]  
     ]);
 
     var options = {

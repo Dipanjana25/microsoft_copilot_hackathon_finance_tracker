@@ -101,7 +101,7 @@ for (expense of exp_detail) {
             replaceValue(this);
             // count++;
           };
-          var options = ['Category','Food & Beverage','Transport','Investment','Relaxing'];
+          var options = ['Category','Food & Beverage','Transport','Investment','Relaxing','Others'];
           for (var i = 0; i < options.length; i++) {
             var option = document.createElement('option');
             option.value = options[i];
@@ -178,6 +178,7 @@ for (expense of exp_detail) {
       noteCell.textContent=newnote;
       exp_detail[ind].amount=Number(newamount);
       bal-=exp_detail[ind].amount;
+      console.log(exp_detail[ind].amount);
       amountCell.removeAttribute('contenteditable');
       editBtn.innerText = 'Edit';
       localStorage.setItem("expenses", JSON.stringify(exp_detail));
@@ -215,7 +216,7 @@ for (expense of exp_detail) {
     })
     categoryCell.textContent = expense.category;
     noteCell.textContent = expense.note;
-    amountCell.textContent ="₹"+expense.amount;
+    amountCell.textContent =expense.amount;
     dateCell.textContent = expense.date;
     deleteCell.appendChild(deleteBtn);
     editCell.appendChild(editBtn);
@@ -231,6 +232,7 @@ function drawChart() {
     var travel_exp= 0;
     var relax_exp= 0;
     var invest_exp= 0;
+    var oth_expp=0;
 
     var item = JSON.parse(localStorage.getItem("expenses") || "[]");
     item.map((item) => {
@@ -238,6 +240,7 @@ function drawChart() {
       else if(item.category === "Relaxing") relax_exp+=item.amount;
       else if(item.category === "Investment") invest_exp+=item.amount;
       else if(item.category === "Transport") travel_exp+=item.amount;
+      else if (item.category === "Others") oth_expp+=item.amount;
     })
     // console.log(sal_exp + " " + rent_exp + " " + subs_exp + " " + tax_exp+ "done");
     var data = google.visualization.arrayToDataTable([
@@ -245,7 +248,8 @@ function drawChart() {
       ['Food & Beverage',  food_exp], 
       ['Investment',  invest_exp],
       ['Transport',  travel_exp],
-      ['Relaxing',  relax_exp],  
+      ['Relaxing',  relax_exp], 
+      ['Others',  oth_expp] 
     ]);
 
  var options = {
